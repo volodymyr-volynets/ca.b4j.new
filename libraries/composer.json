@@ -7,7 +7,7 @@
         "numbers\/tenants": "1.0.41",
         "numbers\/countries": "1.0.29",
         "numbers\/internalization": "1.0.19",
-        "numbers\/users": "1.1.50",
+        "numbers\/users": "1.1.51",
         "oomphinc\/composer-installers-extender": "~1.0"
     },
     "extra": {

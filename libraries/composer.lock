@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "af4c2df43ceadced5b99f61849a5da26",
+    "content-hash": "e751d1c3fd8ee9ff3136df921c296d10",
     "packages": [
         {
             "name": "composer/installers",
@@ -405,16 +405,16 @@
         },
         {
             "name": "numbers/users",
-            "version": "1.1.50",
+            "version": "1.1.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/users.git",
-                "reference": "21834145ce5e52f308e3dc6286924c60e7be352f"
+                "reference": "10c22a4689a0ce1a37be2c3674a59c5920b1fc27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/21834145ce5e52f308e3dc6286924c60e7be352f",
-                "reference": "21834145ce5e52f308e3dc6286924c60e7be352f",
+                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/10c22a4689a0ce1a37be2c3674a59c5920b1fc27",
+                "reference": "10c22a4689a0ce1a37be2c3674a59c5920b1fc27",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
                 }
             ],
             "description": "User module for Numbers Framework",
-            "time": "2018-04-08T01:17:39+00:00"
+            "time": "2018-05-04T15:39:53+00:00"
         },
         {
             "name": "oomphinc/composer-installers-extender",

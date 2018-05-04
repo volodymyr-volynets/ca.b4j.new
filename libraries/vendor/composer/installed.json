@@ -520,24 +520,24 @@
     },
     {
         "name": "numbers/users",
-        "version": "1.1.50",
-        "version_normalized": "1.1.50.0",
+        "version": "1.1.51",
+        "version_normalized": "1.1.51.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/users.git",
-            "reference": "21834145ce5e52f308e3dc6286924c60e7be352f"
+            "reference": "10c22a4689a0ce1a37be2c3674a59c5920b1fc27"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/21834145ce5e52f308e3dc6286924c60e7be352f",
-            "reference": "21834145ce5e52f308e3dc6286924c60e7be352f",
+            "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/10c22a4689a0ce1a37be2c3674a59c5920b1fc27",
+            "reference": "10c22a4689a0ce1a37be2c3674a59c5920b1fc27",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-04-08T01:17:39+00:00",
+        "time": "2018-05-04T15:39:53+00:00",
         "type": "library",
         "extra": {
             "installer-types": [
