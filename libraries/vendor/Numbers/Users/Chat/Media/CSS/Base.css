@@ -1,0 +1,32 @@
+.chat_mini_main_holder {
+	position: absolute;
+	bottom: 0;
+	right: 10px;
+	width: 300px;
+	max-height: 400px;
+	z-index: 100;
+}
+.chat_mini_message_holder {
+	height: 250px;
+	overflow: scroll;
+}
+.chat_mini_message_single_line_left, .chat_mini_message_single_line_right {
+	background-color: #eee;
+	border-radius: 10px;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+.chat_mini_message_who {
+	font-size: 0.75em;
+	font-color: grey;
+	text-align: center;
+}
+.chat_mini_groups {
+	font-size: 0.75em;
+	font-color: grey;
+}
+.chat_emoji_icon {
+	font-size: 2em;
+	cursor: hand;
+	cursor: pointer;
+}

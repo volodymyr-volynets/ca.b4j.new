@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>software.numbers.cron.base</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/curl</string>
+        <string>-s</string>
+        <string>--data</string>
+        <string>daemon_code=DEFAULT&daemon_token=token&__submit_button=1</string>
+        <string>http://system.test.numbers.local/Numbers/Users/TaskScheduler/Controller/External/CronDaemon</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>60</integer>
+    <key>KeepAlive</key>
+    <true/>
+</dict>
+</plist>

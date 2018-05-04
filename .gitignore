@@ -1,0 +1,5 @@
+/application/Config/environment.ini
+/public_html/cache/*
+
+!.gitkeep
+!.htaccess

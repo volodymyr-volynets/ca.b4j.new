@@ -1,0 +1,27 @@
+{
+	"name": "numbers/countries",
+	"type": "library",
+	"description": "Country Management module for Numbers Framework",
+	"authors": [
+		{
+			"name": "Volodymyr Volynets",
+			"email": "volodymyr.volynets@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=7.0.0",
+		"oomphinc/composer-installers-extender": "~1.0"
+	},
+	"license": "Apache-2.0",
+	"extra": {
+		"installer-types": ["library"],
+		"installer-paths": {
+			"vendor/Numbers/Countries/": ["numbers/countries"]
+		}
+	},
+	"autoload": {
+        "psr-4": {
+            "Numbers\\Countries\\": ""
+        }
+    }
+}

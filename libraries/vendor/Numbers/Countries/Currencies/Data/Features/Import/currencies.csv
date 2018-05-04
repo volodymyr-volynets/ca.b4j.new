@@ -1,0 +1,20 @@
+"cy_currency_code","cy_currency_name","cy_currency_symbol","cy_currency_fraction_digits","cy_currency_inactive"
+"USD","U.S. Dollars","$",2,0
+"CAD","Canadian Dollars","$",2,0
+"CHF","Swiss Francs","SwF",2,0
+"CNY","People's Rep of China Renminbi","RMB",2,0
+"GBP","Pound Sterling","£",2,0
+"HKD","Hong Kong Dollars","$",2,0
+"JPY","Japanese Yen","¥",0,0
+"MXP","Mexican Pesos","$",0,0
+"MYR","Malaysian Ringgit","RM",2,0
+"NTD","New Taiwan Dollar","NT$",0,0
+"NZD","New Zealand Dollars","$",2,0
+"RUB","Russian Ruble","р.",2,0
+"SGD","Singapore Dollars","S$",2,0
+"THB","Thai Baht","ß",2,0
+"UAH","Ukrainian Hryvnia","₴",2,0
+"VND","Viet Nam Dong","VND",0,0
+"ZAR","South African Rand","R",2,0
+"EUR","Euro","€",2,0
+"SAR","Saudi Riyal","ر٬س٬",2,0

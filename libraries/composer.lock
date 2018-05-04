@@ -1,0 +1,566 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "af4c2df43ceadced5b99f61849a5da26",
+    "packages": [
+        {
+            "name": "composer/installers",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "049797d727261bf27f2690430d935067710049c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
+                "reference": "049797d727261bf27f2690430d935067710049c2",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "^4.8.36"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "time": "2017-12-29T09:13:20+00:00"
+        },
+        {
+            "name": "numbers/backend",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/backend.git",
+                "reference": "14505bbc9b5bd10f1cd1c3f0515f7161fe76e406"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/14505bbc9b5bd10f1cd1c3f0515f7161fe76e406",
+                "reference": "14505bbc9b5bd10f1cd1c3f0515f7161fe76e406",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Backend/": [
+                        "numbers/backend"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Numbers\\Backend\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "Backend modules for Numbers Framework",
+            "time": "2018-05-04T13:37:40+00:00"
+        },
+        {
+            "name": "numbers/countries",
+            "version": "1.0.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/countries.git",
+                "reference": "48f2de7edd6cf414e11e2ada1fbf9bf1718ffa49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/countries/zipball/48f2de7edd6cf414e11e2ada1fbf9bf1718ffa49",
+                "reference": "48f2de7edd6cf414e11e2ada1fbf9bf1718ffa49",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Countries/": [
+                        "numbers/countries"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Numbers\\Countries\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "Country Management module for Numbers Framework",
+            "time": "2018-02-22T23:27:58+00:00"
+        },
+        {
+            "name": "numbers/framework",
+            "version": "1.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/framework.git",
+                "reference": "f1ee618ecef33acdd63dd95b9f338b6e776ec244"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/f1ee618ecef33acdd63dd95b9f338b6e776ec244",
+                "reference": "f1ee618ecef33acdd63dd95b9f338b6e776ec244",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Framework/": [
+                        "numbers/framework"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "Lightweight MVC PHP Framework",
+            "time": "2018-04-08T01:14:09+00:00"
+        },
+        {
+            "name": "numbers/frontend",
+            "version": "1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/frontend.git",
+                "reference": "4fba4baa3f7ad195ad0b062aa7e69dead0d0acba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/4fba4baa3f7ad195ad0b062aa7e69dead0d0acba",
+                "reference": "4fba4baa3f7ad195ad0b062aa7e69dead0d0acba",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Frontend/": [
+                        "numbers/frontend"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Numbers\\Frontend\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "Frontend modules for Numbers Framework",
+            "time": "2018-04-08T01:15:12+00:00"
+        },
+        {
+            "name": "numbers/internalization",
+            "version": "1.0.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/internalization.git",
+                "reference": "a39c88ed4a1627c7e85f4f000278828ddab65acf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/internalization/zipball/a39c88ed4a1627c7e85f4f000278828ddab65acf",
+                "reference": "a39c88ed4a1627c7e85f4f000278828ddab65acf",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Internalization/": [
+                        "numbers/internalization"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Numbers\\Internalization\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "Internalization module for Numbers Framework",
+            "time": "2018-03-02T19:28:01+00:00"
+        },
+        {
+            "name": "numbers/tenants",
+            "version": "1.0.41",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/tenants.git",
+                "reference": "24c8b1d6f627f48e2eb155815b62592675f68015"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/tenants/zipball/24c8b1d6f627f48e2eb155815b62592675f68015",
+                "reference": "24c8b1d6f627f48e2eb155815b62592675f68015",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Tenants/": [
+                        "numbers/tenants"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Numbers\\Tenants\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "Tenant module for Numbers Framework",
+            "time": "2018-04-08T01:16:13+00:00"
+        },
+        {
+            "name": "numbers/users",
+            "version": "1.1.50",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/volodymyr-volynets/users.git",
+                "reference": "21834145ce5e52f308e3dc6286924c60e7be352f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/21834145ce5e52f308e3dc6286924c60e7be352f",
+                "reference": "21834145ce5e52f308e3dc6286924c60e7be352f",
+                "shasum": ""
+            },
+            "require": {
+                "oomphinc/composer-installers-extender": "~1.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "installer-types": [
+                    "library"
+                ],
+                "installer-paths": {
+                    "vendor/Numbers/Users/": [
+                        "numbers/users"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Numbers\\Users\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Volodymyr Volynets",
+                    "email": "volodymyr.volynets@gmail.com"
+                }
+            ],
+            "description": "User module for Numbers Framework",
+            "time": "2018-04-08T01:17:39+00:00"
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
+        },
+        {
+            "name": "tecnickcom/tcpdf",
+            "version": "6.2.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tecnickcom/TCPDF.git",
+                "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+                "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "config",
+                    "include",
+                    "tcpdf.php",
+                    "tcpdf_parser.php",
+                    "tcpdf_import.php",
+                    "tcpdf_barcodes_1d.php",
+                    "tcpdf_barcodes_2d.php",
+                    "include/tcpdf_colors.php",
+                    "include/tcpdf_filters.php",
+                    "include/tcpdf_font_data.php",
+                    "include/tcpdf_fonts.php",
+                    "include/tcpdf_images.php",
+                    "include/tcpdf_static.php",
+                    "include/barcodes/datamatrix.php",
+                    "include/barcodes/pdf417.php",
+                    "include/barcodes/qrcode.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "homepage": "http://nicolaasuni.tecnick.com"
+                }
+            ],
+            "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+            "homepage": "http://www.tcpdf.org/",
+            "keywords": [
+                "PDFD32000-2008",
+                "TCPDF",
+                "barcodes",
+                "datamatrix",
+                "pdf",
+                "pdf417",
+                "qrcode"
+            ],
+            "time": "2017-04-26T08:14:48+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
