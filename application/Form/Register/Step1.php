@@ -44,7 +44,9 @@ class Step1 extends \Object\Form\Wrapper\Base {
 	public function refresh(& $form) {
 		// change language
 		if (in_array($form->misc_settings['__form_onchange_field_values_key'][0] ?? '', ['b4_registration_in_group_id'])) {
-			\I18n::changeGroup($form->values['b4_registration_in_group_id']);
+			if (!empty($form->values['b4_registration_in_group_id'])) {
+				\I18n::changeGroup($form->values['b4_registration_in_group_id']);
+			}
 		}
 		$form->values['__wizard_step'] = 1;
 		// preload data
