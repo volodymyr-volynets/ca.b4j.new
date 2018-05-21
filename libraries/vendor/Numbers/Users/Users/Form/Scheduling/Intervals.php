@@ -58,9 +58,9 @@ class Intervals extends \Object\Form\Wrapper\Base {
 			],
 			'um_schedinterval_work_starts' => [
 				'um_schedinterval_work_starts' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Date Start', 'type' => 'datetime', 'percent' => 25, 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'um_schedinterval_work_ends' => ['order' => 2, 'label_name' => 'Date End', 'type' => 'datetime', 'percent' => 25, 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'um_schedinterval_lunch_starts' => ['order' => 3, 'label_name' => 'Lunch Starts', 'type' => 'datetime', 'percent' => 25, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'um_schedinterval_lunch_ends' => ['order' => 4, 'label_name' => 'Lunch Ends', 'type' => 'datetime', 'percent' => 25, 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'um_schedinterval_work_ends' => ['order' => 2, 'label_name' => 'Date Finish', 'type' => 'datetime', 'percent' => 25, 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'um_schedinterval_lunch_starts' => ['order' => 3, 'label_name' => 'Lunch Start', 'type' => 'datetime', 'percent' => 25, 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'um_schedinterval_lunch_ends' => ['order' => 4, 'label_name' => 'Lunch Finish', 'type' => 'datetime', 'percent' => 25, 'method' => 'calendar', 'calendar_icon' => 'right'],
 			],
 			'um_schedinterval_user_id' => [
 				'um_schedinterval_user_id' => ['order' => 1, 'row_order' => 600, 'label_name' => 'User', 'domain' => 'user_id', 'null' => true, 'percent' => 50, 'method' => 'select', 'options_model' => '\Numbers\Users\Users\Model\Users::optionsActive', 'onchange' => 'this.form.submit();'],

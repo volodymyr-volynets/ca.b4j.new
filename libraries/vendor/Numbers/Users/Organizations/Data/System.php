@@ -122,6 +122,10 @@ class System extends \Object\Import {
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
 							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
+							'sm_rsrcftr_inactive' => 0
 						]
 					],
 					'\Numbers\Backend\System\Modules\Model\Resource\Map' => [
@@ -203,6 +207,10 @@ class System extends \Object\Import {
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
 							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
+							'sm_rsrcftr_inactive' => 0
 						]
 					],
 					'\Numbers\Backend\System\Modules\Model\Resource\Map' => [
@@ -283,6 +291,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						],
 						[
@@ -1016,7 +1028,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -1035,6 +1047,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						]
 					],
@@ -1097,7 +1113,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -1116,6 +1132,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						]
 					],
@@ -1178,7 +1198,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -1197,6 +1217,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						]
 					],
@@ -1259,7 +1283,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -1278,6 +1302,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						]
 					],
@@ -1340,7 +1368,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -1359,6 +1387,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						]
 					],
@@ -1421,7 +1453,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -1440,6 +1472,10 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [
 						[
 							'sm_rsrcftr_feature_code' => 'ON::ORGANIZATIONS',
+							'sm_rsrcftr_inactive' => 0
+						],
+						[
+							'sm_rsrcftr_feature_code' => 'ON::LOCATIONS',
 							'sm_rsrcftr_inactive' => 0
 						]
 					],
@@ -2556,7 +2592,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -2583,7 +2619,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -2664,7 +2700,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -2691,7 +2727,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -2718,7 +2754,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,
@@ -2799,7 +2835,7 @@ class System extends \Object\Import {
 					'sm_resource_module_code' => 'ON',
 					'sm_resource_group1_name' => 'Operations',
 					'sm_resource_group2_name' => 'Organization Management',
-					'sm_resource_group3_name' => 'Settings',
+					'sm_resource_group3_name' => 'Locations',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
 					'sm_resource_group6_name' => null,

@@ -35,7 +35,8 @@ class Controllers extends \Object\DataSource {
 			'actions' => 'c.actions',
 			'acl_public' => 'a.sm_resource_acl_public',
 			'acl_authorized' => 'a.sm_resource_acl_authorized',
-			'acl_permission' => 'a.sm_resource_acl_permission'
+			'acl_permission' => 'a.sm_resource_acl_permission',
+			'missing_features' => 'COALESCE(d.missing_features, 0)'
 		]);
 		// join
 		$this->query->join('LEFT', new \Numbers\Backend\System\Modules\Model\Modules(), 'b', 'ON', [
@@ -58,6 +59,19 @@ class Controllers extends \Object\DataSource {
 		}, 'c', 'ON', [
 			['AND', ['a.sm_resource_id', '=', 'c.sm_rsrcmp_resource_id', true], false]
 		]);
+		$this->query->join('LEFT', function (& $query) {
+			$query = \Numbers\Backend\System\Modules\Model\Resource\Features::queryBuilderStatic(['alias' => 'inner_a'])->select();
+			$query->columns([
+				'resource_id' => 'inner_a.sm_rsrcftr_resource_id',
+				'missing_features' => 'SUM(CASE WHEN inner_b.tm_feature_feature_code IS NULL THEN 1 ELSE 0 END)'
+			]);
+			$query->join('LEFT', new \Numbers\Tenants\Tenants\Model\Module\Features(), 'inner_b', 'ON', [
+				['AND', ['inner_b.tm_feature_feature_code', '=', 'inner_a.sm_rsrcftr_feature_code', true]]
+			]);
+			$query->groupby(['resource_id']);
+		}, 'd', 'ON', [
+			['AND', ['a.sm_resource_id', '=', 'd.resource_id', true], false]
+		]);
 		// where
 		$this->query->where('AND', ['a.sm_resource_type', '=', 100]);
 		$this->query->where('AND', ['a.sm_resource_inactive', '=', 0]);
@@ -75,16 +89,6 @@ class Controllers extends \Object\DataSource {
 				$query->where('AND', ['exists_a.tm_module_module_code', '=', 'a.sm_resource_module_code', true]);
 			}, 'EXISTS');
 		});
-		// limit by features
-		$this->query->where('AND NOT', function (& $query) {
-			$query = \Numbers\Backend\System\Modules\Model\Resource\Features::queryBuilderStatic(['alias' => 'exists_b'])->select();
-			$query->columns(1);
-			$query->join('LEFT', new \Numbers\Tenants\Tenants\Model\Module\Features(), 'exists_c', 'ON', [
-				['AND', ['exists_c.tm_feature_feature_code', '=', 'exists_b.sm_rsrcftr_feature_code', true]]
-			]);
-			$query->where('AND', ['exists_b.sm_rsrcftr_resource_id', '=', 'a.sm_resource_id', true]);
-			$query->where('AND', ['exists_c.tm_feature_feature_code', 'IS', null, false]);
-		}, 'EXISTS');
 	}
 
 	public function process($data, $options = []) {

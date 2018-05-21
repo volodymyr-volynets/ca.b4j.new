@@ -63,8 +63,8 @@ class Intervals extends \Object\Form\Wrapper\List2 {
 				'blank' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 10],
 				'um_schedinterval_user_id' => ['order' => 2, 'label_name' => 'User', 'domain' => 'user_id', 'null' => true, 'percent' => 25, 'options_model' => '\Numbers\Users\Users\Model\Users'],
 				'um_schedinterval_organization_id' => ['order' => 3, 'label_name' => 'Organization', 'domain' => 'organization_id', 'null' => true, 'percent' => 25, 'options_model' => '\Numbers\Users\Organizations\Model\Organizations'],
-				'um_schedinterval_work_starts' => ['order' => 5, 'label_name' => 'Work Start', 'type' => 'datetime', 'percent' => 20],
-				'um_schedinterval_work_ends' => ['order' => 6, 'label_name' => 'Work Finish', 'type' => 'datetime', 'percent' => 20],
+				'um_schedinterval_work_starts' => ['order' => 5, 'label_name' => 'Date Start', 'type' => 'datetime', 'percent' => 20],
+				'um_schedinterval_work_ends' => ['order' => 6, 'label_name' => 'Date Finish', 'type' => 'datetime', 'percent' => 20],
 			],
 			'row3' => [
 				'blank' => ['order' => 1, 'row_order' => 300, 'label_name' => '', 'percent' => 10],

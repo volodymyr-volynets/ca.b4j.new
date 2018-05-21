@@ -31,6 +31,10 @@ class Permissions {
 					}
 				} else { // public & authorized
 					if (\User::authorized()) {
+						// menu items with resources
+						if (!empty($v['acl_resource_id'])) {
+							if (!\Application::$controller->canExtended($v['acl_resource_id'], $v['acl_method_code'], $v['acl_action_id'])) continue;
+						}
 						if (empty($v['acl_authorized'])) continue;
 					} else {
 						if (empty($v['acl_public'])) continue;

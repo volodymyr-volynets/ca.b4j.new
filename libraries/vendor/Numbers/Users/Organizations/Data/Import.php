@@ -45,6 +45,17 @@ class Import extends \Object\Import {
 				],
 				[
 					'sm_feature_module_code' => 'ON',
+					'sm_feature_code' => 'ON::LOCATIONS',
+					'sm_feature_type' => 10,
+					'sm_feature_name' => 'O/N Locations',
+					'sm_feature_icon' => 'fas fa-coffee',
+					'sm_feature_activation_model' => null,
+					'sm_feature_activated_by_default' => 0,
+					'sm_feature_inactive' => 0,
+					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => []
+				],
+				[
+					'sm_feature_module_code' => 'ON',
 					'sm_feature_code' => 'ON::TERRITORIES',
 					'sm_feature_type' => 10,
 					'sm_feature_name' => 'O/N Territories',

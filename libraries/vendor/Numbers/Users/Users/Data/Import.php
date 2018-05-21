@@ -171,7 +171,7 @@ class Import extends \Object\Import {
 					'sm_feature_type' => 10,
 					'sm_feature_name' => 'U/M Scheduling',
 					'sm_feature_icon' => 'far fa-calendar-alt',
-					'sm_feature_activated_by_default' => 1,
+					'sm_feature_activated_by_default' => 0,
 					'sm_feature_activation_model' => '\Numbers\Users\Users\Data\Features\Scheduling',
 					'sm_feature_inactive' => 0,
 					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => [

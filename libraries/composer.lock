@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e751d1c3fd8ee9ff3136df921c296d10",
+    "content-hash": "ec0377c128b74554d9f0c7b8b9ef67c7",
     "packages": [
         {
             "name": "composer/installers",
@@ -222,16 +222,16 @@
         },
         {
             "name": "numbers/framework",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/framework.git",
-                "reference": "f1ee618ecef33acdd63dd95b9f338b6e776ec244"
+                "reference": "aa083ebe47f82dad583dfdaea5fd4dcca63cdf24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/f1ee618ecef33acdd63dd95b9f338b6e776ec244",
-                "reference": "f1ee618ecef33acdd63dd95b9f338b6e776ec244",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/aa083ebe47f82dad583dfdaea5fd4dcca63cdf24",
+                "reference": "aa083ebe47f82dad583dfdaea5fd4dcca63cdf24",
                 "shasum": ""
             },
             "require": {
@@ -260,20 +260,20 @@
                 }
             ],
             "description": "Lightweight MVC PHP Framework",
-            "time": "2018-04-08T01:14:09+00:00"
+            "time": "2018-05-21T16:02:19+00:00"
         },
         {
             "name": "numbers/frontend",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/frontend.git",
-                "reference": "4fba4baa3f7ad195ad0b062aa7e69dead0d0acba"
+                "reference": "8c02b3cacc7e0b1cacac1a0cfac70b6a2f1dd1d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/4fba4baa3f7ad195ad0b062aa7e69dead0d0acba",
-                "reference": "4fba4baa3f7ad195ad0b062aa7e69dead0d0acba",
+                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/8c02b3cacc7e0b1cacac1a0cfac70b6a2f1dd1d0",
+                "reference": "8c02b3cacc7e0b1cacac1a0cfac70b6a2f1dd1d0",
                 "shasum": ""
             },
             "require": {
@@ -307,7 +307,7 @@
                 }
             ],
             "description": "Frontend modules for Numbers Framework",
-            "time": "2018-04-08T01:15:12+00:00"
+            "time": "2018-05-21T16:00:56+00:00"
         },
         {
             "name": "numbers/internalization",
@@ -405,16 +405,16 @@
         },
         {
             "name": "numbers/users",
-            "version": "1.1.51",
+            "version": "1.1.54",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/users.git",
-                "reference": "10c22a4689a0ce1a37be2c3674a59c5920b1fc27"
+                "reference": "29d8f352deaf6b590f7aec8bded3a45180ec64e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/10c22a4689a0ce1a37be2c3674a59c5920b1fc27",
-                "reference": "10c22a4689a0ce1a37be2c3674a59c5920b1fc27",
+                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/29d8f352deaf6b590f7aec8bded3a45180ec64e7",
+                "reference": "29d8f352deaf6b590f7aec8bded3a45180ec64e7",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
                 }
             ],
             "description": "User module for Numbers Framework",
-            "time": "2018-05-04T15:39:53+00:00"
+            "time": "2018-05-21T15:56:12+00:00"
         },
         {
             "name": "oomphinc/composer-installers-extender",
