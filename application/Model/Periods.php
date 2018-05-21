@@ -14,7 +14,7 @@ class Periods extends \Object\Table {
 	public $column_prefix = 'b4_period_';
 	public $columns = [
 		'b4_period_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
-		'b4_period_id' => ['name' => 'Group #', 'domain' => 'group_id_sequence'],
+		'b4_period_id' => ['name' => 'Period #', 'domain' => 'group_id_sequence'],
 		'b4_period_code' => ['name' => 'Code', 'domain' => 'code'],
 		'b4_period_name' => ['name' => 'Name', 'domain' => 'name'],
 		'b4_period_start_date' => ['name' => 'Start Date', 'type' => 'datetime'],
