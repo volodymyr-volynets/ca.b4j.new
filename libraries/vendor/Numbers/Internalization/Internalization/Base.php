@@ -173,11 +173,11 @@ finish:
 				'in_translmiss_to_language_code',
 				'in_translmiss_organization_id'
 			]);
-			$query->values(function(& $query) {
+			$query->values(function(& $query) use ($model) {
 				$query->select()->from('temp_missing_translations', 'a');
 				$query->columns([
 					'in_translmiss_tenant_id' => \Tenant::id(),
-					'in_translmiss_id' => "nextval_extended('in_translation_missing_in_translmiss_id_seq'::character varying, " . \Tenant::id() . ", 0)",
+					'in_translmiss_id' => "nextval_extended(" . $model->db_object->cast("'in_translation_missing_in_translmiss_id_seq'", "character varying") . ", " . \Tenant::id() . ", 0)",
 					'in_translmiss_from_language_code' => 'a.from_language_code',
 					'in_translmiss_from_text' => 'a.from_text',
 					'in_translmiss_to_language_code' => 'a.to_language_code',

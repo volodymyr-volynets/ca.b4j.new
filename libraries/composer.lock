@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f9dbb4389d4f3615661ba2b6ec5c409",
+    "content-hash": "c22e8b693f6d7c9832438e44f2a5e223",
     "packages": [
         {
             "name": "composer/installers",
@@ -222,16 +222,16 @@
         },
         {
             "name": "numbers/framework",
-            "version": "1.2.15",
+            "version": "1.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/framework.git",
-                "reference": "baaa3cc41d18b41000a16cb23b026cc123ce3f76"
+                "reference": "aaa9d9a1041931a18802f85cbb2a459b25577dc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/baaa3cc41d18b41000a16cb23b026cc123ce3f76",
-                "reference": "baaa3cc41d18b41000a16cb23b026cc123ce3f76",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/aaa9d9a1041931a18802f85cbb2a459b25577dc8",
+                "reference": "aaa9d9a1041931a18802f85cbb2a459b25577dc8",
                 "shasum": ""
             },
             "require": {
@@ -260,7 +260,7 @@
                 }
             ],
             "description": "Lightweight MVC PHP Framework",
-            "time": "2018-05-22T17:49:50+00:00"
+            "time": "2018-05-22T21:08:09+00:00"
         },
         {
             "name": "numbers/frontend",
@@ -311,16 +311,16 @@
         },
         {
             "name": "numbers/internalization",
-            "version": "1.0.19",
+            "version": "1.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/internalization.git",
-                "reference": "a39c88ed4a1627c7e85f4f000278828ddab65acf"
+                "reference": "b2736c1452e8e8a5ed0fbcfb85140dd0691bade6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/internalization/zipball/a39c88ed4a1627c7e85f4f000278828ddab65acf",
-                "reference": "a39c88ed4a1627c7e85f4f000278828ddab65acf",
+                "url": "https://api.github.com/repos/volodymyr-volynets/internalization/zipball/b2736c1452e8e8a5ed0fbcfb85140dd0691bade6",
+                "reference": "b2736c1452e8e8a5ed0fbcfb85140dd0691bade6",
                 "shasum": ""
             },
             "require": {
@@ -354,7 +354,7 @@
                 }
             ],
             "description": "Internalization module for Numbers Framework",
-            "time": "2018-03-02T19:28:01+00:00"
+            "time": "2018-05-22T21:06:12+00:00"
         },
         {
             "name": "numbers/tenants",

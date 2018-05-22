@@ -13,7 +13,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				'options' => [
 					1 => ['name' => 'Code / Language'],
 					2 => ['name' => 'Child Information'],
-					3 => ['name' => 'Medication'],
+					3 => ['name' => 'Medical'],
 					4 => ['name' => 'Waiver'],
 					5 => ['name' => 'T-Shirt'],
 					6 => ['name' => 'Complete']
@@ -91,18 +91,18 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				self::HEADER_ROW => [
 					'order' => 100,
 					self::FORMS => [
-						'add_order_step3' => self::GLOBAL_WIZARD
+						'register_step3' => self::GLOBAL_WIZARD
 					]
 				],
 				self::MAIN_ROW => [
 					'order' => 200,
 					self::FORMS => [
-						'om_add_order_step3' => [
-							'model' => '\Numbers\Accounting\OrderManagement\Form\AddOrder\Step3',
-							'bypass_values' => ['__wizard_step', 'om_addorder_id'],
+						'b4_register_step3' => [
+							'model' => '\Form\Register\Step3',
+							'bypass_values' => ['__wizard_step', 'b4_register_id'],
 							'options' => [
 								'segment' => null,
-								'percent' => 100,
+								'percent' => 100
 							],
 							'order' => 1
 						]
