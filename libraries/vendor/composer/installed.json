@@ -231,24 +231,24 @@
     },
     {
         "name": "numbers/framework",
-        "version": "1.2.14",
-        "version_normalized": "1.2.14.0",
+        "version": "1.2.15",
+        "version_normalized": "1.2.15.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/framework.git",
-            "reference": "eb21a60f55ff9365a774f7fea3782c567c889aab"
+            "reference": "baaa3cc41d18b41000a16cb23b026cc123ce3f76"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/eb21a60f55ff9365a774f7fea3782c567c889aab",
-            "reference": "eb21a60f55ff9365a774f7fea3782c567c889aab",
+            "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/baaa3cc41d18b41000a16cb23b026cc123ce3f76",
+            "reference": "baaa3cc41d18b41000a16cb23b026cc123ce3f76",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-05-21T21:39:44+00:00",
+        "time": "2018-05-22T17:49:50+00:00",
         "type": "library",
         "extra": {
             "installer-types": [

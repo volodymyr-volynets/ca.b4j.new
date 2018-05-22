@@ -14,67 +14,55 @@ class Step2 extends \Object\Form\Wrapper\Base {
 	];
 	public $containers = [
 		'top' => ['default_row_type' => 'grid', 'order' => 100],
-		'tabs' => ['default_row_type' => 'grid', 'order' => 500, 'type' => 'tabs'],
 		'buttons' => ['default_row_type' => 'grid', 'order' => 900],
-		// child containers
-		'customer_container' => ['default_row_type' => 'grid', 'order' => 32000],
-		'address_container' => ['default_row_type' => 'grid', 'order' => 32001]
 	];
-	public $rows = [
-		'tabs' => [
-			'customer' => ['order' => 100, 'label_name' => 'Customer'],
-			'address' => ['order' => 200, 'label_name' => 'Address'],
-		]
-	];
+	public $rows = [];
 	public $elements = [
 		'top' => [
 			self::HIDDEN => [
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden'],
 				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
-			]
-		],
-		'tabs' => [
-			'customer' => [
-				'customer' => ['container' => 'customer_container', 'order' => 100],
+			],
+			'b4_registration_child_name' => [
+				'b4_registration_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Name of Child', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
+			],
+			'b4_registration_parents_name' => [
+				'b4_registration_parents_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Parent\'s Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
+			],
+			'b4_registration_parish' => [
+				'b4_registration_parish' => ['order' => 1, 'row_order' => 250, 'label_name' => 'Parish', 'domain' => 'name', 'null' => true, 'percent' => 100],
+			],
+			'b4_registration_grade' => [
+				'b4_registration_grade' => ['order' => 1, 'row_order' => 260, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'percent' => 25, 'required' => true],
+				'b4_registration_age' => ['order' => 2, 'label_name' => 'Age', 'type' => 'smallint', 'null' => true, 'percent' => 25, 'required' => true],
+				'b4_registration_date_of_birth' => ['order' => 3, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right'],
 			],
 			'address' => [
-				'address' => ['container' => 'address_container', 'order' => 100],
+				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 300, 'label_name' => 'Address', 'icon' => 'fas fa-map', 'percent' => 100],
 			],
-		],
-		'customer_container' => [
-			'om_order_type_id' => [
-				'om_order_type_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Type', 'domain' => 'type_id', 'default' => 10, 'percent' => 20, 'required' => true, 'no_choose' => true, 'method' => 'select', 'options_model' => '\Numbers\Users\Users\Model\User\Types'],
-				'om_order_company' => ['order' => 2, 'label_name' => 'Company', 'domain' => 'name', 'null' => true, 'percent' => 80, 'required' => 'c'],
+			'b4_register_address1' => [
+				'b4_register_address1' => ['order' => 1, 'row_order' => 350, 'label_name' => 'Address Line 1', 'domain' => 'name', 'required' => true],
+				'b4_register_address2' => ['order' => 2, 'label_name' => 'Address Line 2', 'domain' => 'name', 'null' => true],
 			],
-			'om_order_title' => [
-				'om_order_title' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Title', 'domain' => 'personal_title', 'null' => true, 'percent' => 20, 'required' => false, 'method' => 'select', 'options_model' => '\Numbers\Users\Users\Model\User\Titles::optionsActive'],
-				'om_order_first_name' => ['order' => 2, 'label_name' => 'First Name', 'domain' => 'personal_name', 'null' => true, 'percent' => 40, 'required' => 'c'],
-				'om_order_last_name' => ['order' => 3, 'label_name' => 'Last Name', 'domain' => 'personal_name', 'null' => true, 'percent' => 40, 'required' => 'c'],
+			'b4_register_city' => [
+				'b4_register_city' => ['order' => 1, 'row_order' => 400, 'label_name' => 'City', 'domain' => 'name', 'required' => true],
+				'b4_register_postal_code' => ['order' => 2, 'label_name' => 'Postal Code', 'domain' => 'postal_code', 'required' => true, 'onblur' => 'this.form.submit();'],
 			],
-			'separator_1' => [
-				self::SEPARATOR_HORIZONTAL => ['order' => 1, 'row_order' => 400, 'label_name' => 'Contact Information', 'icon' => 'far fa-envelope', 'percent' => 100],
+			'b4_register_country_code' => [
+				'b4_register_country_code' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Country', 'domain' => 'country_code', 'null' => true, 'required' => true, 'default' => 'CA', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Countries::optionsActive', 'onchange' => 'this.form.submit();'],
+				'b4_register_province_code' => ['order' => 2, 'label_name' => 'Province', 'domain' => 'province_code', 'null' => true, 'required' => true, 'default' => 'ON', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Provinces::optionsActive', 'options_depends' => ['cm_province_country_code' => 'b4_register_country_code']],
 			],
-			'om_order_email' => [
-				'om_order_email' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Primary Email', 'domain' => 'email', 'null' => true, 'percent' => 100, 'required' => 'c'],
+			'contact' => [
+				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 600, 'label_name' => 'Contact', 'icon' => 'fas fa-phone', 'percent' => 100],
 			],
-			'om_order_phone' => [
-				'om_order_phone' => ['order' => 1, 'row_order' => 600, 'label_name' => 'Primary Phone', 'domain' => 'phone', 'null' => true, 'percent' => 50, 'required' => 'c'],
-				'om_order_cell' => ['order' => 2, 'label_name' => 'Cell Phone', 'domain' => 'phone', 'null' => true, 'percent' => 50],
+			'b4_registration_email' => [
+				'b4_registration_phone' => ['order' => 1, 'row_order' => 700, 'label_name' => 'Phone', 'domain' => 'phone', 'required' => true],
+				'b4_registration_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email'],
 			],
-		],
-		'address_container' => [
-			'row1' => [
-				'om_order_address1' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Address Line 1', 'domain' => 'name', 'required' => true],
-				'om_order_address2' => ['order' => 2, 'label_name' => 'Address Line 2', 'domain' => 'name', 'null' => true],
+			'b4_registration_emergency_line1' => [
+				'b4_registration_emergency_line1' => ['order' => 1, 'row_order' => 800, 'label_name' => 'Emergency Contact 1', 'type' => 'text', 'null' => true, 'required' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
+				'b4_registration_emergency_line2' => ['order' => 2, 'label_name' => 'Emergency Contact 2', 'type' => 'text', 'null' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
 			],
-			'row2' => [
-				'om_order_city' => ['order' => 1, 'row_order' => 200, 'label_name' => 'City', 'domain' => 'name', 'required' => true],
-				'om_order_postal_code' => ['order' => 2, 'label_name' => 'Postal Code', 'domain' => 'postal_code', 'required' => true, 'onblur' => 'this.form.submit();'],
-			],
-			'row3' => [
-				'om_order_country_code' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Country', 'domain' => 'country_code', 'null' => true, 'required' => true, 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Countries::optionsActive', 'onchange' => 'this.form.submit();'],
-				'om_order_province_code' => ['order' => 2, 'label_name' => 'Province', 'domain' => 'province_code', 'null' => true, 'required' => true, 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Provinces::optionsActive', 'options_depends' => ['cm_province_country_code' => 'om_order_country_code']],
-			]
 		],
 		'buttons' => [
 			self::BUTTONS => [

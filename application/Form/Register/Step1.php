@@ -22,10 +22,11 @@ class Step1 extends \Object\Form\Wrapper\Base {
 				'b4_registration_period_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Code', 'domain' => 'code', 'null' => true, 'percent' => 100, 'required' => true],
 			],
 			'b4_registration_in_group_id' => [
-				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'required' => true, 'percent' => 100, 'method' => 'select', 'options_model' => '\Numbers\Internalization\Internalization\Model\Groups::optionsActive', 'onchange' => 'this.form.submit();'],
+				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'default' => NUMBERS_FLAG_GLOBAL___IN_GROUP_ID ?? NUMBERS_FLAG_GLOBAL_I18N_GROUP_ID, 'required' => true, 'percent' => 100, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Numbers\Internalization\Internalization\Model\Groups::optionsActive', 'onchange' => 'this.form.submit();'],
 			],
 			self::HIDDEN => [
 				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
+				'b4_registration_period_id' => ['label_name' => 'Period #', 'domain' => 'group_id', 'null' => true, 'method' => 'hidden'],
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden']
 			]
 		],
@@ -63,7 +64,17 @@ class Step1 extends \Object\Form\Wrapper\Base {
 	}
 
 	public function validate(& $form) {
-
+		// code must be present and with valid period
+		if (!empty($form->values['b4_registration_period_code'])) {
+			$period = \Model\Periods::getStatic([
+				'where' => [
+					'b4_period_code' => $form->values['b4_registration_period_code']
+				],
+				'pk' => null
+			]);
+			print_r2($period);
+			//b4_registration_period_id
+		}
 	}
 
 	public function save(& $form) {
