@@ -117,15 +117,15 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				self::HEADER_ROW => [
 					'order' => 100,
 					self::FORMS => [
-						'add_order_step4' => self::GLOBAL_WIZARD
+						'register_step4' => self::GLOBAL_WIZARD
 					]
 				],
 				self::MAIN_ROW => [
 					'order' => 200,
 					self::FORMS => [
-						'om_add_order_step4' => [
-							'model' => '\Numbers\Accounting\OrderManagement\Form\AddOrder\Step4',
-							'bypass_values' => ['__wizard_step', 'om_addorder_id'],
+						'b4_register_step4' => [
+							'model' => '\Form\Register\Step4',
+							'bypass_values' => ['__wizard_step', 'b4_register_id'],
 							'options' => [
 								'segment' => null,
 								'percent' => 100,
@@ -143,15 +143,15 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				self::HEADER_ROW => [
 					'order' => 100,
 					self::FORMS => [
-						'add_order_step4' => self::GLOBAL_WIZARD
+						'register_step5' => self::GLOBAL_WIZARD
 					]
 				],
 				self::MAIN_ROW => [
 					'order' => 200,
 					self::FORMS => [
-						'om_add_order_step5' => [
-							'model' => '\Numbers\Accounting\OrderManagement\Form\AddOrder\Step5',
-							'bypass_values' => ['__wizard_step', 'om_addorder_id'],
+						'b4_register_step5' => [
+							'model' => '\Form\Register\Step5',
+							'bypass_values' => ['__wizard_step', 'b4_register_id'],
 							'options' => [
 								'segment' => null,
 								'percent' => 100,

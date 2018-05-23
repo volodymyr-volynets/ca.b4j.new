@@ -198,7 +198,7 @@ class Step3 extends \Object\Form\Wrapper\Base {
 
 	public function success(& $form) {
 		if (!empty($form->values['b4_register_id'])) {
-			$form->redirect(\Application::get('mvc.full') . '?__wizard_step=6&b4_register_id=' . $form->values['b4_register_id']);
+			$form->redirect(\Application::get('mvc.full') . '?__wizard_step=4&b4_register_id=' . $form->values['b4_register_id']);
 		}
 	}
 }

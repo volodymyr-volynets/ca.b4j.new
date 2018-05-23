@@ -17,6 +17,7 @@ class Registrations extends \Object\Table {
 	public $columns = [
 		'b4_registration_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'b4_registration_id' => ['name' => 'Registration #', 'domain' => 'big_id_sequence'],
+		'b4_registration_register_id' => ['name' => 'Register #', 'domain' => 'big_id'],
 		'b4_registration_timestamp' => ['name' => 'Timestamp', 'domain' => 'timestamp_now'],
 		'b4_registration_period_id' => ['name' => 'Period #', 'domain' => 'group_id'],
 		'b4_registration_period_code' => ['name' => 'Code', 'domain' => 'code'],
@@ -71,7 +72,15 @@ class Registrations extends \Object\Table {
 		'b4_registration_medical_drug_bismuth_subsalicylate' => ['name' => 'Bismuth subsalicylate (PeptoBismol, upset stomach diarrhea)', 'type' => 'boolean'],
 		'b4_registration_medical_non_prescription_medication' => ['name' => 'Non prescription medication', 'type' => 'boolean'],
 		'b4_registration_medical_no_non_prescription_medication' => ['name' => 'No non prescription medication', 'type' => 'boolean'],
-		//
+		// waiver
+		'b4_registration_waiver_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
+		'b4_registration_waiver_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
+		'b4_registration_waiver_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
+		'b4_registration_medical_period_start' => ['name' => 'Period Start', 'type' => 'date'],
+		'b4_registration_medical_period_end' => ['name' => 'Period End', 'type' => 'date'],
+		// t-shirt
+		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint'],
+		// other
 		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
@@ -88,6 +97,12 @@ class Registrations extends \Object\Table {
 			'foreign_model' => '\Numbers\Internalization\Internalization\Model\Groups',
 			'foreign_columns' => ['in_group_tenant_id', 'in_group_id']
 		],
+		'b4_registration_register_id_fk' => [
+			'type' => 'fk',
+			'columns' => ['b4_registration_tenant_id', 'b4_registration_register_id'],
+			'foreign_model' => '\Model\Register',
+			'foreign_columns' => ['b4_register_tenant_id', 'b4_register_id']
+		]
 	];
 	public $indexes = [];
 	public $history = false;
