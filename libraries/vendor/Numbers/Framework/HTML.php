@@ -715,7 +715,8 @@ class HTML {
 		return [
 			'success' => true,
 			'error' => [],
-			'data' => $arr['final']
+			'data' => $arr['final'],
+			'percent' => $arr['percent']
 		];
 	}
 

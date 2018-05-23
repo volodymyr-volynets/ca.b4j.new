@@ -63,6 +63,10 @@ class Step2 extends \Object\Form\Wrapper\Base {
 				'b4_registration_emergency_line1' => ['order' => 1, 'row_order' => 800, 'label_name' => 'Emergency Contact 1', 'type' => 'text', 'null' => true, 'required' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
 				'b4_registration_emergency_line2' => ['order' => 2, 'label_name' => 'Emergency Contact 2', 'type' => 'text', 'null' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
 			],
+			'b4_registration_prefered_language_preference' => [
+				'b4_registration_prefered_language_preference' => ['order' => 1, 'row_order' => 900, 'label_name' => 'Language Preference', 'type' => 'smallint', 'default' => null, 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'select', 'options_model' => '\Model\LanguagePreference', 'options_options' => ['i18n' => 'skip_sorting']],
+				'b4_registration_first_time' => ['order' => 2, 'label_name' => 'First Time', 'type' => 'boolean', 'percent' => 50],
+			]
 		],
 		'buttons' => [
 			self::BUTTONS => [

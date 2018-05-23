@@ -16,7 +16,8 @@ class Registrations extends \Object\Table {
 	public $column_prefix = 'b4_registration_';
 	public $columns = [
 		'b4_registration_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
-		'b4_registration_id' => ['name' => 'Register #', 'domain' => 'big_id_sequence'],
+		'b4_registration_id' => ['name' => 'Registration #', 'domain' => 'big_id_sequence'],
+		'b4_registration_timestamp' => ['name' => 'Timestamp', 'domain' => 'timestamp_now'],
 		'b4_registration_period_id' => ['name' => 'Period #', 'domain' => 'group_id'],
 		'b4_registration_period_code' => ['name' => 'Code', 'domain' => 'code'],
 		'b4_registration_in_group_id' => ['name' => 'I/N Group #', 'domain' => 'group_id'],
@@ -39,6 +40,37 @@ class Registrations extends \Object\Table {
 		'b4_registration_phone' => ['name' => 'Phone', 'domain' => 'phone'],
 		'b4_registration_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text', 'null' => true],
 		'b4_registration_emergency_line2' => ['name' => 'Emergency Line 2', 'type' => 'text', 'null' => true],
+		'b4_registration_prefered_language_preference' => ['name' => 'Language Preference', 'type' => 'smallint'],
+		'b4_registration_first_time' => ['name' => 'First Time', 'type' => 'boolean'],
+		// medical
+		'b4_registration_medical_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
+		'b4_registration_medical_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
+		'b4_registration_medical_health_card_number' => ['name' => 'Health Card Number', 'domain' => 'code'],
+		'b4_registration_medical_doctors_contact' => ['name' => 'Doctors Name & Phone', 'type' => 'text', 'null' => true],
+		'b4_registration_medical_alergies_flag' => ['name' => 'Alergies', 'type' => 'boolean'],
+		'b4_registration_medical_alergies_details' => ['name' => 'Alergies Details', 'type' => 'text', 'null' => true],
+		'b4_registration_medical_immunization_flag' => ['name' => 'Immunization', 'type' => 'boolean'],
+		'b4_registration_medical_medication_flag' => ['name' => 'Medication', 'type' => 'boolean'],
+		'b4_registration_medical_medication_details' => ['name' => 'Medication Details', 'type' => 'text', 'null' => true],
+		'b4_registration_medical_special_food_flag' => ['name' => 'Special Food', 'type' => 'boolean'],
+		'b4_registration_medical_special_food_details' => ['name' => 'Special Food Details', 'type' => 'text', 'null' => true],
+		'b4_registration_medical_other_issues_details' => ['name' => 'Other Issues', 'type' => 'text', 'null' => true],
+		'b4_registration_medical_special_need_flag' => ['name' => 'Special Need', 'type' => 'boolean'],
+		'b4_registration_medical_special_need_details' => ['name' => 'Special Need Details', 'type' => 'text', 'null' => true],
+		// drugs
+		'b4_registration_medical_drug_acetaminophen' => ['name' => 'Acetaminophen (Tylenol)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_ibuprofen' => ['name' => 'Ibuprofen (Advil, Alive)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_polysporin' => ['name' => 'Topical antibiotic ointments (Polysporin)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_antacids' => ['name' => 'Antacids (Tums, Pepcid, Rolaids)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_antihistamines' => ['name' => 'Antihistamines (Benadryl)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_decongestants' => ['name' => 'Decongestants (Sudafed)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_hydrocortisone' => ['name' => 'Hydrocortisone cream (Hydrocortisone)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_cough_drops' => ['name' => 'Cough drops (Halls, Ricola)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_antiseptic_solutions' => ['name' => 'Antiseptic solutions (Betadine, wound wash)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_anti_emetics' => ['name' => 'Anti-emetics (nausea)', 'type' => 'boolean'],
+		'b4_registration_medical_drug_bismuth_subsalicylate' => ['name' => 'Bismuth subsalicylate (PeptoBismol, upset stomach diarrhea)', 'type' => 'boolean'],
+		'b4_registration_medical_non_prescription_medication' => ['name' => 'Non prescription medication', 'type' => 'boolean'],
+		'b4_registration_medical_no_non_prescription_medication' => ['name' => 'No non prescription medication', 'type' => 'boolean'],
 		//
 		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
