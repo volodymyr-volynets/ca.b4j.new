@@ -231,24 +231,24 @@
     },
     {
         "name": "numbers/framework",
-        "version": "1.2.16",
-        "version_normalized": "1.2.16.0",
+        "version": "1.2.17",
+        "version_normalized": "1.2.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/framework.git",
-            "reference": "aaa9d9a1041931a18802f85cbb2a459b25577dc8"
+            "reference": "12b29725b71dacc805ddc2cbbae6f069f74b12d3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/aaa9d9a1041931a18802f85cbb2a459b25577dc8",
-            "reference": "aaa9d9a1041931a18802f85cbb2a459b25577dc8",
+            "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/12b29725b71dacc805ddc2cbbae6f069f74b12d3",
+            "reference": "12b29725b71dacc805ddc2cbbae6f069f74b12d3",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-05-22T21:08:09+00:00",
+        "time": "2018-05-23T18:38:18+00:00",
         "type": "library",
         "extra": {
             "installer-types": [
@@ -324,24 +324,24 @@
     },
     {
         "name": "numbers/frontend",
-        "version": "1.2.7",
-        "version_normalized": "1.2.7.0",
+        "version": "1.2.9",
+        "version_normalized": "1.2.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/frontend.git",
-            "reference": "14301ec05daf97bc2bebb273ea95ac4c64290524"
+            "reference": "56f2c26ab236d470b596a590efca80a67ea581cc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/14301ec05daf97bc2bebb273ea95ac4c64290524",
-            "reference": "14301ec05daf97bc2bebb273ea95ac4c64290524",
+            "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/56f2c26ab236d470b596a590efca80a67ea581cc",
+            "reference": "56f2c26ab236d470b596a590efca80a67ea581cc",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-05-21T21:33:49+00:00",
+        "time": "2018-05-23T18:40:42+00:00",
         "type": "library",
         "extra": {
             "installer-types": [
