@@ -41,16 +41,16 @@ class Step2 extends \Object\Form\Wrapper\Base {
 				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 300, 'label_name' => 'Address', 'icon' => 'fas fa-map', 'percent' => 100],
 			],
 			'b4_register_address1' => [
-				'b4_register_address1' => ['order' => 1, 'row_order' => 350, 'label_name' => 'Address Line 1', 'domain' => 'name', 'required' => true],
-				'b4_register_address2' => ['order' => 2, 'label_name' => 'Address Line 2', 'domain' => 'name', 'null' => true],
+				'b4_registration_address1' => ['order' => 1, 'row_order' => 350, 'label_name' => 'Address Line 1', 'domain' => 'name', 'required' => true],
+				'b4_registration_address2' => ['order' => 2, 'label_name' => 'Address Line 2', 'domain' => 'name', 'null' => true],
 			],
 			'b4_register_city' => [
-				'b4_register_city' => ['order' => 1, 'row_order' => 400, 'label_name' => 'City', 'domain' => 'name', 'required' => true],
-				'b4_register_postal_code' => ['order' => 2, 'label_name' => 'Postal Code', 'domain' => 'postal_code', 'required' => true, 'onblur' => 'this.form.submit();'],
+				'b4_registration_city' => ['order' => 1, 'row_order' => 400, 'label_name' => 'City', 'domain' => 'name', 'required' => true],
+				'b4_registration_postal_code' => ['order' => 2, 'label_name' => 'Postal Code', 'domain' => 'postal_code', 'required' => true, 'onblur' => 'this.form.submit();'],
 			],
 			'b4_register_country_code' => [
-				'b4_register_country_code' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Country', 'domain' => 'country_code', 'null' => true, 'required' => true, 'default' => 'CA', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Countries::optionsActive', 'onchange' => 'this.form.submit();'],
-				'b4_register_province_code' => ['order' => 2, 'label_name' => 'Province', 'domain' => 'province_code', 'null' => true, 'required' => true, 'default' => 'ON', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Provinces::optionsActive', 'options_depends' => ['cm_province_country_code' => 'b4_register_country_code']],
+				'b4_registration_country_code' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Country', 'domain' => 'country_code', 'null' => true, 'required' => true, 'default' => 'CA', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Countries::optionsActive', 'onchange' => 'this.form.submit();'],
+				'b4_registration_province_code' => ['order' => 2, 'label_name' => 'Province', 'domain' => 'province_code', 'null' => true, 'required' => true, 'default' => 'ON', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Provinces::optionsActive', 'options_depends' => ['cm_province_country_code' => 'b4_registration_country_code']],
 			],
 			'contact' => [
 				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 600, 'label_name' => 'Contact', 'icon' => 'fas fa-phone', 'percent' => 100],

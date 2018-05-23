@@ -99,15 +99,13 @@ class Step5 extends \Object\Form\Wrapper\Base {
 		}
 		$data['b4_registration_register_id'] = $form->values['b4_register_id'];
 		$result = \Model\Registrations::collectionStatic()->merge($data);
-		print_r2($result);
-		exit;
-		//$form->values['b4_registration_id'] = $result['data']
+		$form->values['b4_registration_id'] = $result['new_serials']['b4_registration_id'];
 		return $result['success'];
 	}
 
 	public function success(& $form) {
 		if (!empty($form->values['b4_register_id'])) {
-			$form->redirect(\Application::get('mvc.full') . '?__wizard_step=6&b4_register_id=' . $form->values['b4_register_id'] . '&b4_registration_id');
+			$form->redirect(\Application::get('mvc.full') . '?__wizard_step=6&b4_register_id=' . $form->values['b4_register_id'] . '&b4_registration_id=' . $form->values['b4_registration_id']);
 		}
 	}
 }

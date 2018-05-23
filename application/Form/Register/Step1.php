@@ -74,11 +74,14 @@ class Step1 extends \Object\Form\Wrapper\Base {
 			]);
 			if (empty($period[0])) {
 				$form->error(DANGER, 'Invalid code!', 'b4_registration_period_code');
+				return;
 			} else if ($period[0]['b4_period_start_date']) {
 				if (!\Helper\Date::between(\Format::now('datetime'), $period[0]['b4_period_start_date'], $period[0]['b4_period_end_date'])) {
 					$form->error(DANGER, 'We are no longer accept registrations!', 'b4_registration_period_code');
+					return;
 				}
 			}
+			$form->values['b4_registration_period_id'] = $period[0]['b4_period_id'];
 		}
 	}
 
