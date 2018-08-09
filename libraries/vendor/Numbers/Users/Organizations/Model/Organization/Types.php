@@ -29,7 +29,7 @@ class Types extends \Object\Table {
 		]
 	];
 	public $indexes = [
-		'on_organization_types_fulltext_simple_idx' => ['type' => 'fulltext', 'columns' => ['on_orgtype_code', 'on_orgtype_name']]
+		'on_organization_types_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['on_orgtype_code', 'on_orgtype_name']]
 	];
 	public $history = false;
 	public $audit = [

@@ -3,6 +3,13 @@
 class Db {
 
 	/**
+	 * Db link
+	 *
+	 * @var string
+	 */
+	public $db_link;
+
+	/**
 	 * Database object
 	 *
 	 * @var object
@@ -40,6 +47,7 @@ class Db {
 				Throw new Exception('You must specify database link and/or class!');
 			}
 		}
+		$this->db_link = $db_link;
 		// get object from factory
 		$temp = Factory::get(['db', $db_link]);
 		// if we have class
@@ -50,7 +58,7 @@ class Db {
 			}
 			// if we are replacing database connection with the same link we
 			// need to manually close database connection
-			if (!empty($temp['object']) && $temp['class'] != $class) {
+			if (!empty($temp['object'])) {
 				$object = $temp['object'];
 				$object->close();
 				unset($this->object);
@@ -63,7 +71,7 @@ class Db {
 			// backend
 			$this->backend = $this->object->backend;
 			// putting every thing into factory
-			Factory::set(['db', $db_link], [
+			\Factory::set(['db', $db_link], [
 				'object' => $this->object,
 				'class' => $class,
 				'backend' => $this->backend,
@@ -94,7 +102,7 @@ class Db {
 	 * Close database connection
 	 */
 	public function close() {
-		$this->object->close();
+		return $this->object->close();
 	}
 
 	/**
@@ -228,5 +236,44 @@ class Db {
 	 */
 	public function __call($name, $arguments) {
 		return call_user_func_array([$this->object, $name], $arguments);
+	}
+
+	/**
+	 * Connect to servers
+	 *
+	 * @param string $db_link
+	 * @param array $db_settings
+	 * @return array
+	 */
+	public static function connectToServers(string $db_link, array $db_settings) : array {
+		$result = [
+			'success' => false,
+			'error' => []
+		];
+		// load application structure
+		$application_structure = \Application::get('application.structure');
+		$db_options = $db_settings;
+		unset($db_options['servers']);
+		// loop through available servers
+		foreach ($db_settings['servers'] as $db_server) {
+			$db_object = new \Db($db_link, $db_settings['submodule'], $db_settings);
+			// application structure provides more data
+			if (!empty($application_structure) && isset($application_structure['settings']['db'][$db_link])) {
+				foreach ($application_structure['settings']['db'][$db_link] as $k => $v) {
+					if (!empty($db_server[$k]) && $db_server[$k] != $v) {
+						$db_server['__original_' . $k] = $db_server[$k];
+					}
+					$db_server[$k] = $v;
+				}
+			}
+			// try to connect
+			$db_status = $db_object->connect($db_server);
+			if ($db_status['success']) {
+				$result['success'] = true;
+				return $result;
+			}
+		}
+		$result['error'][] = 'Unable to open db connection!';
+		return $result;
 	}
 }

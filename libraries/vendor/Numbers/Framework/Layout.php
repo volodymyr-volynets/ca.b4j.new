@@ -315,6 +315,13 @@ class Layout extends View {
 			case 'application/json':
 				echo json_encode($data);
 				break;
+			case 'application/xml':
+				if (is_array($data)) {
+					echo array2xml($data);
+				} else {
+					echo $data;
+				}
+				break;
 			case 'text/html':
 				\Helper\Ob::start();
 				require(Application::get(['application', 'path_full']) . 'Layout/blank.html');

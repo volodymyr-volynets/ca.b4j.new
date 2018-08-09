@@ -34,10 +34,10 @@ REM ----------------------------------------------------------------------------
 REM --- Dependencies -----------------------------------------------------------------------------------------------
 REM ----------------------------------------------------------------------------------------------------------------
 IF "%command%"=="dependency_test" (
-	call php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency test "%verbose%"
+	call php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency test 0
 )
 IF "%command%"=="dependency_commit" (
-	call php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency commit "%verbose%"
+	call php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency commit 0 2
 )
 
 REM ----------------------------------------------------------------------------------------------------------------

@@ -127,7 +127,7 @@ class Users extends \Object\Form\Wrapper\List2 {
 			$query = \Numbers\Users\Users\Model\User\Roles::queryBuilderStatic(['alias' => 'inner_a'])->select();
 			$query->columns([
 				'inner_a.um_usrrol_user_id',
-				'roles' => $query->db_object->sqlHelper('string_agg', ['expression' => $query->db_object->cast('um_usrrol_role_id', 'character varying'), 'delimiter' => ';;'])
+				'roles' => $query->db_object->sqlHelper('string_agg', ['expression' => $query->db_object->cast('um_usrrol_role_id', 'varchar'), 'delimiter' => ';;'])
 			]);
 			$query->groupby(['inner_a.um_usrrol_user_id']);
 		}, 'b', 'ON', [
@@ -137,7 +137,7 @@ class Users extends \Object\Form\Wrapper\List2 {
 			$query = \Numbers\Users\Users\Model\User\Organizations::queryBuilderStatic(['alias' => 'inner_b'])->select();
 			$query->columns([
 				'inner_b.um_usrorg_user_id',
-				'organizations' => $query->db_object->sqlHelper('string_agg', ['expression' => $query->db_object->cast('um_usrorg_organization_id', 'character varying'), 'delimiter' => ';;'])
+				'organizations' => $query->db_object->sqlHelper('string_agg', ['expression' => $query->db_object->cast('um_usrorg_organization_id', 'varchar'), 'delimiter' => ';;'])
 			]);
 			$query->groupby(['inner_b.um_usrorg_user_id']);
 		}, 'c', 'ON', [

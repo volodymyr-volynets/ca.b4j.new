@@ -25,7 +25,7 @@ build:
 	@-php libraries/vendor/Numbers/Framework/System/Managers/Manager.php deployment production 0 1;
 
 composer:
-	# running composer and the deleting submodules
+	# updating composer repositories
 	@-cd libraries; \
 	rm -r vendor; \
 	composer update --prefer-source; \
@@ -42,11 +42,11 @@ permissions:
 # ----------------------------------------------------------------------------------------------------------------
 dependency_test:
 	@# testing dependencies in test mode
-	@-php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency test $(verbose);
+	@-php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency test 0;
 
 dependency_commit:
 	@# commit dependency changes
-	@-php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency commit $(verbose);
+	@-php libraries/vendor/Numbers/Framework/System/Managers/Manager.php dependency commit 0 2;
 
 # ----------------------------------------------------------------------------------------------------------------
 # --- Deployment commands ----------------------------------------------------------------------------------------
@@ -103,11 +103,11 @@ migration_db_rollback:
 # --------------------------------------------------------------------------------------------------------------------------------------------
 unit_testing_application:
 	@# test application
-	@-phpunit --debug --configuration application/overrides/unit_tests/application.xml
+	@-phpunit --debug --configuration ./application/Overrides/UnitTests/application.xml
 
 unit_testing_submodules:
 	@# test framework and submodules
-	@-phpunit --debug --configuration application/overrides/unit_tests/submodules.xml
+	@-phpunit --debug --configuration ./application/Overrides/UnitTests/submodules.xml
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
 # --- Development commands -------------------------------------------------------------------------------------------------------------------
@@ -115,15 +115,15 @@ unit_testing_submodules:
 development_test:
 	@# use this if you need to develop a test php script and run it from command line
 	@# replace it to run your custom script and use test.php as a template
-	@-php libraries/vendor/Numbers/Framework/System/Managers/test.php;
+	@-php libraries/vendor/Numbers/Framework/System/Managers/Test.php;
 
 development_symlink_framework:
 	@# building dev symlinks, so we can commit changes right in proper git repository
-	@-for f in $(shell cd /home/numbers; ls); \
+	@-for f in $(shell cd /Development/numbers-vendor; ls); \
 	do \
 	    echo " -> $$f"; \
 	    rm -r libraries/vendor/Numbers/$$f ; \
-	    ln -s /home/numbers/$$f libraries/vendor/Numbers/$$f ; \
+	    ln -s /Development/numbers-vendor/$$f libraries/vendor/Numbers/$$f ; \
 	done;
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
@@ -164,6 +164,10 @@ help:
 	#	make dependency_commit - commit dependency changes
 	#   Caches:
 	#	make cache_drop - reset caches
+	#   Other:
+	#	make build - building application
+	#	make composer - updating composer repositories
+	#	make permissions - granting permissions
 	#
 	#   Verbose:
 	#	Some commands support verbose mode that would provide additional information, to enable - add "verbose=1" after make.

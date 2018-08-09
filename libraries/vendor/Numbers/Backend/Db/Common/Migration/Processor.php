@@ -185,6 +185,8 @@ class Processor {
 				break;
 			case 'extension_new':
 			case 'function_new':
+			case 'trigger_new':
+			case 'view_new':
 				$object['type'] = str_replace('_new', '', $object['type']);
 				// see if object already exists
 				if (isset($ddl->objects[$options['db_link']][$object['type']][$object['backend']][$object['schema']][$object['name']])) {
@@ -251,7 +253,9 @@ class Processor {
 				$ddl->objectRemove($object, $options['db_link']);
 				break;
 			case 'extension_delete':
-			case 'function_delete';
+			case 'function_delete':
+			case 'trigger_delete':
+			case 'view_delete':
 				$object['type'] = str_replace('_delete', '', $object['type']);
 				// see if object does not exists
 				if (!isset($ddl->objects[$options['db_link']][$object['type']][$object['backend']][$object['schema']][$object['name']])) {

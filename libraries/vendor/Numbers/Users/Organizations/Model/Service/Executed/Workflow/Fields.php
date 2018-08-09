@@ -36,7 +36,7 @@ class Fields extends \Object\Table {
 			'foreign_model' => '\Numbers\Users\Organizations\Model\Service\Executed\Workflows',
 			'foreign_columns' => ['on_execwflow_tenant_id', 'on_execwflow_id']
 		],
-		'on_execwffield_execwfstep_id' => [
+		'on_execwffield_execwfstep_id_fk' => [
 			'type' => 'fk',
 			'columns' => ['on_execwffield_tenant_id', 'on_execwffield_execwflow_id', 'on_execwffield_execwfstep_id'],
 			'foreign_model' => '\Numbers\Users\Organizations\Model\Service\Executed\Workflow\Steps',

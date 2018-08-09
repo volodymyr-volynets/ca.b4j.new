@@ -49,7 +49,7 @@ class Extension {
 			}
 			// if we could not determine the link we throw exception
 			if (empty($this->db_link)) {
-				Throw new Exception('Could not determine db link in function!');
+				Throw new \Exception('Could not determine db link in function!');
 			}
 		}
 	}

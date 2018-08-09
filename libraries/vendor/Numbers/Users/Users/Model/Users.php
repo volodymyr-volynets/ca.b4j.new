@@ -67,7 +67,6 @@ class Users extends \Object\Table {
 	];
 	public $indexes = [
 		'um_users_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['um_user_code', 'um_user_name', 'um_user_phone', 'um_user_email', 'um_user_company', 'um_user_login_username']],
-		'um_users_fulltext_simple_idx' => ['type' => 'fulltext', 'columns' => ['um_user_name']]
 	];
 	public $history = false;
 	public $audit = [

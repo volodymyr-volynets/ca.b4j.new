@@ -33,6 +33,7 @@ class DDL {
 		if (in_array($object['type'], ['table', 'sequence'])) {
 			$this->objects[$db_link][$object['type']][$object['schema']][$object['name']] = $object;
 		} else if ($object['type'] == 'schema') {
+			if (isset($this->objects[$db_link][$object['type']][$object['name']])) return;
 			$this->objects[$db_link][$object['type']][$object['name']] = $object;
 		} else if ($object['type'] == 'constraint' || $object['type'] == 'index') {
 			$this->objects[$db_link][$object['type']][$object['schema']][$object['table']][$object['name']] = $object;
@@ -47,7 +48,7 @@ class DDL {
 		} else if ($object['type'] == 'function_owner') {
 			$temp = str_replace('_owner', '', $object['type']);
 			$this->objects[$db_link][$temp][$object['backend']][$object['schema']][$object['name']]['data']['owner'] = $object['owner'];
-		} else if (in_array($object['type'], ['function', 'extension'])) { // backend specific objects
+		} else if (in_array($object['type'], ['function', 'extension', 'trigger', 'view'])) { // backend specific objects
 			$this->objects[$db_link][$object['type']][$object['backend']][$object['schema']][$object['name']] = $object;
 		}
 		$this->count[$db_link]['Total']++;
@@ -70,13 +71,15 @@ class DDL {
 			$type = ucwords(str_replace('_', ' ', $object['type'])) . '(s)';
 		}
 		// if based on object
-		if (in_array($object['type'], ['table', 'sequence', 'function', 'extension'])) {
+		if (in_array($object['type'], ['table', 'sequence'])) {
 			// remove table
 			unset($this->objects[$db_link][$object['type']][$object['schema']][$object['name']]);
 			// remove constraints and indexes for this table
 			foreach (['constraint', 'index'] as $v) {
 				unset($this->objects[$db_link][$v][$object['schema']][$object['name']]);
 			}
+		} else if (in_array($object['type'], ['function', 'extension', 'trigger', 'view'])) {
+			unset($this->objects[$db_link][$object['type']][$object['backend']][$object['schema']][$object['name']]);
 		} else if ($object['type'] == 'schema') {
 			unset($this->objects[$db_link][$object['type']][$object['name']]);
 		} else if ($object['type'] == 'constraint' || $object['type'] == 'index') {
@@ -105,7 +108,7 @@ class DDL {
 		];
 		do {
 			// model
-			$model = is_object($model_class) ? $model_class : \Factory::model($model_class, true, $options);
+			$model = is_object($model_class) ? $model_class : \Factory::model($model_class, false, $options);
 			// acl
 			if (!empty($model->acl)) {
 				$not_found = false;
@@ -222,7 +225,7 @@ class DDL {
 					$v['full_table_name'] = $model->full_table_name;
 					// additional processing for fk type constraints
 					if ($v['type'] == 'fk') {
-						$temp_object = \Factory::model($v['foreign_model'], true, [$options]);
+						$temp_object = \Factory::model($v['foreign_model'], false, [$options]);
 						$v['foreign_table'] = $temp_object->full_table_name;
 						// default options
 						if (empty($v['options'])) $v['options'] = [];
@@ -275,7 +278,7 @@ class DDL {
 		];
 		do {
 			// model
-			$model = \Factory::model($model_class, true);
+			$model = \Factory::model($model_class, false);
 			// skip tables with different db_link
 			if ($model->db_link != ($options['db_link'] ?? 'default')) {
 				$result['success'] = true;
@@ -317,7 +320,7 @@ class DDL {
 		];
 		do {
 			// model
-			$model = \Factory::model($model_class, true);
+			$model = \Factory::model($model_class, false);
 			// skip tables with different db_link
 			if ($model->db_link != ($options['db_link'] ?? 'default')) {
 				$result['success'] = true;
@@ -343,6 +346,90 @@ class DDL {
 	}
 
 	/**
+	 * Process trigger model
+	 *
+	 * @param string $model_class
+	 * @param array $options
+	 *		db_link
+	 * @return array
+	 */
+	public function processTriggerModel($model_class, $options = []) {
+		$result = [
+			'success' => false,
+			'error' => []
+		];
+		do {
+			// model
+			$model = \Factory::model($model_class, false);
+			// skip tables with different db_link
+			if ($model->db_link != ($options['db_link'] ?? 'default')) {
+				$result['success'] = true;
+				break;
+			}
+			// add object
+			$this->objectAdd([
+				'type' => 'trigger',
+				'schema' => $model->schema,
+				'name' => $model->name,
+				'backend' => $model->backend,
+				'data' => [
+					'full_function_name' => $model->full_function_name,
+					'full_table_name' => $model->full_table_name,
+					'header' => $model->header,
+					'definition' => $model->definition
+				]
+			], $model->db_link);
+			// if we got here - we are ok
+			$result['success'] = true;
+		} while(0);
+		return $result;
+	}
+
+	/**
+	 * Process view model
+	 *
+	 * @param string $model_class
+	 * @param array $options
+	 *		db_link
+	 * @return array
+	 */
+	public function processViewModel($model_class, $options = []) {
+		$result = [
+			'success' => false,
+			'error' => []
+		];
+		do {
+			// model
+			$model = \Factory::model($model_class, false);
+			// skip tables with different db_link
+			if ($model->db_link != ($options['db_link'] ?? 'default')) {
+				$result['success'] = true;
+				break;
+			}
+			if (!is_array($model->backend)) {
+				$model->backend = [$model->backend];
+			}
+			foreach ($model->backend as $v) {
+				// add object
+				$this->objectAdd([
+					'type' => 'view',
+					'schema' => $model->schema,
+					'name' => $model->name,
+					'backend' => $v,
+					'data' => [
+						'full_view_name' => $model->full_view_name,
+						'definition' => $model->definition,
+						'grant_tables' => $model->grant_tables
+					]
+				], $model->db_link);
+			}
+			// if we got here - we are ok
+			$result['success'] = true;
+		} while(0);
+		return $result;
+	}
+
+	/**
 	 * Process extension
 	 *
 	 * @param string $model_class
@@ -357,7 +444,7 @@ class DDL {
 		];
 		do {
 			// model
-			$model = \Factory::model($model_class, true);
+			$model = \Factory::model($model_class, false);
 			// skip tables with different db_link
 			if ($model->db_link != ($options['db_link'] ?? 'default')) {
 				$result['success'] = true;
@@ -381,6 +468,42 @@ class DDL {
 					]
 				], $model->db_link);
 			}
+			// if we got here - we are ok
+			$result['success'] = true;
+		} while(0);
+		return $result;
+	}
+
+	/**
+	 * Process schema
+	 *
+	 * @param string $model_class
+	 * @param array $options
+	 *		db_link
+	 * @return array
+	 */
+	public function processSchemaModel($model_class, $options = []) {
+		$result = [
+			'success' => false,
+			'error' => []
+		];
+		do {
+			// model
+			$model = \Factory::model($model_class, false);
+			// skip tables with different db_link
+			if ($model->db_link != ($options['db_link'] ?? 'default')) {
+				$result['success'] = true;
+				break;
+			}
+			// add object
+			$this->objectAdd([
+				'type' => 'schema',
+				'name' => $model->schema,
+				'data' => [
+					'owner' => $options['db_schema_owner'] ?? null,
+					'name' => $model->schema
+				]
+			], $model->db_link);
 			// if we got here - we are ok
 			$result['success'] = true;
 		} while(0);
@@ -440,13 +563,10 @@ class DDL {
 		$result['up']['new_sequence_owners'] = [];
 		$result['up']['new_constraints'] = [];
 		$result['up']['new_indexes'] = [];
-		//$result['up']['new_views'] = []; // views goes after we add columns
-		//$result['up']['change_views'] = [];
-		//$result['up']['new_view_owners'] = [];
+		$result['up']['new_views'] = [];
 		$result['up']['new_functions'] = [];
 		$result['up']['new_function_owners'] = [];
-		//$result['up']['new_triggers'] = []; // after functions
-		//$result['up']['change_triggers'] = [];
+		$result['up']['new_triggers'] = []; // after functions
 		// preset reverse array
 		$result['down'] = $result['up'];
 
@@ -671,10 +791,6 @@ class DDL {
 							}
 							// add changes
 							if ($temp_error) {
-								// debug
-								//var_export2($master_compare);
-								//var_export2($slave_compare);
-								//exit;
 								$master_compare['sql_type'] = null;
 								$slave_compare['sql_type'] = null;
 								// up
@@ -765,29 +881,27 @@ class DDL {
 							if ($v3['data']['full_table_name'] != $obj_slave['constraint'][$k][$k2][$k3]['data']['full_table_name']) {
 								$temp_error = true;
 							}
-							if (!array_compare_level1($v3['data']['columns'], $obj_slave['constraint'][$k][$k2][$k3]['data']['columns'])) {
-								$temp_error = true;
-							}
 							// additiona verifications for fk constraints
 							if ($v3['data']['type'] == 'fk') {
 								if ($v3['data']['foreign_table'] != $obj_slave['constraint'][$k][$k2][$k3]['data']['foreign_table']) {
 									$temp_error = true;
 								}
-								if (!array_compare_level1($v3['data']['foreign_columns'], $obj_slave['constraint'][$k][$k2][$k3]['data']['foreign_columns'])) {
+								if (!array_compare_inteligent($v3['data']['columns'], $obj_slave['constraint'][$k][$k2][$k3]['data']['columns'], $v3['data']['foreign_columns'], $obj_slave['constraint'][$k][$k2][$k3]['data']['foreign_columns'])) {
 									$temp_error = true;
 								}
 								// compare options
-								if ($v3['data']['options']['match'] !== $obj_slave['constraint'][$k][$k2][$k3]['data']['options']['match']) $temp_error = true;
-								if ($v3['data']['options']['update'] !== $obj_slave['constraint'][$k][$k2][$k3]['data']['options']['update']) $temp_error = true;
-								if ($v3['data']['options']['delete'] !== $obj_slave['constraint'][$k][$k2][$k3]['data']['options']['delete']) $temp_error = true;
+								if ($options['backend'] != 'Oracle') {
+									if ($v3['data']['options']['match'] !== $obj_slave['constraint'][$k][$k2][$k3]['data']['options']['match']) $temp_error = true;
+									if ($v3['data']['options']['update'] !== $obj_slave['constraint'][$k][$k2][$k3]['data']['options']['update']) $temp_error = true;
+									if ($v3['data']['options']['delete'] !== $obj_slave['constraint'][$k][$k2][$k3]['data']['options']['delete']) $temp_error = true;
+								}
+							} else { // pk and unique
+								if (!array_compare_level1($v3['data']['columns'], $obj_slave['constraint'][$k][$k2][$k3]['data']['columns'])) {
+									$temp_error = true;
+								}
 							}
 							// if we have an error we rebuild
 							if ($temp_error) {
-								// debuging
-								//print_r2($name);
-								//print_r2($v3['data']);
-								//print_r2($obj_slave['constraint'][$k][$k2][$k3]['data']);
-								//exit;
 								$v3['migration_id'] = $result['count'] + 1;
 								$v3_slave = $obj_slave['constraint'][$k][$k2][$k3];
 								$v3_slave['migration_id'] = $result['count'] + 1;
@@ -991,10 +1105,6 @@ class DDL {
 								$good = true;
 							}
 							if (!$good) {
-								// debug
-								//print_r2($v3['data']['definition']);
-								//print_r2($v3_old['data']['definition']);
-								//exit;
 								$v3['migration_id'] = $result['count'] + 1;
 								$v3_old['migration_id'] = $result['count'] + 1;
 								// up
@@ -1062,6 +1172,150 @@ class DDL {
 			}
 		}
 
+		// new/change trigger
+		if (!empty($obj_master['trigger'])) {
+			foreach ($obj_master['trigger'] as $k => $v) {
+				// in schema mode we skip not related functions
+				if ($options['type'] == 'schema' && $k != $options['backend']) continue;
+				foreach ($v as $k2 => $v2) {
+					foreach ($v2 as $k3 => $v3) {
+						// function must be present
+						if (empty($obj_slave['trigger'][$k][$k2][$k3])) {
+							$v3['migration_id'] = $result['count'] + 1;
+							// up
+							$v3['type'] = 'trigger_new';
+							$result['up']['new_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// down
+							$v3['type'] = 'trigger_delete';
+							$result['down']['delete_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// count
+							$result['count']++;
+						} else { // function changed
+							// body
+							$v3_old = $obj_slave['trigger'][$k][$k2][$k3];
+							$good = false;
+							if (self::sanitizeFunction($v3['data']['definition']) == self::sanitizeFunction($v3_old['data']['definition'])) {
+								$good = true;
+							} else if (strpos($v3['data']['definition'], $v3_old['data']['definition']) !== false) {
+								$good = true;
+							}
+							if (!$good) {
+								$v3['migration_id'] = $result['count'] + 1;
+								$v3_old['migration_id'] = $result['count'] + 1;
+								// up
+								$v3_old['type'] = 'trigger_delete';
+								$result['up']['delete_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3_old;
+								$v3['type'] = 'trigger_new';
+								$result['up']['new_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3;
+								// down
+								$v3['type'] = 'trigger_delete';
+								$result['down']['delete_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3;
+								$v3_old['type'] = 'trigger_new';
+								$result['down']['new_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3_old;
+								// count
+								$result['count']++;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// delete trigger
+		if (!empty($obj_slave['trigger'])) {
+			foreach ($obj_slave['trigger'] as $k => $v) {
+				// in schema mode we skip not related functions
+				if ($options['type'] == 'schema' && $k != $options['backend']) continue;
+				foreach ($v as $k2 => $v2) {
+					foreach ($v2 as $k3 => $v3) {
+						if (empty($obj_master['trigger'][$k][$k2][$k3])) {
+							$v3['migration_id'] = $result['count'] + 1;
+							// up
+							$v3['type'] = 'trigger_delete';
+							$result['up']['delete_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// down
+							$v3['type'] = 'trigger_new';
+							$result['down']['new_triggers'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// count
+							$result['count']++;
+						}
+					}
+				}
+			}
+		}
+
+		// new/change view
+		if (!empty($obj_master['view'])) {
+			foreach ($obj_master['view'] as $k => $v) {
+				// in schema mode we skip not related functions
+				if ($options['type'] == 'schema' && $k != $options['backend']) continue;
+				foreach ($v as $k2 => $v2) {
+					foreach ($v2 as $k3 => $v3) {
+						// function must be present
+						if (empty($obj_slave['view'][$k][$k2][$k3])) {
+							$v3['migration_id'] = $result['count'] + 1;
+							// up
+							$v3['type'] = 'view_new';
+							$result['up']['new_views'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// down
+							$v3['type'] = 'view_delete';
+							$result['down']['delete_views'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// count
+							$result['count']++;
+						} else { // function changed
+							// body
+							$v3_old = $obj_slave['view'][$k][$k2][$k3];
+							$good = false;
+							if (self::sanitizeFunction($v3['data']['definition']) == self::sanitizeFunction($v3_old['data']['definition'])) {
+								$good = true;
+							} else if (strpos($v3['data']['definition'], $v3_old['data']['definition']) !== false) {
+								$good = true;
+							}
+							if (!$good) {
+								$v3['migration_id'] = $result['count'] + 1;
+								$v3_old['migration_id'] = $result['count'] + 1;
+								// up
+								$v3_old['type'] = 'view_delete';
+								$result['up']['delete_views'][$k . '.' . $k2 . '.' . $k3] = $v3_old;
+								$v3['type'] = 'view_new';
+								$result['up']['new_views'][$k . '.' . $k2 . '.' . $k3] = $v3;
+								// down
+								$v3['type'] = 'view_delete';
+								$result['down']['delete_views'][$k . '.' . $k2 . '.' . $k3] = $v3;
+								$v3_old['type'] = 'view_new';
+								$result['down']['new_views'][$k . '.' . $k2 . '.' . $k3] = $v3_old;
+								// count
+								$result['count']++;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// delete view
+		if (!empty($obj_slave['view'])) {
+			foreach ($obj_slave['view'] as $k => $v) {
+				// in schema mode we skip not related functions
+				if ($options['type'] == 'schema' && $k != $options['backend']) continue;
+				foreach ($v as $k2 => $v2) {
+					foreach ($v2 as $k3 => $v3) {
+						if (empty($obj_master['view'][$k][$k2][$k3])) {
+							$v3['migration_id'] = $result['count'] + 1;
+							// up
+							$v3['type'] = 'view_delete';
+							$result['up']['delete_views'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// down
+							$v3['type'] = 'view_new';
+							$result['down']['new_views'][$k . '.' . $k2 . '.' . $k3] = $v3;
+							// count
+							$result['count']++;
+						}
+					}
+				}
+			}
+		}
+
 		// if we delete tables there's no need to delete constrants and/or indexes
 		foreach (['up', 'down'] as $k0) {
 			foreach ($result[$k0]['delete_tables'] as $k => $v) {
@@ -1093,6 +1347,18 @@ class DDL {
 			$result['up']['new_constraints'] = array_merge($temp_pks_and_uniques, $temp_fks);
 		}
 
+		// pk and unique must be last
+		if (!empty($result['up']['delete_constraints'])) {
+			foreach ($result['up']['delete_constraints'] as $k => $v) {
+				if ($v['data']['type'] == 'fk') { // fk goes first
+					$temp_fks[$k] = $v;
+				} else {
+					$temp_pks_and_uniques[$k] = $v;
+				}
+			}
+			$result['up']['delete_constraints'] = array_merge($temp_fks, $temp_pks_and_uniques);
+		}
+
 		// final step clean up empty keys
 		foreach (['up', 'down'] as $k0) {
 			foreach ($result[$k0] as $k => $v) {
@@ -1115,7 +1381,10 @@ class DDL {
 	 */
 	public static function sanitizeFunction($sql) {
 		$result = str_replace(['$BODY$', '$function$'], '$$$$$$', $sql);
-		return trim(str_replace([' ', "\n", "\r", "\t"], '', $result));
+		$result = strtolower($result);
+		$result = str_replace([' as ', 'public.'], ' ', $result);
+		$result = trim(str_replace([' ', "\n", "\r", "\t", '"', "'", "`"], '', $result));
+		return $result;
 	}
 
 	/**
@@ -1154,6 +1423,7 @@ class DDL {
 			'count' => 0
 		];
 		$options['mode'] = $options['mode'] ?? 'commit';
+		$backend = \Factory::get(['db', $db_link, 'backend']);
 		// process column sql_type for new tables
 		if (!empty($diff['new_tables'])) {
 			foreach ($diff['new_tables'] as $k => $v) {
@@ -1175,6 +1445,16 @@ class DDL {
 				$diff['change_columns'][$k]['data_old'] = $this->columnSqlType($v['data_old']);
 			}
 		}
+		// fixes for new triggers, functions, views and extensions
+		foreach (['new_triggers', 'new_functions', 'new_extensions', 'new_views'] as $k0) {
+			if (!empty($diff[$k0])) {
+				foreach ($diff[$k0] as $k => $v) {
+					if ($v['backend'] != $backend) {
+						unset($diff[$k0][$k]);
+					}
+				}
+			}
+		}
 		// generating sql
 		foreach ($diff as $k => $v) {
 			foreach ($v as $k2 => $v2) {
@@ -1182,13 +1462,15 @@ class DDL {
 				if ($k == 'new_constraints' && $v2['type'] == 'constraint_new' && $v2['data']['type'] == 'fk') {
 					$diff[$k . '_fks'][$k2]['sql'] = $this->renderSql($v2['type'], $v2);
 				} else {
-					$diff[$k][$k2]['sql'] = $this->renderSql($v2['type'], $v2, ['mode' => $options['mode']]);
+					$diff[$k][$k2]['sql'] = $this->renderSql($v2['type'], $v2, [
+						'mode' => $options['mode'],
+						'db_link' => $db_link
+					]);
 				}
 			}
 		}
 		// if we are dropping we need to disable foregn key checks
 		if ($options['mode'] == 'drop') {
-			$backend = \Factory::get(['db', $db_link, 'backend']);
 			if ($backend == 'MySQLi') {
 				$diff = array_merge_hard([
 					'before_execution' => [

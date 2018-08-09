@@ -40,9 +40,9 @@ class Jobs extends \Object\Table {
 		],
 		'ts_job_task_code_fk' => [
 			'type' => 'fk',
-			'columns' => ['ts_job_daemon_code'],
-			'foreign_model' => '\Numbers\Users\TaskScheduler\Model\Daemons',
-			'foreign_columns' => ['ts_daemon_code']
+			'columns' => ['ts_job_task_code'],
+			'foreign_model' => '\Numbers\Users\TaskScheduler\Model\Tasks',
+			'foreign_columns' => ['ts_task_code']
 		],
 		'ts_job_user_id_fk' => [
 			'type' => 'fk',

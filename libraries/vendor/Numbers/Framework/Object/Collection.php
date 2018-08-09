@@ -94,6 +94,10 @@ class Collection extends \Object\Override\Data {
 			'data' => []
 		];
 		do {
+			// if we have import from command line we need to intialize
+			if (method_exists($this->primary_model->db_object->object, 'initialzeWhenNeeded')) {
+				$this->primary_model->db_object->object->initialzeWhenNeeded(['import' => true]);
+			}
 			$this->primary_model->db_object->begin();
 			// building query
 			$query = $this->primary_model->queryBuilder([
@@ -259,7 +263,7 @@ class Collection extends \Object\Override\Data {
 			// acl
 			if (!empty($v['acl']) && !\Can::systemFeaturesExist($v['acl'])) continue;
 			// initialize model
-			$details[$k]['model_object'] = $model = \Factory::model($k, true);
+			$details[$k]['model_object'] = $model = \Factory::model($k);
 			$pk = $v['pk'] ?? $model->pk;
 			// generate keys from parent array
 			$keys = [];
@@ -405,6 +409,10 @@ class Collection extends \Object\Override\Data {
 				$result['error'][] = 'No data!';
 				break;
 			}
+			// if we have import from command line we need to intialize
+			if (method_exists($this->primary_model->db_object->object, 'initialzeWhenNeeded')) {
+				$this->primary_model->db_object->object->initialzeWhenNeeded(['import' => true]);
+			}
 			// start transaction
 			$this->primary_model->db_object->begin();
 			// preset tenant
@@ -492,7 +500,7 @@ class Collection extends \Object\Override\Data {
 				// add form class
 				$temp['data']['audit']['form_class'] = $options['form_class'] ?? null;
 				// merge
-				$temp2 = \Factory::model($this->primary_model->audit_model, true)->merge($temp['data']['audit'], ['changes' => $temp['data']['total']]);
+				$temp2 = \Factory::model($this->primary_model->audit_model)->merge($temp['data']['audit'], ['changes' => $temp['data']['total']]);
 				if (!$temp2['success']) {
 					$result['error'] = array_merge($result['error'], $temp2['error']);
 					break;
@@ -539,6 +547,10 @@ error:
 			if (empty($data)) {
 				$result['error'][] = 'No data to merge!';
 				break;
+			}
+			// if we have import from command line we need to intialize
+			if (method_exists($this->primary_model->db_object->object, 'initialzeWhenNeeded')) {
+				$this->primary_model->db_object->object->initialzeWhenNeeded(['import' => true]);
 			}
 			// start transaction
 			$this->primary_model->db_object->begin();
@@ -730,7 +742,7 @@ error:
 				// we do not process readonly details
 				if (!empty($v['readonly'])) continue;
 				// create new object
-				$v['model_object'] = \Factory::model($k, true);
+				$v['model_object'] = \Factory::model($k);
 				if ($v['type'] == '11') {
 					$details_result = $this->compareOneRow($data_row[$k] ?? [], $original_row[$k] ?? [], $v, [
 						'flag_delete_row' => !empty($delete)

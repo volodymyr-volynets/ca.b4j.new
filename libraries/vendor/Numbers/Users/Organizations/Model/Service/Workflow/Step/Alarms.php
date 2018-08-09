@@ -32,7 +32,6 @@ class Alarms extends \Object\Table {
 	];
 	public $constraints = [
 		'on_workflow_step_alarms_pk' => ['type' => 'pk', 'columns' => ['on_workstpalarm_tenant_id', 'on_workstpalarm_workflow_id', 'on_workstpalarm_step_id', 'on_workstpalarm_code']],
-		'on_workstpalarm_code_un' => ['type' => 'unique', 'columns' => ['on_workstpalarm_tenant_id', 'on_workstpalarm_workflow_id', 'on_workstpalarm_step_id', 'on_workstpalarm_code']],
 		'on_workstpalarm_step_id_fk' => [
 			'type' => 'fk',
 			'columns' => ['on_workstpalarm_tenant_id', 'on_workstpalarm_workflow_id', 'on_workstpalarm_step_id'],

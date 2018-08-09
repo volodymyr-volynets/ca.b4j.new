@@ -39,6 +39,26 @@ class Base extends \Numbers\Backend\Db\Common\Base implements \Numbers\Backend\D
 	}
 
 	/**
+	 * Handle name
+	 *
+	 * @param string $schema
+	 * @param string $name
+	 * @return string
+	 */
+	public function handleName(& $schema, & $name) {
+		if (empty($schema)) {
+			if (!empty($this->connect_options['dbname'])) {
+				$schema =  $this->connect_options['dbname'];
+				return $schema . '.' . $name;
+			} else {
+				$schema = '';
+				return $name;
+			}
+		}
+		return $schema . '.' . $name;
+	}
+
+	/**
 	 * Connect to database
 	 *
 	 * @param array $options
@@ -95,9 +115,10 @@ class Base extends \Numbers\Backend\Db\Common\Base implements \Numbers\Backend\D
 		$result = [];
 		if ($resource) {
 			while ($finfo = mysqli_fetch_field($resource)) {
-				$result[$finfo->name]['type'] = $this->fieldType($finfo->type);
-				$result[$finfo->name]['null'] = ($finfo->flags & 1 ? false : true);
-				$result[$finfo->name]['length'] = $finfo->length;
+				$name = strtolower($finfo->name);
+				$result[$name]['type'] = $this->fieldType($finfo->type);
+				$result[$name]['null'] = ($finfo->flags & 1 ? false : true);
+				$result[$name]['length'] = $finfo->length;
 			}
 		}
 		return $result;
@@ -216,7 +237,8 @@ class Base extends \Numbers\Backend\Db\Common\Base implements \Numbers\Backend\D
 						// casting types
 						$data = [];
 						foreach ($rows as $k => $v) {
-							$data[$k] = $this->processValueAsPerType($v, $result['structure'][$k]['type']);
+							$k2 = strtolower($k);
+							$data[$k2] = $this->processValueAsPerType($v, $result['structure'][$k2]['type']);
 						}
 						// assigning keys
 						if (!empty($key)) {
@@ -260,7 +282,8 @@ class Base extends \Numbers\Backend\Db\Common\Base implements \Numbers\Backend\D
 								// casting types
 								$data = [];
 								foreach ($rows as $k => $v) {
-									$data[$k] = $this->processValueAsPerType($v, $result['structure'][$k]['type']);
+									$k2 = strtolower($k);
+									$data[$k2] = $this->processValueAsPerType($v, $result['structure'][$k2]['type']);
 								}
 								// assigning keys
 								if (!empty($key)) {
@@ -391,13 +414,18 @@ class Base extends \Numbers\Backend\Db\Common\Base implements \Numbers\Backend\D
 				$result = 'GROUP_CONCAT(' . $options['expression'] . ' SEPARATOR \'' . ($options['delimiter'] ?? ';') . '\')';
 				break;
 			case 'fetch_databases':
-				$result = 'SELECT schema_name AS database_name FROM information_schema.schemata ORDER BY database_name ASC';
+				$result = <<<TTT
+					SELECT
+						schema_name AS database_name
+					FROM information_schema.schemata
+					ORDER BY database_name ASC
+TTT;
 				break;
 			case 'fetch_tables':
 				$result = <<<TTT
 					SELECT
-						'' schema_name,
-						table_name
+						table_schema schema_name,
+						table_name table_name
 					FROM information_schema.tables
 					WHERE 1=1
 						AND table_schema = (SELECT DATABASE())
@@ -431,7 +459,7 @@ TTT;
 	 * @return string
 	 */
 	public function cast(string $column, string $type) : string {
-		$type = str_replace(['character varying'], ['char'], $type);
+		$type = str_replace(['varchar'], ['char'], $type);
 		return "CAST({$column} AS {$type})";
 	}
 
@@ -440,19 +468,16 @@ TTT;
 	 *
 	 * @param mixed $fields
 	 * @param string $str
-	 * @param string $operator
-	 * @param array $options
 	 * @return string
 	 */
-	public function fullTextSearchQuery($fields, $str, $operator = '&', $options = []) {
+	public function fullTextSearchQuery($fields, $str) {
 		$result = [
 			'where' => '',
 			'orderby' => '',
 			'rank' => ''
 		];
-		$mode = $options['mode'] ?? 'IN NATURAL LANGUAGE MODE';
+		$mode = $options['mode'] ?? 'IN BOOLEAN MODE'; // 'IN NATURAL LANGUAGE MODE';
 		$str = trim($str);
-		$flag_do_not_escape = false;
 		if (!empty($fields)) {
 			$sql = '';
 			if (is_array($fields)) {
@@ -461,7 +486,7 @@ TTT;
 				$sql = $fields;
 			}
 			$escaped = preg_replace('/\s\s+/', ' ', $str);
-			$escaped = str_replace(' ', ',', $escaped);
+			$escaped = str_replace(' ', '* ', $escaped);
 			$where = "MATCH ({$sql}) AGAINST ('" . $this->escape($escaped) . "' {$mode})";
 			$temp = [];
 			foreach ($fields as $f) {
@@ -473,17 +498,6 @@ TTT;
 			$result['rank'] = '(' . $where . ') ts_rank';
 		}
 		return $result;
-	}
-
-	/**
-	 * Copy data directly into db, rows are key=>value pairs
-	 *
-	 * @param string $table
-	 * @param array $rows
-	 * @return array
-	 */
-	public function copy(string $table, array $rows) : array {
-		return $this->insert($table, $rows);
 	}
 
 	/**
@@ -612,16 +626,22 @@ TTT;
 					$result['error'][] = 'From?';
 				} else {
 					$temp = [];
+					$temp1 = '';
 					$aliases = [];
 					foreach ($object->data['from'] as $k => $v) {
 						$temp2 = $v;
+						$temp1 = $v;
 						if (!is_numeric($k)) {
 							$temp2.= " AS $k";
 							$aliases[] = $k;
 						}
 						$temp[] = $temp2;
 					}
-					$sql.= 'DELETE ' . implode(', ', $aliases) . ' FROM ' . implode(",", $temp);
+					if (count($object->data['from']) == 1) {
+						$sql.= 'DELETE FROM ' . $temp1;
+					} else {
+						$sql.= 'DELETE ' . implode(', ', $aliases) . ' FROM ' . implode(",", $temp);
+					}
 				}
 				// where
 				if (!empty($object->data['where'])) {
@@ -632,13 +652,14 @@ TTT;
 				if (!empty($object->data['limit'])) {
 					$sql.= "\nLIMIT " . $object->data['limit'];
 				}
-				// returning
-				if (!empty($object->data['returning'])) {
-					$sql.= "\nRETURNING *";
-				}
 				break;
 			case 'select':
 			default:
+				// temporary table first
+				if (!empty($object->data['temporary_table'])) {
+					$sql.= "CREATE TEMPORARY TABLE {$object->data['temporary_table']}\n";
+				}
+				// select with distinct
 				$sql.= "SELECT" . (!empty($object->data['distinct']) ? ' DISTINCT ' : '') . "\n";
 				// columns
 				if (empty($object->data['columns'])) {
@@ -705,13 +726,13 @@ TTT;
 				if (!empty($object->data['orderby'])) {
 					$sql.= "\nORDER BY " . array_key_sort_prepare_keys($object->data['orderby'], true);
 				}
-				// offset
-				if (!empty($object->data['offset'])) {
-					$sql.= "\nOFFSET " . $object->data['offset'];
-				}
 				// limit
 				if (!empty($object->data['limit'])) {
 					$sql.= "\nLIMIT " . $object->data['limit'];
+				}
+				// offset
+				if (!empty($object->data['offset'])) {
+					$sql.= "\nOFFSET " . $object->data['offset'];
 				}
 				// for update
 				if (!empty($object->data['for_update'])) {

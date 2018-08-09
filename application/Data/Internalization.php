@@ -37,6 +37,21 @@ class Internalization extends \Object\Import {
 				]
 			]
 		],
+		'timezones' => [
+			'options' => [
+				'pk' => ['in_timezone_tenant_id', 'in_timezone_code'],
+				'model' => '\Numbers\Internalization\Internalization\Model\Timezones',
+				'method' => 'save_insert_new'
+			],
+			'data' => [
+				[
+					'in_timezone_tenant_id' => null,
+					'in_timezone_code' => 'America/Toronto',
+					'in_timezone_name' => 'America/Toronto',
+					'in_timezone_inactive' => 0
+				]
+			]
+		],
 		'groups' => [
 			'options' => [
 				'pk' => ['in_group_tenant_id', 'in_group_name'],

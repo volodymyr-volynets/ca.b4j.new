@@ -84,7 +84,7 @@ class Login extends \Object\DataSource {
 			$query->columns([
 				'inner_a.um_usrrol_user_id',
 				'roles' => $query->db_object->sqlHelper('string_agg', ['expression' => "inner_b.um_role_code", 'delimiter' => ';;']),
-				'role_ids' => $query->db_object->sqlHelper('string_agg', ['expression' => $query->db_object->cast('inner_b.um_role_id', 'character varying'), 'delimiter' => ';;']),
+				'role_ids' => $query->db_object->sqlHelper('string_agg', ['expression' => $query->db_object->cast('inner_b.um_role_id', 'varchar'), 'delimiter' => ';;']),
 				'super_admin' => 'SUM(inner_b.um_role_super_admin)',
 				'handle_exceptions' => 'SUM(inner_b.um_role_handle_exceptions)',
 				'maximum_role_weight' => 'MAX(inner_b.um_role_weight)'
