@@ -101,7 +101,7 @@ class Base {
 			} else {
 				$result = $text;
 				// put data into missing
-				if ($to_language != 'eng') {
+				if ($to_language != 'eng' && $to_language != 'sm0' && \Tenant::id() <= 1) {
 					self::$missing[$from_language][$to_language][$result] = 1;
 				}
 			}
