@@ -378,8 +378,9 @@ class Base extends \Numbers\Frontend\HTML\Renderers\Common\Base implements \Numb
 		$brand_name = $options['brand_name'] ?? null;
 		$brand_url = $options['brand_url'] ?? '/';
 		$brand_logo = $options['brand_logo'] ?? '';
+		$class = $options['class'] ?? 'bg-light';
 		array_key_unset($options, ['options', 'brand']);
-		$result = '<div class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">';
+		$result = '<div class="navbar navbar-expand-lg navbar-light ' . $class . '" role="navigation">';
 			$result.= '<div class="container">';
 				$result.= '<div class="navbar-header">';
 					$result.= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
@@ -394,6 +395,7 @@ class Base extends \Numbers\Frontend\HTML\Renderers\Common\Base implements \Numb
 				$result.= '<div class="collapse navbar-collapse" id="navbarSupportedContent">';
 					$result.= '<ul class="navbar-nav mr-auto">';
 						$index = 1;
+						array_key_sort($items, ['order' => SORT_ASC], ['name' => SORT_NUMERIC]);
 						foreach ($items as $k => $v) {
 							$class = !empty($v['options']) ? 'nav-item dropdown' : 'nav-item';
 							$result.= '<li class="navbar-nav-li-level1 ' . $class . '" search-id="' . $index . '">';
@@ -447,6 +449,7 @@ class Base extends \Numbers\Frontend\HTML\Renderers\Common\Base implements \Numb
 					$result.= '</ul>';
 					// right menu
 					if (!empty($items_right)) {
+						array_key_sort($items_right, ['order' => SORT_ASC], ['name' => SORT_NUMERIC]);
 						$result.= '<ul class="navbar-nav ml-auto">';
 							foreach ($items_right as $k => $v) {
 								$class = !empty($v['options']) ? 'nav-item dropdown' : 'nav-item';

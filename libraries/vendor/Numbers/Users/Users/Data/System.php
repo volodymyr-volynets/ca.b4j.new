@@ -1545,6 +1545,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_name_generator' => '/Numbers/Users/Users/Controller/Account/Account/_JsonMenuName',
 					'sm_resource_menu_child_ordered' => 1,
+					'sm_resource_menu_order' => 32000,
 					'sm_resource_inactive' => 0
 				],
 				[

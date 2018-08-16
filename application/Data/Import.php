@@ -18,7 +18,7 @@ class Import extends \Object\Import {
 					'sm_module_icon' => 'far fa-thumbs-up',
 					'sm_module_transactions' => 0,
 					'sm_module_multiple' => 0,
-					'sm_module_activation_model' => null,
+					'sm_module_activation_model' => '\Data\Activation\Internalization',
 					'sm_module_custom_activation' => false,
 					'sm_module_inactive' => 0,
 					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => []

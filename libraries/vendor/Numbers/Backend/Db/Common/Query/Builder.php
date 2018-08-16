@@ -36,6 +36,7 @@ class Builder {
 		'join' => [],
 		'set' => [],
 		'where' => [],
+		'where_delete' => [],
 		'orderby' => [],
 		'groupby' => [],
 		'having' => [],
@@ -114,6 +115,13 @@ class Builder {
 	 */
 	public function delete() : \Numbers\Backend\Db\Common\Query\Builder {
 		$this->data['operator'] = 'delete';
+		// we need to convert where
+		if (!empty($this->data['where_delete'])) {
+			foreach ($this->data['where_delete'] as $k => $v) {
+				$this->data['where'][$k] = $v;
+			}
+			$this->data['where_delete'] = [];
+		}
 		return $this;
 	}
 
@@ -313,7 +321,7 @@ class Builder {
 	 * @param boolean $exists
 	 * @return array
 	 */
-	private function singleConditionClause(string $operator = 'AND', $condition, bool $exists = false) {
+	public function singleConditionClause(string $operator = 'AND', $condition, bool $exists = false) {
 		$result = null;
 		// operator
 		$operator = strtoupper($operator);
@@ -356,9 +364,15 @@ class Builder {
 	 * @param boolean $exists
 	 * @return \Numbers\Backend\Db\Common\Query\Builder
 	 */
-	public function where(string $operator = 'AND', $condition, bool $exists = false) : \Numbers\Backend\Db\Common\Query\Builder {
+	public function where(string $operator = 'AND', $condition, bool $exists = false, $options = []) : \Numbers\Backend\Db\Common\Query\Builder {
 		// add condition
-		array_push($this->data['where'], $this->singleConditionClause($operator, $condition, $exists));
+		if (!empty($options['for_delete'])) {
+			end($this->data['where']);
+			$key = key($this->data['where']);
+			$this->data['where_delete'][$key] = $this->singleConditionClause($operator, $condition, $exists);
+		} else {
+			array_push($this->data['where'], $this->singleConditionClause($operator, $condition, $exists));
+		}
 		// exceptions
 		if ($this->data['operator'] == 'delete' && is_array($condition)) {
 			if (strpos($condition[0], '.') !== false) {

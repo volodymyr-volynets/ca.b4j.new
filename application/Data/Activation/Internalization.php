@@ -1,6 +1,6 @@
 <?php
 
-namespace Data;
+namespace Data\Activation;
 class Internalization extends \Object\Import {
 	public $data = [
 		'language_codes' => [

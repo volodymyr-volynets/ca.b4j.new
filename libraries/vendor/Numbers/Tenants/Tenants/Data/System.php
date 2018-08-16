@@ -183,6 +183,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_action_id' => null,
 					'sm_resource_menu_url' => null,
 					'sm_resource_menu_options_generator' => null,
+					'sm_resource_menu_order' => 32000,
 					'sm_resource_inactive' => 0
 				],
 				[
