@@ -163,8 +163,9 @@ jQuery(document).ready(function( $ ) {
       map: map
     });
   }
-  //google.maps.event.addDomListener(window, 'load', initialize_google_map);
-
+  if ($('#google-map').length) {
+	google.maps.event.addDomListener(window, 'load', initialize_google_map);
+  }
 });
 
 // Preloader

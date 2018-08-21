@@ -1,9 +1,9 @@
 {
     "require": {
         "tecnickcom\/tcpdf": "6.2.13",
-        "numbers\/framework": "1.2.37",
+        "numbers\/framework": "1.2.38",
         "numbers\/backend": "1.1.20",
-        "numbers\/frontend": "1.2.10",
+        "numbers\/frontend": "1.2.11",
         "numbers\/tenants": "1.0.41",
         "numbers\/countries": "1.0.29",
         "numbers\/internalization": "1.0.22",

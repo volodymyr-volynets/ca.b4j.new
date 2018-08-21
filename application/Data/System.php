@@ -181,7 +181,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_resource_id' => null,
 					'sm_resource_menu_acl_method_code' => null,
 					'sm_resource_menu_acl_action_id' => null,
-					'sm_resource_menu_url' => '/',
+					'sm_resource_menu_url' => '/Registration',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -32050,
 					'sm_resource_inactive' => 0
@@ -209,7 +209,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_resource_id' => null,
 					'sm_resource_menu_acl_method_code' => null,
 					'sm_resource_menu_acl_action_id' => null,
-					'sm_resource_menu_url' => '/',
+					'sm_resource_menu_url' => '/Poster',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -32000,
 					'sm_resource_inactive' => 0
@@ -237,7 +237,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_resource_id' => null,
 					'sm_resource_menu_acl_method_code' => null,
 					'sm_resource_menu_acl_action_id' => null,
-					'sm_resource_menu_url' => '/',
+					'sm_resource_menu_url' => '/Photos',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -31900,
 					'sm_resource_inactive' => 0
@@ -265,7 +265,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_resource_id' => null,
 					'sm_resource_menu_acl_method_code' => null,
 					'sm_resource_menu_acl_action_id' => null,
-					'sm_resource_menu_url' => '/',
+					'sm_resource_menu_url' => '/Donors',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -31800,
 					'sm_resource_inactive' => 0
@@ -293,7 +293,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_resource_id' => null,
 					'sm_resource_menu_acl_method_code' => null,
 					'sm_resource_menu_acl_action_id' => null,
-					'sm_resource_menu_url' => '/',
+					'sm_resource_menu_url' => '/Counselors',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -31700,
 					'sm_resource_inactive' => 0
@@ -321,7 +321,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_acl_resource_id' => null,
 					'sm_resource_menu_acl_method_code' => null,
 					'sm_resource_menu_acl_action_id' => null,
-					'sm_resource_menu_url' => '/',
+					'sm_resource_menu_url' => '/Contact',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -31600,
 					'sm_resource_inactive' => 0

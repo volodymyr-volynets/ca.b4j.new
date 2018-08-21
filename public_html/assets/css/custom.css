@@ -5,3 +5,11 @@
 #about {
 	padding: 0 !important;
 }
+a {
+	color: darkcyan !important;
+}
+@media only screen and (max-width: 991px) {
+	.nav-link {
+		border-bottom: 1px dashed #50d8af !important;
+	}
+}
