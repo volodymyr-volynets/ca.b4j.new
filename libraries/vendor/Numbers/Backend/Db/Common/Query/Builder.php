@@ -42,6 +42,7 @@ class Builder {
 		'having' => [],
 		'union' => [],
 		'union_orderby' => false, // indicator that previous
+		'primary_key' => null,
 	];
 
 	/**
@@ -63,6 +64,9 @@ class Builder {
 		if (!empty($options['cache_tags'])) {
 			$this->cache_tags = array_merge($this->cache_tags, $options['cache_tags']);
 		}
+		// special parameters we must collect
+		$this->data['primary_key'] = $options['primary_key'] ?? null;
+		// db object
 		$this->db_object = new \Db($db_link);
 	}
 
@@ -95,6 +99,10 @@ class Builder {
 	 */
 	public function update() : \Numbers\Backend\Db\Common\Query\Builder {
 		$this->data['operator'] = 'update';
+		// exceptions
+		if (empty($this->data['primary_key'])) {
+			Throw new \Exception('You must provide primary_key when constructing update query!');
+		}
 		return $this;
 	}
 
@@ -122,6 +130,20 @@ class Builder {
 			}
 			$this->data['where_delete'] = [];
 		}
+		// exceptions
+		if (empty($this->data['primary_key'])) {
+			Throw new \Exception('You must provide primary_key when constructing delete query!');
+		}
+		return $this;
+	}
+
+	/**
+	 * Truncate
+	 *
+	 * @return \Numbers\Backend\Db\Common\Query\Builder
+	 */
+	public function truncate() : \Numbers\Backend\Db\Common\Query\Builder {
+		$this->data['operator'] = 'truncate';
 		return $this;
 	}
 
@@ -186,8 +208,8 @@ class Builder {
 			array_push($this->data['from'], $this->singleFromClause($table));
 		}
 		// exceptions
-		if ($this->data['operator'] == 'delete' && count($this->data['from']) > 1) {
-			Throw new \Exception('Deletes from multiple tables are not allowed!');
+		if (in_array($this->data['operator'], ['delete', 'truncate']) && count($this->data['from']) > 1) {
+			Throw new \Exception('Deletes/truncate from multiple tables are not allowed!');
 		}
 		return $this;
 	}
@@ -263,8 +285,9 @@ class Builder {
 			if ($table->tenant && empty($table->options['skip_tenant'])) {
 				$conditions[] = ['AND', [ltrim($alias . '.' . $table->tenant_column), '=', \Tenant::id(), false], false];
 			}
-			// grab tags
+			// grab tags & pk
 			$this->cache_tags = array_merge($this->cache_tags, $table->cache_tags);
+			$this->data['primary_key'] = $table->pk; // a must
 			return $table->full_table_name;
 		} else if (is_object($table) && is_a($table, 'Object\View')) { // view object
 			$this->cache_tags = array_merge($this->cache_tags, $table->grant_tables);
@@ -321,7 +344,7 @@ class Builder {
 	 * @param boolean $exists
 	 * @return array
 	 */
-	public function singleConditionClause(string $operator = 'AND', $condition, bool $exists = false) {
+	private function singleConditionClause(string $operator = 'AND', $condition, bool $exists = false) {
 		$result = null;
 		// operator
 		$operator = strtoupper($operator);
@@ -362,6 +385,7 @@ class Builder {
 	 * @param string $operator
 	 * @param mixed $condition
 	 * @param boolean $exists
+	 * @param array $options
 	 * @return \Numbers\Backend\Db\Common\Query\Builder
 	 */
 	public function where(string $operator = 'AND', $condition, bool $exists = false, $options = []) : \Numbers\Backend\Db\Common\Query\Builder {
@@ -477,6 +501,10 @@ class Builder {
 	 */
 	public function temporaryTable($name) : \Numbers\Backend\Db\Common\Query\Builder {
 		$this->data['temporary_table'] = $name;
+		// exceptions
+		if (strpos($name, '.') !== false) {
+			Throw new \Exception('Schema is not allowed when creating temporary table!');
+		}
 		return $this;
 	}
 
