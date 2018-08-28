@@ -46,7 +46,7 @@ class Step2 extends \Object\Form\Wrapper\Base {
 			],
 			'b4_register_city' => [
 				'b4_registration_city' => ['order' => 1, 'row_order' => 400, 'label_name' => 'City', 'domain' => 'name', 'required' => true],
-				'b4_registration_postal_code' => ['order' => 2, 'label_name' => 'Postal Code', 'domain' => 'postal_code', 'required' => true, 'onblur' => 'this.form.submit();'],
+				'b4_registration_postal_code' => ['order' => 2, 'label_name' => 'Postal Code', 'domain' => 'postal_code', 'required' => true],
 			],
 			'b4_register_country_code' => [
 				'b4_registration_country_code' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Country', 'domain' => 'country_code', 'null' => true, 'required' => true, 'default' => 'CA', 'method' => 'select', 'options_model' => '\Numbers\Countries\Countries\Model\Countries::optionsActive', 'onchange' => 'this.form.submit();'],
@@ -124,6 +124,11 @@ class Step2 extends \Object\Form\Wrapper\Base {
 	}
 
 	public function save(& $form) {
+		// concat children
+		$children = [];
+		foreach ($form->values['\Model\Register\Details'] as $v) {
+			$children[] = $v['b4_registration_child_name'];
+		}
 		// write data
 		return \Object\Table\Complementary::jsonSaveData(
 			new \Model\Register(),
@@ -132,7 +137,8 @@ class Step2 extends \Object\Form\Wrapper\Base {
 				'b4_register_step2' => json_encode($form->values),
 				'b4_register_parents_name' => $form->values['b4_registration_parents_name'],
 				'b4_register_parents_phone' => $form->values['b4_registration_phone'],
-				'b4_register_parents_email' => $form->values['b4_registration_email']
+				'b4_register_parents_email' => $form->values['b4_registration_email'],
+				'b4_register_children' => implode(', ', $children),
 			],
 			$form,
 			'b4_register_id'
