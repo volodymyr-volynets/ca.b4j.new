@@ -14,16 +14,6 @@ class Step2 extends \Object\Form\Wrapper\Base {
 	];
 	public $containers = [
 		'top' => ['default_row_type' => 'grid', 'order' => 100],
-		'children_container' => [
-			'type' => 'details',
-			'details_rendering_type' => 'table',
-			'details_new_rows' => 1,
-			'details_key' => '\Model\Register\Details',
-			'details_pk' => ['b4_registration_child_name', 'b4_registration_date_of_birth'],
-			'required' => true,
-			'order' => 800
-		],
-		'signature' => ['default_row_type' => 'grid', 'order' => 850],
 		'buttons' => ['default_row_type' => 'grid', 'order' => 900],
 	];
 	public $rows = [];
@@ -33,9 +23,19 @@ class Step2 extends \Object\Form\Wrapper\Base {
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden'],
 				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
 			],
+			'b4_registration_child_name' => [
+				'b4_registration_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Name of Child', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
+			],
 			'b4_registration_parents_name' => [
 				'b4_registration_parents_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Parent\'s Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
-				'b4_registration_parish' => ['order' => 2, 'label_name' => 'Parish', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
+			],
+			'b4_registration_parish' => [
+				'b4_registration_parish' => ['order' => 1, 'row_order' => 250, 'label_name' => 'Parish', 'domain' => 'name', 'null' => true, 'percent' => 100],
+			],
+			'b4_registration_grade' => [
+				'b4_registration_grade' => ['order' => 1, 'row_order' => 260, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'percent' => 25, 'required' => true],
+				'b4_registration_age' => ['order' => 2, 'label_name' => 'Age', 'type' => 'smallint', 'null' => true, 'percent' => 25, 'required' => true],
+				'b4_registration_date_of_birth' => ['order' => 3, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right'],
 			],
 			'address' => [
 				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 300, 'label_name' => 'Address', 'icon' => 'fas fa-map', 'percent' => 100],
@@ -57,32 +57,16 @@ class Step2 extends \Object\Form\Wrapper\Base {
 			],
 			'b4_registration_email' => [
 				'b4_registration_phone' => ['order' => 1, 'row_order' => 700, 'label_name' => 'Phone', 'domain' => 'phone', 'required' => true],
-				'b4_registration_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email', 'required' => true],
+				'b4_registration_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email'],
+			],
+			'b4_registration_emergency_line1' => [
+				'b4_registration_emergency_line1' => ['order' => 1, 'row_order' => 800, 'label_name' => 'Emergency Contact 1', 'type' => 'text', 'null' => true, 'required' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
+				'b4_registration_emergency_line2' => ['order' => 2, 'label_name' => 'Emergency Contact 2', 'type' => 'text', 'null' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
 			],
 			'b4_registration_prefered_language_preference' => [
-				'b4_registration_prefered_language_preference' => ['order' => 1, 'row_order' => 750, 'label_name' => 'Language Preference', 'type' => 'smallint', 'default' => null, 'null' => true, 'required' => true, 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\LanguagePreference', 'options_options' => ['i18n' => 'skip_sorting']],
-			],
-			'children' => [
-				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 800, 'label_name' => 'Children', 'icon' => 'fas fa-users', 'percent' => 100],
-			],
-		],
-		'children_container' => [
-			'row1' => [
-				'b4_registration_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Child Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
-			],
-			'row2' => [
-				'b4_registration_date_of_birth' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right', 'onchange' => 'this.form.submit();'],
+				'b4_registration_prefered_language_preference' => ['order' => 1, 'row_order' => 900, 'label_name' => 'Language Preference', 'type' => 'smallint', 'default' => null, 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'select', 'options_model' => '\Model\LanguagePreference', 'options_options' => ['i18n' => 'skip_sorting']],
 				'b4_registration_first_time' => ['order' => 2, 'label_name' => 'First Time', 'type' => 'boolean', 'percent' => 50],
 			]
-		],
-		'signature' => [
-			'medication' => [
-				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 100, 'label_name' => 'Signature', 'icon' => 'fas fa-american-sign-language-interpreting', 'percent' => 100],
-			],
-			'b4_registration_first_signature' => [
-				'b4_registration_first_signature' => ['order' => 1, 'row_order' => 999, 'label_name' => 'Signature of Parent', 'domain' => 'signature', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'signature'],
-				'b4_registration_first_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-			],
 		],
 		'buttons' => [
 			self::BUTTONS => [
@@ -105,17 +89,15 @@ class Step2 extends \Object\Form\Wrapper\Base {
 		];
 		$form->values['__wizard_step'] = 2;
 		// preload data
-		if (empty($form->is_ajax_reload)) {
-			if (!empty($form->values['b4_register_id']) && empty($form->process_submit[self::BUTTON_CONTINUE])) {
-				\Object\Table\Complementary::jsonPreloadData(
-					new \Model\Register(),
-					[
-						'b4_register_id' => $form->values['b4_register_id']
-					],
-					['b4_register_step2', 'b4_register_step1'],
-					$form->values
-				);
-			}
+		if (!empty($form->values['b4_register_id']) && empty($form->process_submit[self::BUTTON_CONTINUE])) {
+			\Object\Table\Complementary::jsonPreloadData(
+				new \Model\Register(),
+				[
+					'b4_register_id' => $form->values['b4_register_id']
+				],
+				['b4_register_step2', 'b4_register_step1'],
+				$form->values
+			);
 		}
 	}
 

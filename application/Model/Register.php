@@ -17,6 +17,11 @@ class Register extends \Object\Table {
 	public $columns = [
 		'b4_register_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'b4_register_id' => ['name' => 'Register #', 'domain' => 'big_id_sequence'],
+		'b4_register_datetime' => ['name' => 'Datetime', 'type' => 'timestamp', 'default' => 'now()'],
+		'b4_register_parents_name' => ['name' => 'Parent\'s Name', 'domain' => 'name', 'null' => true],
+		'b4_register_parents_phone' => ['name' => 'Parent\'s Phone', 'domain' => 'phone', 'null' => true],
+		'b4_register_parents_email' => ['name' => 'Parent\'s Email', 'domain' => 'email', 'null' => true],
+		'b4_register_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10],
 		'b4_register_step_id' => ['name' => 'Step', 'domain' => 'type_id', 'default' => 1],
 		'b4_register_step1' => ['name' => 'Step 1 Data', 'type' => 'json', 'null' => true],
 		'b4_register_step2' => ['name' => 'Step 2 Data', 'type' => 'json', 'null' => true],

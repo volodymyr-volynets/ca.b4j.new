@@ -60,8 +60,14 @@ class Periods extends \Object\Form\Wrapper\List2 {
 			'row2' => [
 				'blank' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 10],
 				'b4_period_code' => ['order' => 2, 'label_name' => 'Code', 'domain' => 'code', 'percent' => 40],
-				'b4_period_start_date' => ['order' => 3, 'label_name' => 'Start Date', 'type' => 'datetime', 'percent' => 25],
-				'b4_period_end_date' => ['order' => 4, 'label_name' => 'End Date', 'type' => 'datetime', 'percent' => 25],
+				'b4_period_start_date' => ['order' => 3, 'label_name' => 'Reg. Start Date', 'type' => 'datetime', 'percent' => 25],
+				'b4_period_end_date' => ['order' => 4, 'label_name' => 'Reg. End Date', 'type' => 'datetime', 'percent' => 25],
+			],
+			'row3' => [
+				'blank' => ['order' => 1, 'row_order' => 300, 'label_name' => '', 'percent' => 10],
+				'b4_period_max_registrations' => ['order' => 2, 'label_name' => 'Max Registrations', 'domain' => 'counter', 'percent' => 40],
+				'b4_period_new_registrations' => ['order' => 3, 'label_name' => 'New Registrations', 'domain' => 'counter', 'percent' => 25],
+				'b4_period_confirmed_registrations' => ['order' => 4, 'label_name' => 'Confirmed Registrations', 'domain' => 'counter', 'percent' => 25],
 			]
 		]
 	];

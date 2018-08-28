@@ -26,8 +26,8 @@ class Registrations extends \Object\Table {
 		'b4_registration_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
 		'b4_registration_parents_name' => ['name' => 'Parents Name', 'domain' => 'name'],
 		'b4_registration_parish' => ['name' => 'Parish', 'domain' => 'name', 'null' => true],
-		'b4_registration_grade' => ['name' => 'Grade', 'type' => 'smallint'],
-		'b4_registration_age' => ['name' => 'Age', 'type' => 'smallint'],
+		//'b4_registration_grade' => ['name' => 'Grade', 'type' => 'smallint'],
+		//'b4_registration_age' => ['name' => 'Age', 'type' => 'smallint'],
 		'b4_registration_date_of_birth' => ['name' => 'Date of Birth', 'type' => 'date'],
 		// address
 		'b4_registration_address1' => ['name' => 'Address Line 1', 'domain' => 'name'],
@@ -39,10 +39,13 @@ class Registrations extends \Object\Table {
 		// contact
 		'b4_registration_email' => ['name' => 'Email', 'domain' => 'email'],
 		'b4_registration_phone' => ['name' => 'Phone', 'domain' => 'phone'],
-		'b4_registration_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text', 'null' => true],
-		'b4_registration_emergency_line2' => ['name' => 'Emergency Line 2', 'type' => 'text', 'null' => true],
+		//'b4_registration_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text', 'null' => true],
+		//'b4_registration_emergency_line2' => ['name' => 'Emergency Line 2', 'type' => 'text', 'null' => true],
 		'b4_registration_prefered_language_preference' => ['name' => 'Language Preference', 'type' => 'smallint'],
 		'b4_registration_first_time' => ['name' => 'First Time', 'type' => 'boolean'],
+		// first signature
+		'b4_registration_first_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
+		'b4_registration_first_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
 		// medical
 		'b4_registration_medical_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
 		'b4_registration_medical_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],

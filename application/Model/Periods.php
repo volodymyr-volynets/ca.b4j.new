@@ -17,8 +17,13 @@ class Periods extends \Object\Table {
 		'b4_period_id' => ['name' => 'Period #', 'domain' => 'group_id_sequence'],
 		'b4_period_code' => ['name' => 'Code', 'domain' => 'code'],
 		'b4_period_name' => ['name' => 'Name', 'domain' => 'name'],
-		'b4_period_start_date' => ['name' => 'Start Date', 'type' => 'datetime'],
-		'b4_period_end_date' => ['name' => 'End Date', 'type' => 'datetime'],
+		'b4_period_start_date' => ['name' => 'Registration Start Date', 'type' => 'datetime'],
+		'b4_period_end_date' => ['name' => 'Registration End Date', 'type' => 'datetime'],
+		'b4_period_camp_start_date' => ['name' => 'Camp Start Date', 'type' => 'date'],
+		'b4_period_camp_end_date' => ['name' => 'Camp End Date', 'type' => 'date'],
+		'b4_period_max_registrations' => ['name' => 'Max Registrations', 'domain' => 'counter'],
+		'b4_period_new_registrations' => ['name' => 'New Registrations', 'domain' => 'counter'], // readonly field
+		'b4_period_confirmed_registrations' => ['name' => 'Confirmed Registrations', 'domain' => 'counter'], // readonly field
 		'b4_period_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [

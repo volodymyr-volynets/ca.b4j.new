@@ -12,9 +12,10 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				'type' => 'primary',
 				'options' => [
 					1 => ['name' => 'Code / Language'],
-					2 => ['name' => 'Information'],
-					3 => ['name' => 'Waiver'],
-					4 => ['name' => 'Confirm Your Email'],
+					2 => ['name' => 'Child Information'],
+					3 => ['name' => 'Medical'],
+					4 => ['name' => 'Waiver'],
+					5 => ['name' => 'T-Shirt'],
 					6 => ['name' => 'Complete']
 				]
 			]
