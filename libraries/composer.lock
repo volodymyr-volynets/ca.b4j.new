@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "14a1ffd336a178dfe5acaa1107e2ae07",
+    "content-hash": "78efefd06d6803b600725d809b5cd95e",
     "packages": [
         {
             "name": "composer/installers",
@@ -128,16 +128,16 @@
         },
         {
             "name": "numbers/backend",
-            "version": "1.1.22",
+            "version": "1.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/backend.git",
-                "reference": "861d1f075e629b2220ac26b8987d1f4698c1e9bd"
+                "reference": "ab7a6f22f333ba0de6851bdba77e3c37f76cc1bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/861d1f075e629b2220ac26b8987d1f4698c1e9bd",
-                "reference": "861d1f075e629b2220ac26b8987d1f4698c1e9bd",
+                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/ab7a6f22f333ba0de6851bdba77e3c37f76cc1bb",
+                "reference": "ab7a6f22f333ba0de6851bdba77e3c37f76cc1bb",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 }
             ],
             "description": "Backend modules for Numbers Framework",
-            "time": "2018-08-28T17:16:30+00:00"
+            "time": "2018-08-29T02:10:43+00:00"
         },
         {
             "name": "numbers/countries",
@@ -222,16 +222,16 @@
         },
         {
             "name": "numbers/framework",
-            "version": "1.2.40",
+            "version": "1.2.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/framework.git",
-                "reference": "2374f18d74191deeb06bcab71bcb74c1d91267d6"
+                "reference": "86092763c0cb71f790e9092f1b06105831081e9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/2374f18d74191deeb06bcab71bcb74c1d91267d6",
-                "reference": "2374f18d74191deeb06bcab71bcb74c1d91267d6",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/86092763c0cb71f790e9092f1b06105831081e9c",
+                "reference": "86092763c0cb71f790e9092f1b06105831081e9c",
                 "shasum": ""
             },
             "require": {
@@ -260,20 +260,20 @@
                 }
             ],
             "description": "Lightweight MVC PHP Framework",
-            "time": "2018-08-28T15:48:35+00:00"
+            "time": "2018-08-29T02:17:41+00:00"
         },
         {
             "name": "numbers/frontend",
-            "version": "1.2.12",
+            "version": "1.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/frontend.git",
-                "reference": "e41ca763d075f9f5df9a3c4a4eccdc6f46fa7625"
+                "reference": "14c47da6038bb5bdd7943f99d0c1990c4ccab9e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/e41ca763d075f9f5df9a3c4a4eccdc6f46fa7625",
-                "reference": "e41ca763d075f9f5df9a3c4a4eccdc6f46fa7625",
+                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/14c47da6038bb5bdd7943f99d0c1990c4ccab9e1",
+                "reference": "14c47da6038bb5bdd7943f99d0c1990c4ccab9e1",
                 "shasum": ""
             },
             "require": {
@@ -307,7 +307,7 @@
                 }
             ],
             "description": "Frontend modules for Numbers Framework",
-            "time": "2018-08-28T15:56:00+00:00"
+            "time": "2018-08-29T02:20:02+00:00"
         },
         {
             "name": "numbers/internalization",
