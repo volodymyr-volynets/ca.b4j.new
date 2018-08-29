@@ -22,12 +22,11 @@ class Registrations extends \Object\Table {
 		'b4_registration_period_id' => ['name' => 'Period #', 'domain' => 'group_id'],
 		'b4_registration_period_code' => ['name' => 'Code', 'domain' => 'code'],
 		'b4_registration_in_group_id' => ['name' => 'I/N Group #', 'domain' => 'group_id'],
+		'b4_registration_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10],
 		// name
 		'b4_registration_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
 		'b4_registration_parents_name' => ['name' => 'Parents Name', 'domain' => 'name'],
 		'b4_registration_parish' => ['name' => 'Parish', 'domain' => 'name', 'null' => true],
-		//'b4_registration_grade' => ['name' => 'Grade', 'type' => 'smallint'],
-		//'b4_registration_age' => ['name' => 'Age', 'type' => 'smallint'],
 		'b4_registration_date_of_birth' => ['name' => 'Date of Birth', 'type' => 'date'],
 		// address
 		'b4_registration_address1' => ['name' => 'Address Line 1', 'domain' => 'name'],
@@ -39,17 +38,15 @@ class Registrations extends \Object\Table {
 		// contact
 		'b4_registration_email' => ['name' => 'Email', 'domain' => 'email'],
 		'b4_registration_phone' => ['name' => 'Phone', 'domain' => 'phone'],
-		//'b4_registration_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text', 'null' => true],
-		//'b4_registration_emergency_line2' => ['name' => 'Emergency Line 2', 'type' => 'text', 'null' => true],
 		'b4_registration_prefered_language_preference' => ['name' => 'Language Preference', 'type' => 'smallint'],
 		'b4_registration_first_time' => ['name' => 'First Time', 'type' => 'boolean'],
-		// first signature
-		'b4_registration_first_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
-		'b4_registration_first_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
+		// emergency
+		'b4_registration_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text', 'null' => true],
+		'b4_registration_emergency_line2' => ['name' => 'Emergency Line 2', 'type' => 'text', 'null' => true],		
 		// medical
-		'b4_registration_medical_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
-		'b4_registration_medical_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
-		'b4_registration_medical_health_card_number' => ['name' => 'Health Card Number', 'domain' => 'code'],
+		'b4_registration_medical_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature', 'null' => true],
+		'b4_registration_medical_signing_date' => ['name' => 'Signing Date', 'type' => 'date', 'null' => true],
+		'b4_registration_medical_health_card_number' => ['name' => 'Health Card Number', 'domain' => 'code', 'null' => true],
 		'b4_registration_medical_doctors_contact' => ['name' => 'Doctors Name & Phone', 'type' => 'text', 'null' => true],
 		'b4_registration_medical_alergies_flag' => ['name' => 'Alergies', 'type' => 'boolean'],
 		'b4_registration_medical_alergies_details' => ['name' => 'Alergies Details', 'type' => 'text', 'null' => true],
@@ -75,14 +72,8 @@ class Registrations extends \Object\Table {
 		'b4_registration_medical_drug_bismuth_subsalicylate' => ['name' => 'Bismuth subsalicylate (PeptoBismol, upset stomach diarrhea)', 'type' => 'boolean'],
 		'b4_registration_medical_non_prescription_medication' => ['name' => 'Non prescription medication', 'type' => 'boolean'],
 		'b4_registration_medical_no_non_prescription_medication' => ['name' => 'No non prescription medication', 'type' => 'boolean'],
-		// waiver
-		'b4_registration_waiver_signature' => ['name' => 'Signature of Parent', 'domain' => 'signature'],
-		'b4_registration_waiver_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
-		'b4_registration_waiver_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
-		'b4_registration_medical_period_start' => ['name' => 'Period Start', 'type' => 'date'],
-		'b4_registration_medical_period_end' => ['name' => 'Period End', 'type' => 'date'],
 		// t-shirt
-		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint'],
+		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true],
 		// other
 		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
@@ -107,7 +98,9 @@ class Registrations extends \Object\Table {
 			'foreign_columns' => ['b4_register_tenant_id', 'b4_register_id']
 		]
 	];
-	public $indexes = [];
+	public $indexes = [
+		'b4_registrations_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['b4_registration_child_name', 'b4_registration_parents_name', 'b4_registration_parish', 'b4_registration_email', 'b4_registration_phone']],
+	];
 	public $history = false;
 	public $audit = false;
 	public $optimistic_lock = false;

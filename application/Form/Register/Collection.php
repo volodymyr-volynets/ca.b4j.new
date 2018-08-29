@@ -15,7 +15,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 					2 => ['name' => 'Information'],
 					3 => ['name' => 'Waiver'],
 					4 => ['name' => 'Confirm Your Email'],
-					6 => ['name' => 'Complete']
+					5 => ['name' => 'Complete']
 				]
 			]
 		],
@@ -137,7 +137,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 		],
 		'step5' => [
 			'options' => self::GLOBAL_OPTIONS,
-			'order' => 2002,
+			'order' => 2000,
 			self::ROWS => [
 				self::HEADER_ROW => [
 					'order' => 100,
@@ -148,34 +148,8 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				self::MAIN_ROW => [
 					'order' => 200,
 					self::FORMS => [
-						'b4_register_step5' => [
+						'register_step5' => [
 							'model' => '\Form\Register\Step5',
-							'bypass_values' => ['__wizard_step', 'b4_register_id'],
-							'options' => [
-								'segment' => null,
-								'percent' => 100,
-							],
-							'order' => 1
-						]
-					]
-				]
-			]
-		],
-		'step6' => [
-			'options' => self::GLOBAL_OPTIONS,
-			'order' => 2000,
-			self::ROWS => [
-				self::HEADER_ROW => [
-					'order' => 100,
-					self::FORMS => [
-						'register_step6' => self::GLOBAL_WIZARD
-					]
-				],
-				self::MAIN_ROW => [
-					'order' => 200,
-					self::FORMS => [
-						'b4_register_step6' => [
-							'model' => '\Form\Register\Step6',
 							'options' => [
 								'segment' => null,
 								'percent' => 100,
@@ -193,9 +167,9 @@ class Collection extends \Object\Form\Wrapper\Collection {
 		if (empty($this->values['__wizard_step'])) $this->values['__wizard_step'] = 1;
 		$this->collection_screen_link = 'step' . $this->values['__wizard_step'];
 		// make everything look success
-		if ($this->values['__wizard_step'] == 6) {
-			$this->data['step6'][$this::ROWS][self::HEADER_ROW][$this::FORMS]['register_step6']['options']['wizard']['type'] = 'success';
-			$this->data['step6']['options']['segment']['type'] = 'success';
+		if ($this->values['__wizard_step'] == 5) {
+			$this->data['step5'][$this::ROWS][self::HEADER_ROW][$this::FORMS]['register_step5']['options']['wizard']['type'] = 'success';
+			$this->data['step5']['options']['segment']['type'] = 'success';
 		}
 	}
 }

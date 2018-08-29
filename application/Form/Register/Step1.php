@@ -42,6 +42,8 @@ class Step1 extends \Object\Form\Wrapper\Base {
 		'model' => '\Model\Register',
 	];
 
+	public $tmp_period_dates = '';
+
 	public function refresh(& $form) {
 		// change language
 		if (in_array($form->misc_settings['__form_onchange_field_values_key'][0] ?? '', ['b4_registration_in_group_id'])) {
@@ -51,15 +53,17 @@ class Step1 extends \Object\Form\Wrapper\Base {
 		}
 		$form->values['__wizard_step'] = 1;
 		// preload data
-		if (!empty($form->values['b4_register_id']) && empty($form->process_submit[self::BUTTON_CONTINUE])) {
-			\Object\Table\Complementary::jsonPreloadData(
-				new \Model\Register(),
-				[
-					'b4_register_id' => $form->values['b4_register_id']
-				],
-				['b4_register_step1'],
-				$form->values
-			);
+		if (empty($form->is_ajax_reload)) {
+			if (!empty($form->values['b4_register_id']) && empty($form->process_submit[self::BUTTON_CONTINUE])) {
+				\Object\Table\Complementary::jsonPreloadData(
+					new \Model\Register(),
+					[
+						'b4_register_id' => $form->values['b4_register_id']
+					],
+					['b4_register_step1'],
+					$form->values
+				);
+			}
 		}
 	}
 
@@ -85,21 +89,33 @@ class Step1 extends \Object\Form\Wrapper\Base {
 					return;
 				}
 			}
+			$this->tmp_period_dates = \Format::date($period[0]['b4_period_camp_start_date']) . ' - ' . \Format::date($period[0]['b4_period_camp_end_date']);
 			$form->values['b4_registration_period_id'] = $period[0]['b4_period_id'];
 		}
 	}
 
 	public function save(& $form) {
 		// write data
-		return \Object\Table\Complementary::jsonSaveData(
+		$model = new \Model\Periods();
+		$model->db_object->begin();
+		$result = \Object\Table\Complementary::jsonSaveData(
 			new \Model\Register(),
 			[
 				'b4_register_step_id' => 1,
-				'b4_register_step1' => json_encode($form->values)
+				'b4_register_step1' => json_encode($form->values),
+				'b4_register_period' => $this->tmp_period_dates,
 			],
 			$form,
 			'b4_register_id'
 		);
+		// update counter
+		if ($result) {
+			\Model\Periods::queryBuilderStatic()->update()->set(['b4_period_new_registrations;=;~~' => 'b4_period_new_registrations + 1'])->query();
+			$model->db_object->commit();
+		} else {
+			$model->db_object->rollback();
+		}
+		return $result;
 	}
 
 	public function success(& $form) {

@@ -13,7 +13,7 @@ class Helper {
 	 * @param int $user_id
 	 * @param array $options
 	 *		string um_owneruser_queue_hash
-	 *		string|array om_order_sp_queue_selection
+	 *		string|array um_owneruser_queue_selection
 	 * @return array
 	 */
 	public static function startOwners(string $linked_type, int $linked_module_id, int $linked_id, string $owner_type, int $user_id, array $options = []) : array {

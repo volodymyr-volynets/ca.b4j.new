@@ -22,6 +22,7 @@ class Register extends \Object\Table {
 		'b4_register_parents_phone' => ['name' => 'Parent\'s Phone', 'domain' => 'phone', 'null' => true],
 		'b4_register_parents_email' => ['name' => 'Parent\'s Email', 'domain' => 'email', 'null' => true],
 		'b4_register_children' => ['name' => 'Children', 'type' => 'text', 'null' => true],
+		'b4_register_period' => ['name' => 'Period', 'type' => 'text', 'null' => true],
 		'b4_register_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10],
 		'b4_register_step_id' => ['name' => 'Step', 'domain' => 'type_id', 'default' => 1],
 		'b4_register_step1' => ['name' => 'Step 1 Data', 'type' => 'json', 'null' => true],
