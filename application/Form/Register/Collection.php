@@ -26,7 +26,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 			'type' => 'primary',
 			'header' => [
 				'icon' => ['type' => 'fab fa-firstdraft'],
-				'title' => 'Register your child:'
+				'title' => 'Register your children:'
 			]
 		]
 	];
