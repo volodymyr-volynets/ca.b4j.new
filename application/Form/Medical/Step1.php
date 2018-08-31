@@ -1,20 +1,19 @@
 <?php
 
-namespace Form\Register;
-class Step3 extends \Object\Form\Wrapper\Base {
-	public $form_link = 'b4_register_step3';
+namespace Form\Medical;
+class Step1 extends \Object\Form\Wrapper\Base {
+	public $form_link = 'b4_medical_step1';
 	public $module_code = 'B4';
-	public $title = 'B/4 Register Step 3 Form';
+	public $title = 'B/4 Medical Step 1 Form';
 	public $options = [
 		'segment' => self::SEGMENT_FORM,
 		'actions' => [
 			'refresh' => true,
-			'back' => true,
 		]
 	];
 	public $containers = [
 		'top' => ['default_row_type' => 'grid', 'order' => 100],
-		'medication' => ['default_row_type' => 'table', 'order' => 700, 'column_name_width_percent' => 50],
+		'medication' => ['default_row_type' => 'table', 'order' => 700, 'column_name_width_percent' => 80],
 		'medication2' => ['default_row_type' => 'table', 'order' => 701, 'column_name_width_percent' => 80],
 		'signature' => ['default_row_type' => 'grid', 'order' => 800],
 		'buttons' => ['default_row_type' => 'grid', 'order' => 900],
@@ -24,7 +23,11 @@ class Step3 extends \Object\Form\Wrapper\Base {
 		'top' => [
 			self::HIDDEN => [
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden'],
-				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
+				'b4_registration_id' => ['label_name' => 'Registration #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
+				'b4_registration_status_id' => ['label_name' => 'Status', 'domain' => 'status_id', 'null' => true, 'persistent' => true, 'method' => 'hidden'],
+			],
+			'b4_registration_child_name' => [
+				'b4_registration_child_name' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Name of Child', 'domain' => 'name', 'persistent' => true, 'percent' => 100, 'required' => true, 'readonly' => true],
 			],
 			'b4_registration_medical_health_card_number' => [
 				'b4_registration_medical_health_card_number' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Health Card Number', 'domain' => 'code', 'required' => true, 'placeholder' => 'NNNN-NNN-NNN-AA'],
@@ -106,10 +109,10 @@ class Step3 extends \Object\Form\Wrapper\Base {
 		],
 		'medication2' => [
 			'b4_registration_medical_non_prescription_medication' => [
-				'b4_registration_medical_non_prescription_medication' => ['order' => 1, 'row_order' => 100, 'label_name' => 'I give Break For Jesus Camp Nurse or Senior Staff permission to administer non-prescription medications to my child as needed.', 'type' => 'boolean', 'required' => true, 'percent' => 100],
+				'b4_registration_medical_non_prescription_medication' => ['order' => 1, 'row_order' => 100, 'label_name' => 'I give Break For Jesus Camp Nurse or Senior Staff permission to administer non-prescription medications to my child as needed.', 'type' => 'boolean', 'percent' => 100],
 			],
 			'b4_registration_medical_no_non_prescription_medication' => [
-				'b4_registration_medical_no_non_prescription_medication' => ['order' => 1, 'row_order' => 200, 'label_name' => 'I DO NOT allow Break For Jesus Camp Nurse or Senior Staff to give my child non-prescription medication.', 'type' => 'boolean', 'required' => true, 'percent' => 100],
+				'b4_registration_medical_no_non_prescription_medication' => ['order' => 1, 'row_order' => 200, 'label_name' => 'I DO NOT allow Break For Jesus Camp Nurse or Senior Staff to give my child non-prescription medication.', 'type' => 'boolean', 'percent' => 100],
 			],
 			'text4' => [
 				'text4' => ['order' => 1, 'row_order' => 300, 'label_name' => '', 'method' => 'span', 'description' => "Please note that room requests will not be accepted/accommodated.", 'percent' => 100]
@@ -134,29 +137,19 @@ class Step3 extends \Object\Form\Wrapper\Base {
 		]
 	];
 	public $collection = [
-		'name' => 'B4 Register',
-		'readonly' => true,
-		'model' => '\Model\Register',
+		'name' => 'B4 Registrations',
+		'model' => '\Model\Registrations',
 	];
 
 	public function refresh(& $form) {
-		$form->options['actions']['back'] = [
-			'href' => \Application::get('mvc.full') . '?__wizard_step=2&b4_register_id=' . $form->values['b4_register_id']
-		];
 		$form->options['actions']['refresh'] = [
-			'href' => \Application::get('mvc.full') . '?__wizard_step=3&b4_register_id=' . $form->values['b4_register_id']
+			'href' => \Application::get('mvc.full') . '?__wizard_step=1&b4_registration_id=' . $form->values['b4_registration_id'] . '&token=' . \Request::input('token')
 		];
-		$form->values['__wizard_step'] = 3;
-		// preload data
-		if (!empty($form->values['b4_register_id']) && empty($form->process_submit[self::BUTTON_CONTINUE])) {
-			\Object\Table\Complementary::jsonPreloadData(
-				new \Model\Register(),
-				[
-					'b4_register_id' => $form->values['b4_register_id']
-				],
-				['b4_register_step3'],
-				$form->values
-			);
+		$form->values['__wizard_step'] = 1;
+		if ($form->values['b4_registration_status_id'] != 30) {
+			$form->error(DANGER, \Helper\Messages::REGISTRATION_NOT_FOUND_OR_ALREADY_CONFIRMED);
+			$form->readonly();
+			return;
 		}
 	}
 
@@ -183,22 +176,9 @@ class Step3 extends \Object\Form\Wrapper\Base {
 		}
 	}
 
-	public function save(& $form) {
-		// write data
-		return \Object\Table\Complementary::jsonSaveData(
-			new \Model\Register(),
-			[
-				'b4_register_step_id' => 3,
-				'b4_register_step3' => json_encode($form->values)
-			],
-			$form,
-			'b4_register_id'
-		);
-	}
-
 	public function success(& $form) {
-		if (!empty($form->values['b4_register_id'])) {
-			$form->redirect(\Application::get('mvc.full') . '?__wizard_step=4&b4_register_id=' . $form->values['b4_register_id']);
+		if (!empty($form->values['b4_registration_id'])) {
+			$form->redirect(\Application::get('mvc.full') . '?__wizard_step=2&b4_registration_id=' . $form->values['b4_registration_id'] . '&token=' . \Request::input('token'));
 		}
 	}
 }
