@@ -64,11 +64,11 @@ class Actuals extends \Object\Table {
 		foreach ($data['\Numbers\Users\Users\Model\User\Assignment\PostalCodes'] as $k => $v) {
 			// step 1 delete
 			$query = $this->queryBuilder()->delete();
-			$query->where('AND', ['a.um_usrassactpostal_user_id', '=', $v['um_usrasspostal_user_id']]);
-			$query->where('AND', ['a.um_usrassactpostal_organization_id', '=', $v['um_usrasspostal_organization_id']]);
-			$query->where('AND', ['a.um_usrassactpostal_service_id', '=', $v['um_usrasspostal_service_id']]);
-			$query->where('AND', ['a.um_usrassactpostal_brand_id', '=', $v['um_usrasspostal_brand_id']]);
-			$query->where('AND', ['a.um_usrassactpostal_location_id', '=', $v['um_usrasspostal_location_id']]);
+			$query->where('AND', ['um_usrassactpostal_user_id', '=', $v['um_usrasspostal_user_id']]);
+			$query->where('AND', ['um_usrassactpostal_organization_id', '=', $v['um_usrasspostal_organization_id']]);
+			$query->where('AND', ['um_usrassactpostal_service_id', '=', $v['um_usrasspostal_service_id']]);
+			$query->where('AND', ['um_usrassactpostal_brand_id', '=', $v['um_usrasspostal_brand_id']]);
+			$query->where('AND', ['um_usrassactpostal_location_id', '=', $v['um_usrasspostal_location_id']]);
 			$delete_result = $query->query();
 			if (!$delete_result['success']) {
 				$result['error']+= $delete_result['error'];

@@ -1,13 +1,13 @@
 {
     "require": {
         "tecnickcom\/tcpdf": "6.2.13",
-        "numbers\/framework": "1.2.41",
-        "numbers\/backend": "1.1.23",
-        "numbers\/frontend": "1.2.13",
+        "numbers\/framework": "1.2.43",
+        "numbers\/backend": "1.1.25",
+        "numbers\/frontend": "1.2.14",
         "numbers\/tenants": "1.0.41",
         "numbers\/countries": "1.0.29",
         "numbers\/internalization": "1.0.22",
-        "numbers\/users": "1.1.63",
+        "numbers\/users": "1.1.64",
         "oomphinc\/composer-installers-extender": "~1.0"
     },
     "extra": {

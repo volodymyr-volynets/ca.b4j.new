@@ -64,14 +64,14 @@ class Availability extends \Object\Form\Wrapper\Base {
 					// delete existing appointments
 					if (!empty($form->values['override_existing'])) {
 						$query = $intervals_model->queryBuilder()->delete();
-						$query->where('AND', ['a.um_schedinterval_type_id', '=', 3000]);
-						$query->where('AND', ['a.um_schedinterval_appointment_type_id', '=', $form->values['appointment_type_id']]);
-						$query->where('AND', ['a.um_schedinterval_organization_id', '=', $form->values['organization_id']]);
-						$query->where('AND', ['a.um_schedinterval_service_id', '=', $service_k]);
-						$query->where('AND', ['a.um_schedinterval_location_id', '=', $location_k]);
-						$query->where('AND', ['a.um_schedinterval_user_id', '=', $user_k]);
-						$query->where('AND', ['a.um_schedinterval_work_starts', '>=', $form->values['datetime_start']]);
-						$query->where('AND', ['a.um_schedinterval_work_starts', '<=', $form->values['datetime_end']]);
+						$query->where('AND', ['um_schedinterval_type_id', '=', 3000]);
+						$query->where('AND', ['um_schedinterval_appointment_type_id', '=', $form->values['appointment_type_id']]);
+						$query->where('AND', ['um_schedinterval_organization_id', '=', $form->values['organization_id']]);
+						$query->where('AND', ['um_schedinterval_service_id', '=', $service_k]);
+						$query->where('AND', ['um_schedinterval_location_id', '=', $location_k]);
+						$query->where('AND', ['um_schedinterval_user_id', '=', $user_k]);
+						$query->where('AND', ['um_schedinterval_work_starts', '>=', $form->values['datetime_start']]);
+						$query->where('AND', ['um_schedinterval_work_starts', '<=', $form->values['datetime_end']]);
 						$result = $query->query();
 						if (!$result['success']) {
 							$intervals_model->db_object->rollback();

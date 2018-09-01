@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78efefd06d6803b600725d809b5cd95e",
+    "content-hash": "2877e6249a16a078f9e0af59920c7370",
     "packages": [
         {
             "name": "composer/installers",
@@ -128,16 +128,16 @@
         },
         {
             "name": "numbers/backend",
-            "version": "1.1.23",
+            "version": "1.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/backend.git",
-                "reference": "ab7a6f22f333ba0de6851bdba77e3c37f76cc1bb"
+                "reference": "6782a4a1314a32bdb577ac6c6c48710207824695"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/ab7a6f22f333ba0de6851bdba77e3c37f76cc1bb",
-                "reference": "ab7a6f22f333ba0de6851bdba77e3c37f76cc1bb",
+                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/6782a4a1314a32bdb577ac6c6c48710207824695",
+                "reference": "6782a4a1314a32bdb577ac6c6c48710207824695",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 }
             ],
             "description": "Backend modules for Numbers Framework",
-            "time": "2018-08-29T02:10:43+00:00"
+            "time": "2018-09-01T23:43:33+00:00"
         },
         {
             "name": "numbers/countries",
@@ -222,16 +222,16 @@
         },
         {
             "name": "numbers/framework",
-            "version": "1.2.41",
+            "version": "1.2.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/framework.git",
-                "reference": "86092763c0cb71f790e9092f1b06105831081e9c"
+                "reference": "d6643bc269be2a9e86bad91f2bedc984c70c360d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/86092763c0cb71f790e9092f1b06105831081e9c",
-                "reference": "86092763c0cb71f790e9092f1b06105831081e9c",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/d6643bc269be2a9e86bad91f2bedc984c70c360d",
+                "reference": "d6643bc269be2a9e86bad91f2bedc984c70c360d",
                 "shasum": ""
             },
             "require": {
@@ -260,20 +260,20 @@
                 }
             ],
             "description": "Lightweight MVC PHP Framework",
-            "time": "2018-08-29T02:17:41+00:00"
+            "time": "2018-09-01T23:48:50+00:00"
         },
         {
             "name": "numbers/frontend",
-            "version": "1.2.13",
+            "version": "1.2.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/frontend.git",
-                "reference": "14c47da6038bb5bdd7943f99d0c1990c4ccab9e1"
+                "reference": "73da5b7ff358b9540300830559429b2bc203540f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/14c47da6038bb5bdd7943f99d0c1990c4ccab9e1",
-                "reference": "14c47da6038bb5bdd7943f99d0c1990c4ccab9e1",
+                "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/73da5b7ff358b9540300830559429b2bc203540f",
+                "reference": "73da5b7ff358b9540300830559429b2bc203540f",
                 "shasum": ""
             },
             "require": {
@@ -307,7 +307,7 @@
                 }
             ],
             "description": "Frontend modules for Numbers Framework",
-            "time": "2018-08-29T02:20:02+00:00"
+            "time": "2018-08-31T15:35:45+00:00"
         },
         {
             "name": "numbers/internalization",
@@ -405,16 +405,16 @@
         },
         {
             "name": "numbers/users",
-            "version": "1.1.63",
+            "version": "1.1.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/users.git",
-                "reference": "694ca1d8e856b85c262d43fec12ac00e83fa5a64"
+                "reference": "39f8c4e2facbaf9e1c82a5fade7ce2778ead8955"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/694ca1d8e856b85c262d43fec12ac00e83fa5a64",
-                "reference": "694ca1d8e856b85c262d43fec12ac00e83fa5a64",
+                "url": "https://api.github.com/repos/volodymyr-volynets/users/zipball/39f8c4e2facbaf9e1c82a5fade7ce2778ead8955",
+                "reference": "39f8c4e2facbaf9e1c82a5fade7ce2778ead8955",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
                 }
             ],
             "description": "User module for Numbers Framework",
-            "time": "2018-08-08T17:21:52+00:00"
+            "time": "2018-08-31T15:37:23+00:00"
         },
         {
             "name": "oomphinc/composer-installers-extender",
