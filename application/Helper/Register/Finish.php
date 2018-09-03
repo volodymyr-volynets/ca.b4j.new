@@ -42,6 +42,7 @@ class Finish {
 				$data2['b4_registration_child_name'] = $v['b4_registration_child_name'];
 				$data2['b4_registration_date_of_birth'] = $v['b4_registration_date_of_birth'];
 				$data2['b4_registration_first_time'] = $v['b4_registration_first_time'];
+				$data2['b4_registration_gender_id'] = $v['b4_registration_gender_id'];
 				$temp = \Model\Registrations::collectionStatic()->merge($data2);
 				if ($temp['success']) {
 					$result['registration_id'][] = $temp['new_serials']['b4_registration_id'];

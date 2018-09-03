@@ -28,6 +28,7 @@ class Registrations extends \Object\Table {
 		'b4_registration_parents_name' => ['name' => 'Parents Name', 'domain' => 'name'],
 		'b4_registration_parish' => ['name' => 'Parish', 'domain' => 'name', 'null' => true],
 		'b4_registration_date_of_birth' => ['name' => 'Date of Birth', 'type' => 'date'],
+		'b4_registration_gender_id' => ['name' => 'Gender', 'domain' => 'status_id', 'default' => 10],
 		// address
 		'b4_registration_address1' => ['name' => 'Address Line 1', 'domain' => 'name'],
 		'b4_registration_address2' => ['name' => 'Address Line 2', 'domain' => 'name', 'null' => true],
