@@ -19,6 +19,6 @@ class Statuses extends \Object\Data {
 		20 => ['no_data_reg_statuses_name' => 'Confirmed'],
 		30 => ['no_data_reg_statuses_name' => 'Need Medical'],
 		40 => ['no_data_reg_statuses_name' => 'Medical Provided'],
-		50 => ['no_data_reg_statuses_name' => 'Complete'],
+		250 => ['no_data_reg_statuses_name' => 'Complete'],
 	];
 }
