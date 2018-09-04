@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f88d67ba71ef00064cfbee4b050cfda1",
+    "content-hash": "697b19735cc22c6581acd9872f2b6b14",
     "packages": [
         {
             "name": "composer/installers",
@@ -128,16 +128,16 @@
         },
         {
             "name": "numbers/backend",
-            "version": "1.1.28",
+            "version": "1.1.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/backend.git",
-                "reference": "b9ee772f4341d8b65426ae33f67eb15b515e876d"
+                "reference": "35a8e8cad6fd0edf9a9eaf3b2861517b90f8c718"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/b9ee772f4341d8b65426ae33f67eb15b515e876d",
-                "reference": "b9ee772f4341d8b65426ae33f67eb15b515e876d",
+                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/35a8e8cad6fd0edf9a9eaf3b2861517b90f8c718",
+                "reference": "35a8e8cad6fd0edf9a9eaf3b2861517b90f8c718",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 }
             ],
             "description": "Backend modules for Numbers Framework",
-            "time": "2018-09-03T18:28:33+00:00"
+            "time": "2018-09-04T00:10:15+00:00"
         },
         {
             "name": "numbers/countries",

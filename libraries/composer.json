@@ -3,7 +3,7 @@
         "phpmailer\/phpmailer": "v6.0.5",
         "tecnickcom\/tcpdf": "6.2.13",
         "numbers\/framework": "1.2.44",
-        "numbers\/backend": "1.1.28",
+        "numbers\/backend": "1.1.29",
         "numbers\/frontend": "1.2.14",
         "numbers\/tenants": "1.0.41",
         "numbers\/countries": "1.0.29",
