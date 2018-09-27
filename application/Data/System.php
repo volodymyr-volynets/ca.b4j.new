@@ -218,7 +218,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Home',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,
@@ -246,7 +246,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Registration',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,
@@ -267,6 +267,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_order' => -32050,
 					'sm_resource_inactive' => 0
 				],
+				/*
 				[
 					'sm_resource_id' => '::id::\Menu\Poster',
 					'sm_resource_code' => '\Menu\Poster',
@@ -274,7 +275,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Poster',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,
@@ -295,6 +296,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_order' => -32000,
 					'sm_resource_inactive' => 0
 				],
+				*/
 				[
 					'sm_resource_id' => '::id::\Menu\Photos',
 					'sm_resource_code' => '\Menu\Photos',
@@ -302,7 +304,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Photos',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,
@@ -330,7 +332,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Donors',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,
@@ -358,7 +360,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Counselors',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,
@@ -386,7 +388,7 @@ class System extends \Object\Import {
 					'sm_resource_name' => 'Contact',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => null,
-					'sm_resource_module_code' => 'B4',
+					'sm_resource_module_code' => 'AN',
 					'sm_resource_group1_name' => null,
 					'sm_resource_group2_name' => null,
 					'sm_resource_group3_name' => null,

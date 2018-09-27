@@ -343,24 +343,24 @@
     },
     {
         "name": "numbers/backend",
-        "version": "2.0.8",
-        "version_normalized": "2.0.8.0",
+        "version": "2.0.9",
+        "version_normalized": "2.0.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/backend.git",
-            "reference": "405333967be6c0a82dc49cd07424b07751f5f46d"
+            "reference": "060b261dd3a4fcb3659add72cfc725f910e75a5c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/405333967be6c0a82dc49cd07424b07751f5f46d",
-            "reference": "405333967be6c0a82dc49cd07424b07751f5f46d",
+            "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/060b261dd3a4fcb3659add72cfc725f910e75a5c",
+            "reference": "060b261dd3a4fcb3659add72cfc725f910e75a5c",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-09-26T19:08:20+00:00",
+        "time": "2018-09-27T01:26:21+00:00",
         "type": "library",
         "extra": {
             "installer-types": [

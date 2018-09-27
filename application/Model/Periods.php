@@ -19,16 +19,24 @@ class Periods extends \Object\Table {
 		'b4_period_name' => ['name' => 'Name', 'domain' => 'name'],
 		'b4_period_start_date' => ['name' => 'Registration Start Date', 'type' => 'datetime'],
 		'b4_period_end_date' => ['name' => 'Registration End Date', 'type' => 'datetime'],
-		'b4_period_camp_start_date' => ['name' => 'Camp Start Date', 'type' => 'date'],
-		'b4_period_camp_end_date' => ['name' => 'Camp End Date', 'type' => 'date'],
+		'b4_period_camp_start_date' => ['name' => 'Camp Start Date', 'type' => 'datetime'],
+		'b4_period_camp_end_date' => ['name' => 'Camp End Date', 'type' => 'datetime'],
+		// training
+		'b4_period_training_start_date' => ['name' => 'Training Start Date', 'type' => 'date', 'null' => true],
+		'b4_period_training_end_date' => ['name' => 'Training End Date', 'type' => 'date', 'null' => true],
+		'b4_period_training_submit_date' => ['name' => 'Training Submit Date', 'type' => 'date', 'null' => true],
+		'b4_period_training_notification_date' => ['name' => 'Training Notification Date', 'type' => 'date', 'null' => true],
+		// counters
 		'b4_period_max_registrations' => ['name' => 'Max Registrations', 'domain' => 'counter'],
 		'b4_period_new_registrations' => ['name' => 'New Registrations', 'domain' => 'counter'], // readonly field
 		'b4_period_confirmed_registrations' => ['name' => 'Confirmed Registrations', 'domain' => 'counter'], // readonly field
+		'b4_period_current' => ['name' => 'Current', 'type' => 'char', 'null' => true],
 		'b4_period_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
 		'b4_periods_pk' => ['type' => 'pk', 'columns' => ['b4_period_tenant_id', 'b4_period_id']],
 		'b4_period_code_un' => ['type' => 'unique', 'columns' => ['b4_period_tenant_id', 'b4_period_code']],
+		'b4_period_current_un' => ['type' => 'unique', 'columns' => ['b4_period_tenant_id', 'b4_period_current']],
 	];
 	public $indexes = [
 		'b4_periods_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['b4_period_name']]
