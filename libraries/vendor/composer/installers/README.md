@@ -42,6 +42,7 @@ is not needed to install packages with these frameworks:
 | Bitrix       | `bitrix-module` (deprecated) <br>`bitrix-component` (deprecated) <br>`bitrix-theme` (deprecated) <br><br> `bitrix-d7-module` <br> `bitrix-d7-component` <br> `bitrix-d7-template`
 | CakePHP 2+   | **`cakephp-plugin`**
 | Chef         | `chef-cookbook`<br>`chef-role`
+| CiviCrm      | `civicrm-ext`
 | CCFramework  | `ccframework-ship`<br>`ccframework-theme`
 | Cockpit      | `cockpit-module`
 | CodeIgniter  | `codeigniter-library`<br>`codeigniter-third-party`<br>`codeigniter-module`
@@ -51,7 +52,7 @@ is not needed to install packages with these frameworks:
 | Decibel      | `decibel-app`
 | DokuWiki     | `dokuwiki-plugin`<br>`dokuwiki-template`
 | Dolibarr     | `dolibarr-module`
-| Drupal       | <b>`drupal-core`<br>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-drush`
+| Drupal       | <b>`drupal-core`<br>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-drush`<br>`drupal-custom-theme`<br>`drupal-custom-module`
 | Elgg         | `elgg-plugin`
 | Eliasis      | `eliasis-component`<br>`eliasis-module`<br>`eliasis-plugin`<br>`eliasis-template`
 | ExpressionEngine 3         | `ee3-addon`<br>`ee3-theme`
@@ -205,6 +206,51 @@ will allow this:
 
 Please note the name entered into `installer-name` will be the final and will
 not be inflected.
+
+## Disabling installers
+
+There may be time when you want to disable one or more installers from `composer/installers`.
+For example, if you are managing a package or project that uses a framework specific installer that
+conflicts with `composer/installers` but also have a dependency on a package that depends on `composer/installers`.
+
+Installers can be disabled for your project by specifying the extra
+`installer-disable` property. If set to `true`, `"all"`, or `"*"` all installers
+will be disabled. 
+
+```json
+{
+    "extra": {
+        "installer-disable": true
+    }
+}
+```
+
+Otherwise a single installer or an array of installers may be specified.
+
+```json
+{
+    "extra": {
+        "installer-disable": [
+            "cakephp",
+            "drupal"
+        ]
+    }
+}
+```
+
+**Note:** Using a global disable value (`true`, `"all"`, or `"*"`) will take precedence over individual
+installer names if used in an array. The example below will disable all installers.
+
+```json
+{
+    "extra": {
+        "installer-disable": [
+          "drupal",
+          "all"
+        ]
+    }
+}
+```
 
 ## Should we allow dynamic package types or paths? No.
 

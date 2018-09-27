@@ -40,10 +40,6 @@ class Types extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = true;
 
-	public $relation = [
-		'field' => 'cy_currtype_code',
-	];
-
 	public $data_asset = [
 		'classification' => 'client_confidential',
 		'protection' => 2,

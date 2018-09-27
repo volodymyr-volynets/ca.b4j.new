@@ -24,20 +24,9 @@ $object_override_blank_object = Object\Override\Blank::__set_state(array(
       array (
         'model' => '\\Numbers\\Tenants\\Widgets\\Audit\\Model\\Virtual\\Audit',
       ),
-      'attributes' => 
-      array (
-        'model' => '\\Numbers\\Tenants\\Widgets\\Attributes\\Model\\Virtual\\Attributes',
-      ),
       'addresses' => 
       array (
         'model' => '\\Numbers\\Countries\\Widgets\\Addresses\\Model\\Virtual\\Addresses',
-      ),
-    ),
-    'currencies' => 
-    array (
-      'primary' => 
-      array (
-        'datasource' => '\\Numbers\\Countries\\Currencies\\DataSource\\Currencies',
       ),
     ),
     'layout' => 
@@ -94,6 +83,10 @@ $object_override_blank_object = Object\Override\Blank::__set_state(array(
       'primary' => 
       array (
         'datasource' => '\\Numbers\\Users\\Users\\DataSource\\ACL\\Menu\\Permissions',
+      ),
+      'usage' => 
+      array (
+        'datasource' => '\\Numbers\\Users\\Users\\DataSource\\ACL\\Menu',
       ),
     ),
     'user_roles' => 

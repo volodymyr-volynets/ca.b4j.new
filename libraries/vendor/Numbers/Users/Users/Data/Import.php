@@ -165,42 +165,6 @@ class Import extends \Object\Import {
 						]
 					]
 				],
-				[
-					'sm_feature_module_code' => 'UM',
-					'sm_feature_code' => 'UM::SCHEDULING',
-					'sm_feature_type' => 10,
-					'sm_feature_name' => 'U/M Scheduling',
-					'sm_feature_icon' => 'far fa-calendar-alt',
-					'sm_feature_activated_by_default' => 0,
-					'sm_feature_activation_model' => '\Numbers\Users\Users\Data\Features\Scheduling',
-					'sm_feature_inactive' => 0,
-					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => [
-						[
-							'sm_mdldep_child_module_code' => 'ON',
-							'sm_mdldep_child_feature_code' => 'ON::ORGANIZATIONS'
-						],
-						[
-							'sm_mdldep_child_module_code' => 'UM',
-							'sm_mdldep_child_feature_code' => 'UM::USERS'
-						]
-					]
-				],
-				[
-					'sm_feature_module_code' => 'UM',
-					'sm_feature_code' => 'UM::DATA_CA_ON_HOLIDAYS',
-					'sm_feature_type' => 30,
-					'sm_feature_name' => 'U/M 2018 Canada Ontario Holidays',
-					'sm_feature_icon' => 'fas fa-database',
-					'sm_feature_activation_model' => '\Numbers\Users\Users\Data\Features\Holidays\CanadaOntario2018',
-					'sm_feature_activated_by_default' => 0,
-					'sm_feature_inactive' => 0,
-					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => [
-						[
-							'sm_mdldep_child_module_code' => 'UM',
-							'sm_mdldep_child_feature_code' => 'UM::SCHEDULING'
-						]
-					]
-				]
 			]
 		]
 	];

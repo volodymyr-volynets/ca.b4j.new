@@ -30,6 +30,9 @@ class Resources {
 		'menu' => [
 			'primary' => [
 				'datasource' => '\Numbers\Users\Users\DataSource\ACL\Menu\Permissions'
+			],
+			'usage' => [
+				'datasource' => '\Numbers\Users\Users\DataSource\ACL\Menu'
 			]
 		],
 		'user_roles' => [

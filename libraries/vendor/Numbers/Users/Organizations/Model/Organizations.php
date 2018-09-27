@@ -63,10 +63,6 @@ class Organizations extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = false;
 
-	public $relation = [
-		'field' => 'on_organization_id',
-	];
-
 	public $who = [
 		'inserted' => true
 	];

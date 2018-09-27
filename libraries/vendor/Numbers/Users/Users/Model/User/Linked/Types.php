@@ -14,5 +14,6 @@ class Types extends \Object\Data {
 	public $data = [
 		'AR_CUSTOMERS' => ['um_usrlinktype_name' => 'A/R Customers'],
 		'AP_VENDORS' => ['um_usrlinktype_name' => 'A/P Vendors'],
+		// todo: move it to proper modules
 	];
 }

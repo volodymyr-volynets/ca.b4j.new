@@ -116,10 +116,6 @@ class Locations extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = false;
 
-	public $relation = [
-		'field' => 'on_location_id',
-	];
-
 	public $who = [
 		'inserted' => true
 	];

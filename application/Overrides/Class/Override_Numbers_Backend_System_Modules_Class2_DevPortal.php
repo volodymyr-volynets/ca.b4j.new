@@ -13,12 +13,6 @@ $object_override_blank_object = Object\Override\Blank::__set_state(array(
           'name' => 'Tenant Registration',
           'icon' => 'fas fa-pencil-alt',
         ),
-        'Task Scheduler' => 
-        array (
-          'url' => '/Numbers/Users/TaskScheduler/Controller/External/CronDaemon',
-          'name' => 'Task Scheduler',
-          'icon' => 'far fa-sun',
-        ),
         'Font Awesome Icons' => 
         array (
           'url' => '/Numbers/Frontend/HTML/FontAwesome/Controller/Icons',

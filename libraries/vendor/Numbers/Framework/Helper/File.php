@@ -8,7 +8,7 @@ class File {
 
 	/**
 	 * Write content to file and sets permissions
-	 * 
+	 *
 	 * @param string $filename
 	 * @param mixed $data
 	 * @param int $permission
@@ -32,7 +32,7 @@ class File {
 
 	/**
 	 * Read file
-	 * 
+	 *
 	 * @param string $filename
 	 * @return string|boolean false
 	 */
@@ -53,7 +53,7 @@ class File {
 
 	/**
 	 * Delete file/directory
-	 * 
+	 *
 	 * @param string $dir
 	 * @param arary $options
 	 *		only_contents - whether to remove directory contents only
@@ -94,10 +94,13 @@ class File {
 	 * @param array $options
 	 *		boolean recursive
 	 *		array only_extensions
+	 *		array only_files
+	 *		boolean extended
 	 * @return array
 	 */
-	public static function iterate($dir, $options = []) {
+	public static function iterate(string $dir, array $options = []) : array {
 		$result = [];
+		$relative_path = realpath($dir);
 		if (empty($options['recursive'])) {
 			$iterator = new \DirectoryIterator($dir);
 		} else {
@@ -120,9 +123,42 @@ class File {
 			if (!empty($options['only_files']) && !in_array($filename, $options['only_files'])) {
 				continue;
 			}
-			$result[] = $v->getPathname();
+			if (empty($options['extended'])) {
+				$result[] = $v->getPathname();
+			} else {
+				$pathname = $v->getPathname();
+				$result[$pathname] = [
+					'pathname' => $pathname,
+					'access' => $v->getATime(),
+					'modified' => $v->getMTime(),
+					'permissions' => $v->getPerms(),
+					'size' => $v->getSize(),
+					'type' => $v->getType(),
+					'directory' => $v->getPath(),
+					'basename' => $v->getBasename(),
+					'filename' => $v->getFilename(),
+					'relative_directory' => self::iterateProcessPathInnerHelper($v->getPath(), $relative_path),
+				];
+			}
 		}
 		return $result;
+	}
+
+	/**
+	 * Function to remove absolute path
+	 *
+	 * @param string $dir
+	 * @param string $relative_path
+	 * @return string
+	 */
+	private static function iterateProcessPathInnerHelper(string $dir, string $relative_path) {
+		if ($relative_path == '') {
+			return $dir;
+		} else {
+			$dir = trim2($dir, '^' . $relative_path, '');
+			$dir = ltrim($dir, DIRECTORY_SEPARATOR);
+			return $dir;
+		}
 	}
 
 	/**
@@ -170,5 +206,24 @@ class File {
 		} else {
 			return chmod($dir_or_file, $permission);
 		}
+	}
+
+	/**
+	 * Replace string in a file
+	 *
+	 * @param string $filename
+	 * @param string $find
+	 * @param string $replace
+	 * @return bool
+	 */
+	public static function replace(string $filename, string $find, string $replace) : bool {
+		if (!file_exists($filename)) return false;
+		$lines = file($filename, FILE_IGNORE_NEW_LINES);
+		foreach ($lines as $k => $v) {
+			if (stripos($v, $find) !== false) {
+				$lines[$k] = $replace;
+			}
+		}
+		return self::write($filename, implode("\n", $lines));
 	}
 }

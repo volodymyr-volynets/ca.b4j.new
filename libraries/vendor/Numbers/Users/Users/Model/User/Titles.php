@@ -39,10 +39,6 @@ class Titles extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = false;
 
-	public $relation = [
-		'field' => 'um_usrtitle_relation_id',
-	];
-
 	public $data_asset = [
 		'classification' => 'client_confidential',
 		'protection' => 2,

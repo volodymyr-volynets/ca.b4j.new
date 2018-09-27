@@ -1,0 +1,107 @@
+<section class="change_log_version" id="2.0.6">
+	<h3>Version 2.0.6 by Volodymyr Volynets</h3>
+	<b><time class="change_log_date_commit" datetime="2018-09-24">2018-09-24</time></b>
+	<div class="change_log_changes">
+		<ul><li>Change Log<ul><li>	Bug #1027 (Updated change log.)</li></ul></li><li>Advertising Module<ul><li>	Other #1023 (Removed from Users repository.)</li></ul></li><li>News Module<ul><li>	Other #1022 (Removed from Users repository.)</li></ul></li><li>Organizations Module<ul><li>	Bug #1028 (Removed workflow helpers.)</li></ul></li><li>Users Module<ul><li>	Other #1029 (Removed assignments.)</li></ul></li></ul>
+	</div>
+	<pre class="change_log_affected_files">
+Repository / Git:
+	Name: Numbers\Users
+	Title: Users Repository
+	Version: 2.0.5
+	Last Tag: 2.0.5
+	User Name: Volodymyr Volynets
+	User Email: volodymyr.volynets@gmail.com
+Statistics:
+	Addition: 41
+	Deletion: 6917
+Modules:
+	Change Log (Numbers\ChangeLog, 1.0.5)                                                     |    13    3
+		   12    2	 | .numbers/Framework/Manager.php
+		    1    1	 | .numbers/module.ini
+	Users Repository (Numbers\Users, 2.0.5)                                                   |     0 2755
+		    0   24	 | Advertising/Controller/AdCodes.php
+		    0   24	 | Advertising/Controller/Categories.php
+		    0   24	 | Advertising/Controller/Promocodes.php
+		    0   54	 | Advertising/Data/Import.php
+		    0  376	 | Advertising/Data/System.php
+		    0  100	 | Advertising/Form/AdCodes.php
+		    0   43	 | Advertising/Form/Categories.php
+		    0   76	 | Advertising/Form/List2/AdCodes.php
+		    0   76	 | Advertising/Form/List2/Categories.php
+		    0   76	 | Advertising/Form/List2/Promocodes.php
+		    0  124	 | Advertising/Form/Promocodes.php
+		    0   57	 | Advertising/Model/AdCode/Locations.php
+		    0   79	 | Advertising/Model/AdCodes.php
+		    0   58	 | Advertising/Model/Categories.php
+		    0   57	 | Advertising/Model/Promocode/Locations.php
+		    0   86	 | Advertising/Model/Promocodes.php
+		    0   33	 | Advertising/module.ini
+		    0   24	 | News/Controller/Categories.php
+		    0   24	 | News/Controller/News.php
+		    0   99	 | News/Controller/Preview.php
+		    0   58	 | News/Data/Import.php
+		    0  332	 | News/Data/System.php
+		    0  115	 | News/DataSource/News.php
+		    0   43	 | News/Form/Categories.php
+		    0   76	 | News/Form/List2/Categories.php
+		    0   83	 | News/Form/List2/News.php
+		    0  128	 | News/Form/News.php
+		    0   60	 | News/Helper/Dashboard.php
+		    0   56	 | News/Model/Categories.php
+		    0   74	 | News/Model/News.php
+		    0   57	 | News/Model/News/Organizations.php
+		    0   57	 | News/Model/News/Roles.php
+		    0   53	 | News/Model/News/Users.php
+		    0   16	 | News/Override/ACL/Resources.php
+		    0   33	 | News/module.ini
+	O/N Organization Management (Numbers\Users\Organizations, 1.0.2)                          |     1  902
+		    0   19	 | Organizations/Helper/ClearModule/ClearServiceScripts.php
+		    0   71	 | Organizations/Helper/ClearModule/ClearWorkflows.php
+		    0  390	 | Organizations/Helper/ServiceScript/Helper.php
+		    0  417	 | Organizations/Helper/Workflow/Helper.php
+		    1    5	 | Organizations/Model/Location/Territories.php
+	U/M User Management (Numbers\Users\Users, 1.0.4)                                          |    27 3257
+		    0   24	 | Users/Controller/Assignment/Types.php
+		    0   11	 | Users/Controller/Queues.php
+		    0  186	 | Users/Data/System.php
+		    0  178	 | Users/DataSource/Assignment/Locations.php
+		    0  230	 | Users/DataSource/Assignment/ServiceProviders.php
+		    0   50	 | Users/DataSource/Role/Assignments.php
+		    0   95	 | Users/DataSource/Role/Manages.php
+		    0   45	 | Users/Form/Assignment/Types.php
+		    0   75	 | Users/Form/List2/Assignment/Types.php
+		    0   96	 | Users/Form/Owner/Collection.php
+		    0  141	 | Users/Form/Owner/ExistingOwners.php
+		    0   52	 | Users/Form/Owner/NewOwners.php
+		    0   77	 | Users/Form/Report/Security/RoleSetupReport.php
+		   18   62	 | Users/Form/Roles.php
+		    0  473	 | Users/Form/Users.php
+		    2   12	 | Users/Helper/Dashboard/Dashboard.php
+		    0   74	 | Users/Model/Owner/Users.php
+		    0   78	 | Users/Model/Queue/Priorities.php
+		    0   54	 | Users/Model/Queues.php
+		    0    6	 | Users/Model/Role/Assignment/Reverse.php
+		    0   65	 | Users/Model/Role/Assignments.php
+		    1    6	 | Users/Model/Role/Manages.php
+		    0   82	 | Users/Model/User/Assignment/GeoAreas.php
+		    0   86	 | Users/Model/User/Assignment/Location/Map.php
+		    0   71	 | Users/Model/User/Assignment/Locations.php
+		    0  101	 | Users/Model/User/Assignment/PostalCode/Actuals.php
+		    0  110	 | Users/Model/User/Assignment/PostalCode/Details.php
+		    0   79	 | Users/Model/User/Assignment/PostalCodes.php
+		    0   64	 | Users/Model/User/Assignment/Queues.php
+		    0    6	 | Users/Model/User/Assignment/Reverse.php
+		    0   71	 | Users/Model/User/Assignment/Territories.php
+		    0  104	 | Users/Model/User/Assignment/Territory/County/Details.php
+		    0   78	 | Users/Model/User/Assignment/Territory/Map.php
+		    0  116	 | Users/Model/User/Assignment/Territory/PostalCode/Details.php
+		    0   87	 | Users/Model/User/Assignment/Types.php
+		    0    6	 | Users/Model/User/Assignment/Virtual.php
+		    0    6	 | Users/Model/User/Assignment/Virtual/Reverse.php
+		    0   62	 | Users/Model/User/Assignments.php
+		    1    6	 | Users/Model/Users.php
+		    0   10	 | Users/Override/Countries/PostalCodes.php
+		    5   22	 | Users/module.ini
+	</pre>
+</section>

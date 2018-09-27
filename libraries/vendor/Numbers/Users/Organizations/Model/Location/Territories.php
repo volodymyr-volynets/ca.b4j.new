@@ -70,11 +70,7 @@ class Territories extends \Object\Table {
 		'scope' => 'enterprise'
 	];
 
-	public $triggers = [
-		'update_postal_codes' => '\Numbers\Users\Organizations\Model\Location\Territory\PostalCodes::triggerUpdatePostalCodesFromTerritory',
-		'update_territory_postal_details' => '\Numbers\Users\Users\Model\User\Assignment\Territory\PostalCode\Details::triggerUpdateDetails',
-		'update_territory_county_details' => '\Numbers\Users\Users\Model\User\Assignment\Territory\County\Details::triggerUpdateDetails'
-	];
+	public $triggers = [];
 
 	/**
 	 * @see $this->options()

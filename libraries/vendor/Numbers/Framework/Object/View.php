@@ -1,7 +1,7 @@
 <?php
 
 namespace Object;
-abstract class View {
+abstract class View extends \Object\Table\Options {
 
 	/**
 	 * Include common trait
@@ -23,6 +23,13 @@ abstract class View {
 	public $db_link_flag;
 
 	/**
+	 * Module code
+	 *
+	 * @var string
+	 */
+	public $module_code;
+
+	/**
 	 * Schema
 	 *
 	 * @var string
@@ -30,7 +37,7 @@ abstract class View {
 	public $schema;
 
 	/**
-	 * Function name
+	 * Name
 	 *
 	 * @var string
 	 */
@@ -39,7 +46,7 @@ abstract class View {
 	/**
 	 * Backend
 	 *
-	 * @var string
+	 * @var string|array
 	 */
 	public $backend;
 
@@ -49,6 +56,13 @@ abstract class View {
 	 * @var string
 	 */
 	public $full_view_name;
+
+	/**
+	 * Table primary key in format ['id1'] or ['id1', 'id2', 'id3']
+	 *
+	 * @var array
+	 */
+	public $pk;
 
 	/**
 	 * Definition
@@ -72,13 +86,6 @@ abstract class View {
 	public $query;
 
 	/**
-	 * Tenant
-	 *
-	 * @var int
-	 */
-	public $tenant;
-
-	/**
 	 * Column prefix
 	 *
 	 * @var string
@@ -91,6 +98,48 @@ abstract class View {
 	 * @var string
 	 */
 	public $sql_version;
+
+	/**
+	 * SQL last query
+	 *
+	 * @var string
+	 */
+	public $sql_last_query;
+
+	/**
+	 * Whether we need to cache this table
+	 *
+	 * @var bool
+	 */
+	public $cache = false;
+
+	/**
+	 * These tags will be added to caches and then will be used in cache::gc();
+	 *
+	 * @var type
+	 */
+	public $cache_tags = [];
+
+	/**
+	 * Whether we need to cache in memory
+	 *
+	 * @var bool
+	 */
+	public $cache_memory = false;
+
+	/**
+	 * Tenant
+	 *
+	 * @var boolean
+	 */
+	public $tenant = false;
+
+	/**
+	 * Tenant column
+	 *
+	 * @var string
+	 */
+	public $tenant_column;
 
 	/**
 	 * Constructing object
@@ -110,7 +159,7 @@ abstract class View {
 			}
 			// if we could not determine the link we throw exception
 			if (empty($this->db_link)) {
-				Throw new \Exception('Could not determine db link in trigger!');
+				Throw new \Exception('Could not determine db link in view!');
 			}
 		}
 		// SQL version
@@ -129,13 +178,17 @@ abstract class View {
 				$this->schema = '';
 			}
 		}
+		// tenant column
+		if ($this->tenant) {
+			$this->tenant_column = $this->column_prefix . 'tenant_id';
+		}
+		// cache tags
+		$this->cache_tags[] = $this->full_view_name;
+		if ($this->tenant) $this->cache_tags[] = '+numbers_tenant_' . \Tenant::id();
 		// initialize query object
 		$this->query = new \Object\Query\Builder($this->db_link);
+		$this->query->select();
 		$this->definition();
-		// for view we need to inject SQL version
-		$this->query->columns([
-			'sql_version' => '\'[[[SQL Version: ' . $this->sql_version . ']]]\''
-		]);
 		$this->definition = $this->query->sql();
 		$this->grant_tables = array_values($this->query->data['from']);
 	}

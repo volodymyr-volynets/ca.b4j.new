@@ -64,16 +64,6 @@ class Dashboard extends \Numbers\Users\Users\Helper\Dashboard\Builder {
 		],
 		3 => [
 			1 => [
-				'name' => 'Assignment Types',
-				'icon' => 'fas fa-link',
-				'acl' => [
-					'resource_id' => '\Numbers\Users\Users\Controller\Assignment\Types',
-					'method_code' => 'Index',
-					'action_id' => 'List_View'
-				],
-				'url' => '/Numbers/Users/Users/Controller/Assignment/Types'
-			],
-			2 => [
 				'name' => 'Groups',
 				'icon' => 'far fa-object-group',
 				'acl' => [
@@ -83,7 +73,7 @@ class Dashboard extends \Numbers\Users\Users\Helper\Dashboard\Builder {
 				],
 				'url' => '/Numbers/Users/Users/Controller/Groups'
 			],
-			3 => [
+			2 => [
 				'name' => 'User Roles',
 				'icon' => 'far fa-user-circle',
 				'acl' => [
@@ -93,7 +83,7 @@ class Dashboard extends \Numbers\Users\Users\Helper\Dashboard\Builder {
 				],
 				'url' => '/Numbers/Users/Users/Controller/Roles'
 			],
-			4 => [
+			3 => [
 				'name' => 'Titles',
 				'icon' => 'fas fa-blind',
 				'acl' => [

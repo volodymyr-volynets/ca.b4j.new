@@ -153,7 +153,7 @@ class Login extends \Object\DataSource {
 		if (!empty($parameters['user_id'])) {
 			$this->query->where('AND', ['a.um_user_id', '=', (int) $parameters['user_id']]);
 		} else {
-			$parameters['username'] = strtolower($parameters['username'] . '');
+			$parameters['username'] = trim(strtolower($parameters['username'] . ''));
 			if (strpos($parameters['username'], '@') !== false) {
 				$this->query->where('AND', ['a.um_user_email', '=', $parameters['username']]);
 			} else if (is_numeric($parameters['username'])) {

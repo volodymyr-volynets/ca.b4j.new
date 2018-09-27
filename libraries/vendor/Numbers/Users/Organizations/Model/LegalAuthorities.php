@@ -47,10 +47,6 @@ class LegalAuthorities extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = false;
 
-	public $relation = [
-		'field' => 'on_authority_id',
-	];
-
 	public $addresses = [
 		'map' => [
 			'on_authority_tenant_id' => 'wg_address_tenant_id',

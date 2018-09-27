@@ -161,8 +161,8 @@ class Step3 extends \Object\Form\Wrapper\Base {
 				$form->error('danger', $error_message);
 				break;
 			}
-			// step 8 activate tenants, organizations and users modules
-			foreach (['SM', 'TM', 'ON', 'CM', 'IN', 'UM'] as $v) {
+			// step 8 activate tenants, organizations, users modules and other modules
+			foreach (['SM', 'AN', 'TM', 'ON', 'CM', 'IN', 'UM'] as $v) {
 				$module_activation_result = \Numbers\Tenants\Tenants\Model\Activation::activateModule($v, null);
 				if (!$module_activation_result['success']) {
 					$form->error('danger', $error_message);

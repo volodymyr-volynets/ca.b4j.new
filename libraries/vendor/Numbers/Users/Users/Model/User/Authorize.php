@@ -39,7 +39,7 @@ class Authorize {
 				];
 			}
 			// authorize entity if we got here
-			unset($user['login_password']);
+			unset($user['login_password'], $_SESSION['numbers']['flag_monitoring_steps']);
 			\User::userAuthorize($user);
 			// success
 			$result['success'] = true;

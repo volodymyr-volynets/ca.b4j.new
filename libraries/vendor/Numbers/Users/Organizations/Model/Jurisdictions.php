@@ -46,10 +46,6 @@ class Jurisdictions extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = false;
 
-	public $relation = [
-		'field' => 'on_jurisdiction_id',
-	];
-
 	public $data_asset = [
 		'classification' => 'client_confidential',
 		'protection' => 2,

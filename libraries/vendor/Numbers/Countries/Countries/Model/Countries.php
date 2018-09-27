@@ -54,10 +54,6 @@ class Countries extends \Object\Table {
 	public $cache_tags = [];
 	public $cache_memory = true;
 
-	public $relation = [
-		'field' => 'cm_country_code',
-	];
-
 	public $data_asset = [
 		'classification' => 'public',
 		'protection' => 0,

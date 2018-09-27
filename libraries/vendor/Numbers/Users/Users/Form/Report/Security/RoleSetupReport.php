@@ -117,16 +117,6 @@ class RoleSetupReport extends \Object\Form\Wrapper\Report {
 		[
 			'skip_rendering' => true
 		]);
-		$report->addHeader(DEF, 'assignments', [
-			'blank' => ['label_name' => '', 'percent' => 10],
-			'name' => ['label_name' => 'Assignments:', 'percent' => 20],
-			'assignment_name' => ['label_name' => 'Assignment Name', 'percent' => 25],
-			'mandatory' => ['label_name' => 'Mandatory', 'percent' => 25],
-			'blank2' => ['label_name' => ' ', 'percent' => 20],
-		],
-		[
-			'skip_rendering' => true
-		]);
 		$report->addHeader(DEF, 'manages1', [
 			'blank' => ['label_name' => '', 'percent' => 10],
 			'name' => ['label_name' => 'Manages:', 'percent' => 20],
@@ -164,7 +154,6 @@ class RoleSetupReport extends \Object\Form\Wrapper\Report {
 			'inherits' => 'c.inherits',
 			'permissions' => 'd.permissions',
 			'notifications' => 'e.notifications',
-			'assignments' => 'f.assignments'
 		]);
 		// join organizations
 		$query->join('LEFT', function (& $query) {
@@ -224,27 +213,6 @@ class RoleSetupReport extends \Object\Form\Wrapper\Report {
 		}, 'e', 'ON', [
 			['AND', ['a.um_role_id', '=', 'e.um_rolnoti_role_id', true], false]
 		]);
-		// join assignments
-		$query->join('LEFT', function (& $query) {
-			$query = \Numbers\Users\Users\Model\Role\Assignments::queryBuilderStatic(['alias' => 'inner_a'])->select();
-			$query->columns([
-				'role_id' => 'inner_a.um_rolassign_parent_role_id',
-				'assignments' => $query->db_object->sqlHelper('string_agg', ['expression' => "concat_ws('::', inner_a.um_rolassign_assignment_code, inner_a.um_rolassign_mandatory)", 'delimiter' => ';;'])
-			]);
-			$query->groupby(['inner_a.um_rolassign_parent_role_id']);
-			$query->where('AND', ['inner_a.um_rolassign_inactive', '=', 0]);
-			$query->union('UNION ALL', function (& $query) {
-				$query = \Numbers\Users\Users\Model\Role\Assignments::queryBuilderStatic(['alias' => 'union_a'])->select();
-				$query->columns([
-					'role_id' => 'union_a.um_rolassign_child_role_id',
-					'assignments' => $query->db_object->sqlHelper('string_agg', ['expression' => "concat_ws('::', union_a.um_rolassign_assignment_code, union_a.um_rolassign_mandatory)", 'delimiter' => ';;'])
-				]);
-				$query->groupby(['union_a.um_rolassign_child_role_id']);
-				$query->where('AND', ['union_a.um_rolassign_inactive', '=', 0]);
-			});
-		}, 'f', 'ON', [
-			['AND', ['a.um_role_id', '=', 'f.role_id', true], false]
-		]);
 		$form->processReportQueryFilter($query);
 		$form->processReportQueryOrderBy($query);
 		$data = $query->query(null, ['cache' => false]);
@@ -257,8 +225,6 @@ class RoleSetupReport extends \Object\Form\Wrapper\Report {
 		$resources= \Numbers\Backend\System\Modules\Model\Resources::optionsStatic(['i18n' => true]);
 		$actions = \Numbers\Backend\System\Modules\Model\Resource\Actions::optionsStatic(['i18n' => true]);
 		$features = \Numbers\Backend\System\Modules\Model\Module\Features::optionsStatic(['i18n' => true]);
-		$assignments = \Numbers\Users\Users\Model\User\Assignment\Types::optionsStatic(['i18n' => true]);
-		$manages = \Numbers\Users\Users\Model\Role\Manages::getStatic(['pk' => ['um_rolman_parent_role_id', 'um_rolman_child_role_id']]);
 		$view_user_types = \Numbers\Users\Users\Model\Role\Manage\ViewUsersTypes::optionsStatic(['i18n' => true]);
 		// add data to report
 		$counter = 1;
@@ -343,55 +309,10 @@ class RoleSetupReport extends \Object\Form\Wrapper\Report {
 					$counter2++;
 				}
 			}
-			// assignments
-			if (!empty($v['assignments'])) {
-				$report->addData(DEF, 'separator', $even, ['blank' => ' ']);
-				$report->addData(DEF, 'assignments', $even, $report->getHeaderForRender(DEF, 'assignments'));
-				$temp = explode(';;', $v['assignments']);
-				$counter2 = $even + 1;
-				foreach ($temp as $v0) {
-					$temp2 = explode('::', $v0);
-					$report->addData(DEF, 'assignments', $even, [
-						'assignment_name' => $assignments[$temp2[0]]['name'],
-						'mandatory' => \Object\Content\Messages::active($temp2[1]),
-						'blank2' => ' '
-					], [
-						'cell_even' => $counter2 % 2 ? ODD : EVEN
-					]);
-					$counter2++;
-				}
-			}
-			// manages
-			if (!empty($manages[$role_id])) {
-				$report->addData(DEF, 'separator', $even, ['blank' => ' ']);
-				$report->addData(DEF, 'manages1', $even, $report->getHeaderForRender(DEF, 'manages1'));
-				$report->addData(DEF, 'manages2', $even, $report->getHeaderForRender(DEF, 'manages2'));
-				$counter2 = $even + 1;
-				foreach ($manages[$role_id] as $k0 => $v0) {
-					$report->addData(DEF, 'manages1', $even, [
-						'role_name' => $roles[$k0]['name'],
-						'um_rolman_view_users_type_id' => $view_user_types[$v0['um_rolman_view_users_type_id']]['name'],
-						'um_rolman_manage_children' => \Object\Content\Messages::active($v0['um_rolman_manage_children']),
-						'um_rolman_assignment_code' => $assignments[$v0['um_rolman_assignment_code']]['name'] ?? ' ',
-					], [
-						'cell_even' => $counter2 % 2 ? ODD : EVEN
-					]);
-					$report->addData(DEF, 'manages2', $even, [
-						'um_rolman_assign_roles' => \Object\Content\Messages::active($v0['um_rolman_assign_roles']),
-						'um_rolman_reset_password' => \Object\Content\Messages::active($v0['um_rolman_reset_password']),
-						'blank2' => ' '
-					], [
-						'cell_even' => $counter2 % 2 ? ODD : EVEN
-					]);
-					$counter2++;
-				}
-			}
 			$counter++;
 		}
-		$report->addSeparator(DEF);
 		// add number of rows
-		$rows = count($data['rows']);
-		$report->addLegend(DEF, i18n(null, \Object\Content\Messages::REPORT_ROWS_NUMBER, ['replace' => ['[Number]' => \Format::id($rows)]]));
+		$report->addNumberOfRows(DEF, count($data['rows']));
 		// free up memory
 		unset($data);
 		// we must return report object

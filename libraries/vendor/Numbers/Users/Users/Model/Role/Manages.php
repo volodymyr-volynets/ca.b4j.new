@@ -22,6 +22,7 @@ class Manages extends \Object\Table {
 		'um_rolman_view_users_type_id' => ['name' => 'View Users', 'domain' => 'type_id', 'default' =>0, 'options_model' => '\Numbers\Users\Users\Model\Role\Manage\ViewUsersTypes'],
 		'um_rolman_assign_roles' => ['name' => 'Assign Roles', 'type' => 'boolean'],
 		'um_rolman_reset_password' => ['name' => 'Reset Password', 'type' => 'boolean'],
+		// todo - refactor here
 		'um_rolman_assignment_code' => ['name' => 'Assignment Code', 'domain' => 'type_code', 'null' => true],
 		'um_rolman_manage_children' => ['name' => 'Manage Children', 'type' => 'boolean'],
 		'um_rolman_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
@@ -40,12 +41,6 @@ class Manages extends \Object\Table {
 			'foreign_model' => '\Numbers\Users\Users\Model\Roles',
 			'foreign_columns' => ['um_role_tenant_id', 'um_role_id']
 		],
-		'um_rolman_assignment_code_fk' => [
-			'type' => 'fk',
-			'columns' => ['um_rolman_tenant_id', 'um_rolman_assignment_code', 'um_rolman_parent_role_id', 'um_rolman_child_role_id'],
-			'foreign_model' => '\Numbers\Users\Users\Model\User\Assignment\Types',
-			'foreign_columns' => ['um_assigntype_tenant_id', 'um_assigntype_code', 'um_assigntype_parent_role_id', 'um_assigntype_child_role_id']
-		]
 	];
 	public $indexes = [];
 	public $history = false;

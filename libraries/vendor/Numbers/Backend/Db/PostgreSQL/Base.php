@@ -415,7 +415,7 @@ class Base extends \Numbers\Backend\Db\Common\Base implements \Numbers\Backend\D
 			case 'fetch_tables':
 				$result = <<<TTT
 					SELECT
-						CASE WHEN schemaname = 'public' THEN '' ELSE schemaname END schema_name,
+						schemaname schema_name,
 						tablename table_name
 					FROM pg_tables a
 					WHERE 1=1
@@ -714,8 +714,16 @@ TTT;
 					$sql.= "TRUNCATE TABLE " . current($object->data['from']);
 				}
 				break;
+			case 'check':
+				// where
+				if (empty($object->data['where'])) {
+					$result['error'][] = 'Where?';
+				} else {
+					$where = str_replace($this->check_constraint_column_prefix, '', $object->renderWhere($object->data['where']));
+					$sql.= '(' . $where . ')';
+				}
+				break;
 			case 'select':
-			default:
 				// temporary table first
 				if (!empty($object->data['temporary_table'])) {
 					$sql.= "CREATE TEMP TABLE {$object->data['temporary_table']} AS\n";
@@ -808,6 +816,8 @@ TTT;
 						$sql.= $v['select'];
 					}
 				}
+			default:
+				/* nothing */
 		}
 		// final processing
 		if (empty($result['error'])) {

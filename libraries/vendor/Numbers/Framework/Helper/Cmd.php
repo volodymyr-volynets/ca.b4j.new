@@ -11,6 +11,7 @@ class Cmd {
 	 *
 	 * @param string $message
 	 * @param array $options
+	 *		boolean suppress_echo
 	 * @return boolean
 	 */
 	public static function confirm($message, $options = []) {
@@ -21,10 +22,14 @@ class Cmd {
 		$line = fgets(STDIN);
 		$line = strtolower(trim($line));
 		if (!($line == 'y' || $line == 'yes')) {
-			echo self::colorString("\nAborted...\n\n", $options['text_color'], $options['background_color'], $options['bold']);
+			if (empty($options['suppress_echo'])) {
+				echo self::colorString("\nAborted...\n\n", $options['text_color'], $options['background_color'], $options['bold']);
+			}
 			return false;
 		} else {
-			echo "\n";
+			if (empty($options['suppress_echo'])) {
+				echo "\n";
+			}
 			return true;
 		}
 	}
@@ -34,14 +39,31 @@ class Cmd {
 	 *
 	 * @param string $message
 	 * @param array $options
+	 *		boolean mandatory
+	 *		array only_these
+	 *		boolean bold
+	 *		string background_color
+	 *		string text_color
 	 * @return string
 	 */
 	public static function ask($message, $options = []) {
 		$options['text_color'] = $options['text_color'] ?? 'green';
 		$options['background_color'] = $options['background_color'] ?? null;
 		$options['bold'] = $options['bold'] ?? true;
+reask:
 		echo "\n" . self::colorString($message, $options['text_color'], $options['background_color'], $options['bold']) . ": ";
-		return trim(fgets(STDIN));
+		$result = trim(fgets(STDIN));
+		if (!empty($options['function'])) {
+			$result = $options['function']($result);
+		}
+		if (!empty($options['mandatory'])) {
+			if (empty($result)) goto reask;
+		}
+		if (!empty($options['only_these'])) {
+			if (!is_array($options['only_these'])) $options['only_these'] = [$options['only_these']];
+			if (!in_array($result, $options['only_these'])) goto reask;
+		}
+		return $result;
 	}
 
 	/**
@@ -86,6 +108,7 @@ class Cmd {
 	 * @param string $string
 	 * @param string $text_color
 	 * @param string $background_color
+	 * @param boolean $bold
 	 * @return string
 	 */
 	public static function colorString($string, $text_color = null, $background_color = null, $bold = false) {
@@ -127,5 +150,40 @@ class Cmd {
 		$left = 100 - $percent;
 		$write = sprintf("\033[0G\033[2K[%'={$percent}s>%-{$left}s] - $percent%% - $done/$total - $description", "", "");
 		fwrite(STDERR, $write);
+	}
+
+	/**
+	 * Execute command
+	 *
+	 * @param string $command
+	 * @return array
+	 */
+	public static function executeCommand(string $command) : array {
+		$result = [
+		    'success' => false,
+		    'error' => [],
+		    'data' => null
+		];
+		$escaped_command = escapeshellcmd($command);
+		$temp = null;
+		exec("{$escaped_command} 2>&1", $result['data'], $temp);
+		if (empty($temp)) {
+			$result['success'] = true;
+		} else {
+			$result['error'][] = 'Cmd error occured, status = ' . $temp;
+		}
+		return $result;
+	}
+
+	/**
+	 * Echo message
+	 *
+	 * @param string $string
+	 * @param string $text_color
+	 * @param string $background_color
+	 * @param boolean $bold
+	 */
+	public static function message($string, $text_color = null, $background_color = null, $bold = false) {
+		echo "\n" . \Helper\Cmd::colorString($string, $text_color, $background_color, $bold) . "\n";
 	}
 }
