@@ -7,22 +7,22 @@ class Assignments extends \Object\Table {
 	public $module_code = 'TM';
 	public $title = 'T/M Assignments';
 	public $name = 'tm_assignments';
-	public $pk = ['tm_assignment_id'];
-	public $tenant = false;
+	public $pk = ['tm_assignment_tenant_id' , 'tm_assignment_id'];
+	public $tenant = true;
+	public $module;
 	public $orderby;
 	public $limit;
 	public $column_prefix = 'tm_assignment_';
 	public $columns = [
-		'tm_assignment_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id_sequence'],
-		'tm_assignment_code' => ['name' => 'Code', 'domain' => 'domain_part'],
+		'tm_assignment_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
+		'tm_assignment_id' => ['name' => 'Assignment #', 'domain' => 'assignment_id_sequence'],
+		'tm_assignment_code' => ['name' => 'Code', 'domain' => 'group_code'],
 		'tm_assignment_name' => ['name' => 'Name', 'domain' => 'name'],
-		'tm_assignment_email' => ['name' => 'Primary Email', 'domain' => 'email', 'null' => true],
-		'tm_assignment_phone' => ['name' => 'Primary Phone', 'domain' => 'phone', 'null' => true],
 		'tm_assignment_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
-		'tm_assignments_pk' => ['type' => 'pk', 'columns' => ['tm_assignment_id']],
-		'tm_assignment_code_un' => ['type' => 'unique', 'columns' => ['tm_assignment_code']],
+		'tm_assignments_pk' => ['type' => 'pk', 'columns' => ['tm_assignment_tenant_id', 'tm_assignment_id']],
+		'tm_assignment_code_un' => ['type' => 'unique', 'columns' => ['tm_assignment_tenant_id', 'tm_assignment_code']],
 	];
 	public $indexes = [
 		'tm_assignments_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['tm_assignment_code', 'tm_assignment_name']]
@@ -47,8 +47,8 @@ class Assignments extends \Object\Table {
 	public $cache_memory = false;
 
 	public $data_asset = [
-		'classification' => 'proprietary',
-		'protection' => 1,
-		'scope' => 'global'
+		'classification' => 'client_confidential',
+		'protection' => 2,
+		'scope' => 'enterprise'
 	];
 }

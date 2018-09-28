@@ -2,13 +2,13 @@
     "require": {
         "phpmailer\/phpmailer": "v6.0.5",
         "tecnickcom\/tcpdf": "6.2.13",
-        "numbers\/framework": "2.0.8",
+        "numbers\/framework": "2.0.9",
         "numbers\/backend": "2.0.9",
         "numbers\/frontend": "2.0.3",
-        "numbers\/tenants": "2.0.2",
-        "numbers\/countries": "2.0.2",
+        "numbers\/tenants": "2.0.3",
+        "numbers\/countries": "2.0.3",
         "numbers\/internalization": "2.0.2",
-        "numbers\/users": "2.0.7",
+        "numbers\/users": "2.0.9",
         "oomphinc\/composer-installers-extender": "~1.0"
     },
     "extra": {
