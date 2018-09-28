@@ -83,20 +83,38 @@ class Internalization extends \Object\Import {
 				'method' => 'save_insert_new'
 			],
 			'data' => [
-				'b4_period_tenant_id' => null,
-				//'b4_period_id' => null,
-				'b4_period_code' => 'B4J2019',
-				'b4_period_name' => 'B4J 2019',
-				'b4_period_start_date' => '2018-11-11 14:00:00',
-				'b4_period_end_date' => '2018-12-11 14:00:00',
-				'b4_period_camp_start_date' => '2019-03-10 17:00:00',
-				'b4_period_camp_end_date' => '2019-03-16 10:00:00',
-				'b4_period_training_start_date' => '2019-03-09',
-				'b4_period_training_end_date' => '2019-03-16',
-				'b4_period_training_submit_date' => '2018-11-15',
-				'b4_period_training_notification_date' => '2018-12-15',
-				'b4_period_current' => '1',
-				'b4_period_inactive' => 0
+				[
+					'b4_period_tenant_id' => null,
+					//'b4_period_id' => null,
+					'b4_period_code' => 'B4JTEST',
+					'b4_period_name' => 'B4J Test',
+					'b4_period_start_date' => '2018-01-11 8:00:00',
+					'b4_period_end_date' => '2018-12-31 23:00:00',
+					'b4_period_camp_start_date' => '2019-03-10 17:00:00',
+					'b4_period_camp_end_date' => '2019-03-16 10:00:00',
+					'b4_period_training_start_date' => '2019-03-09',
+					'b4_period_training_end_date' => '2019-03-16',
+					'b4_period_training_submit_date' => '2018-11-15',
+					'b4_period_training_notification_date' => '2018-12-15',
+					'b4_period_current' => null,
+					'b4_period_inactive' => 0
+				],
+				[
+					'b4_period_tenant_id' => null,
+					//'b4_period_id' => null,
+					'b4_period_code' => 'B4J2019',
+					'b4_period_name' => 'B4J 2019',
+					'b4_period_start_date' => '2018-11-11 14:00:00',
+					'b4_period_end_date' => '2018-12-11 14:00:00',
+					'b4_period_camp_start_date' => '2019-03-10 17:00:00',
+					'b4_period_camp_end_date' => '2019-03-16 10:00:00',
+					'b4_period_training_start_date' => '2019-03-09',
+					'b4_period_training_end_date' => '2019-03-16',
+					'b4_period_training_submit_date' => '2018-11-15',
+					'b4_period_training_notification_date' => '2018-12-15',
+					'b4_period_current' => 1,
+					'b4_period_inactive' => 0
+				],
 			]
 		]
 	];

@@ -357,10 +357,6 @@ class Users extends \Object\Form\Wrapper\Base {
 		'feature_code' => 'UM::EMAIL_USERS_CHANGED'
 	];
 
-	public function overrides(& $form) {
-		\Layout::addJs('https://maps.googleapis.com/maps/api/js?key=' . \Application::get('google.maps.api_key') . '&libraries=drawing', 10000);
-	}
-
 	public function validate(& $form) {
 		// personal type
 		if ($form->values['um_user_type_id'] == 10) {

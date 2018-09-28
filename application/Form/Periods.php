@@ -68,7 +68,7 @@ class Periods extends \Object\Form\Wrapper\Base {
 			$form->values['b4_period_current'] = null;
 			$current = \Model\Periods::getStatic([
 				'where' => [
-					'b4_period_current' => '1'
+					'b4_period_current' => 1
 				],
 				'pk' => null
 			]);
@@ -76,7 +76,7 @@ class Periods extends \Object\Form\Wrapper\Base {
 				$form->error(DANGER, \Object\Content\Messages::REQUIRED_FIELD, 'b4_period_current');
 			}
 		} else {
-			$form->values['b4_period_current'] = '1';
+			$form->values['b4_period_current'] = 1;
 		}
 	}
 }

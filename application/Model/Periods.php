@@ -30,7 +30,7 @@ class Periods extends \Object\Table {
 		'b4_period_max_registrations' => ['name' => 'Max Registrations', 'domain' => 'counter'],
 		'b4_period_new_registrations' => ['name' => 'New Registrations', 'domain' => 'counter'], // readonly field
 		'b4_period_confirmed_registrations' => ['name' => 'Confirmed Registrations', 'domain' => 'counter'], // readonly field
-		'b4_period_current' => ['name' => 'Current', 'type' => 'char', 'null' => true],
+		'b4_period_current' => ['name' => 'Current', 'type' => 'smallint', 'null' => true, 'default' => null],
 		'b4_period_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [

@@ -3,6 +3,30 @@
 $object_override_blank_object = Object\Override\Blank::__set_state(array(
    'data' => 
   array (
+    'postlogin_dashboard' => 
+    array (
+      'numbers_b4j' => 
+      array (
+        'name' => 'Break For Jesus',
+        'icon' => 'fas fa-building',
+        'model' => '\\Helper\\Dashboard',
+        'order' => -33000,
+      ),
+      'numbers_organizations' => 
+      array (
+        'name' => 'Organization Management',
+        'icon' => 'fas fa-building',
+        'model' => '\\Numbers\\Users\\Organizations\\Helper\\Dashboard',
+        'order' => 33000,
+      ),
+      'numbers_users' => 
+      array (
+        'name' => 'User Management',
+        'icon' => 'far fa-user',
+        'model' => '\\Numbers\\Users\\Users\\Helper\\Dashboard\\Dashboard',
+        'order' => 32000,
+      ),
+    ),
     'application_structure' => 
     array (
       'tenant' => 
@@ -34,23 +58,6 @@ $object_override_blank_object = Object\Override\Blank::__set_state(array(
       'logo' => 
       array (
         'method' => '\\Numbers\\Users\\Organizations\\Helper\\Logo::getURL',
-      ),
-    ),
-    'postlogin_dashboard' => 
-    array (
-      'numbers_organizations' => 
-      array (
-        'name' => 'Organization Management',
-        'icon' => 'fas fa-building',
-        'model' => '\\Numbers\\Users\\Organizations\\Helper\\Dashboard',
-        'order' => 33000,
-      ),
-      'numbers_users' => 
-      array (
-        'name' => 'User Management',
-        'icon' => 'far fa-user',
-        'model' => '\\Numbers\\Users\\Users\\Helper\\Dashboard\\Dashboard',
-        'order' => 32000,
       ),
     ),
     'authorization' => 

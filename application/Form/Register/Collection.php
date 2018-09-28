@@ -11,7 +11,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 			'wizard' => [
 				'type' => 'primary',
 				'options' => [
-					1 => ['name' => 'Code / Language'],
+					1 => ['name' => 'Registration Code'],
 					2 => ['name' => 'Information'],
 					3 => ['name' => 'Waiver'],
 					4 => ['name' => 'Confirm Your Email'],
