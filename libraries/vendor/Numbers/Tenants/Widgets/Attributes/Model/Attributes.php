@@ -14,11 +14,11 @@ class Attributes extends \Object\Table {
 	public $column_prefix = 'tm_attribute_';
 	public $columns = [
 		'tm_attribute_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
-		'tm_attribute_id' => ['name' => 'Attribute #', 'domain' => 'field_id_sequence'],
+		'tm_attribute_id' => ['name' => 'Attribute #', 'domain' => 'attribute_id_sequence'],
 		'tm_attribute_code' => ['name' => 'Code', 'domain' => 'group_code'],
 		'tm_attribute_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_attribute_method' => ['name' => 'Method', 'domain' => 'code', 'options_model' => '\Numbers\Tenants\Widgets\Attributes\Model\Methods'],
-		'tm_attribute_model_id' => ['name' => 'Model', 'domain' => 'group_id', 'null' => true],
+		'tm_attribute_abacattr_id' => ['name' => 'ABAC Attribute #', 'domain' => 'attribute_id'],
 		'tm_attribute_domain' => ['name' => 'Domain', 'domain' => 'code', 'null' => true],
 		'tm_attribute_type' => ['name' => 'Type', 'domain' => 'code'],
 		'tm_attribute_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
@@ -26,11 +26,11 @@ class Attributes extends \Object\Table {
 	public $constraints = [
 		'tm_attributes_pk' => ['type' => 'pk', 'columns' => ['tm_attribute_tenant_id', 'tm_attribute_id']],
 		'tm_attribute_code_un' => ['type' => 'unique', 'columns' => ['tm_attribute_tenant_id', 'tm_attribute_code']],
-		'tm_attribute_model_id_fk' => [
+		'tm_attribute_abacattr_id_fk' => [
 			'type' => 'fk',
-			'columns' => ['tm_attribute_model_id'],
-			'foreign_model' => '\Numbers\Backend\Db\Common\Model\Models',
-			'foreign_columns' => ['sm_model_id']
+			'columns' => ['tm_attribute_abacattr_id'],
+			'foreign_model' => '\Numbers\Backend\ABAC\Model\Attributes',
+			'foreign_columns' => ['sm_abacattr_id']
 		]
 	];
 	public $indexes = [

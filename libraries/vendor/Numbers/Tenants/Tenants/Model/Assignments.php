@@ -18,6 +18,7 @@ class Assignments extends \Object\Table {
 		'tm_assignment_id' => ['name' => 'Assignment #', 'domain' => 'assignment_id_sequence'],
 		'tm_assignment_code' => ['name' => 'Code', 'domain' => 'group_code'],
 		'tm_assignment_name' => ['name' => 'Name', 'domain' => 'name'],
+		'tm_assignment_bidirectional' => ['name' => 'Bidirectional', 'type' => 'boolean'],
 		'tm_assignment_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [

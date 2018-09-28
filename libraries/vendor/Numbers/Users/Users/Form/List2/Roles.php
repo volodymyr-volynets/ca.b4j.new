@@ -78,7 +78,7 @@ class Roles extends \Object\Form\Wrapper\List2 {
 		]
 	];
 	const LIST_SORT_OPTIONS = [
-		'um_role_id' => ['name' => 'User #'],
+		'um_role_id' => ['name' => 'Role #'],
 		'um_role_name' => ['name' => 'Name']
 	];
 }

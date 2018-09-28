@@ -7,22 +7,25 @@ class Details extends \Object\Table {
 	public $module_code = 'TM';
 	public $title = 'T/M Assignment Details';
 	public $name = 'tm_assignment_details';
-	public $pk = ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id', 'tm_assigndet_abacattr_id'];
+	public $pk = ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id', 'tm_assigndet_id'];
 	public $tenant = true;
 	public $orderby = [
-		'tm_assigndet_timestamp' => SORT_ASC
+		'tm_assigndet_id' => SORT_ASC
 	];
 	public $limit;
 	public $column_prefix = 'tm_assigndet_';
 	public $columns = [
 		'tm_assigndet_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
-		'tm_assigndet_timestamp' => ['name' => 'Timestamp', 'domain' => 'timestamp_now'],
 		'tm_assigndet_assignment_id' => ['name' => 'Assignment #', 'domain' => 'assignment_id'],
+		'tm_assigndet_id' => ['name' => 'Detail #', 'domain' => 'big_id_sequence'],
 		'tm_assigndet_abacattr_id' => ['name' => 'Attribute #', 'domain' => 'attribute_id'],
-		'tm_assigndet_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
+		'tm_assigndet_name' => ['name' => 'Name', 'domain' => 'name'],
+		'tm_assigndet_primary' => ['name' => 'Primary', 'type' => 'boolean'],
+		'tm_assigndet_multiple' => ['name' => 'Multiple', 'type' => 'boolean'],
+		'tm_assigndet_inactive' => ['name' => 'Inactive', 'type' => 'boolean'],
 	];
 	public $constraints = [
-		'tm_assignment_details_pk' => ['type' => 'pk', 'columns' => ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id', 'tm_assigndet_abacattr_id']],
+		'tm_assignment_details_pk' => ['type' => 'pk', 'columns' => ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id', 'tm_assigndet_id']],
 		'tm_assigndet_assignment_id_fk' => [
 			'type' => 'fk',
 			'columns' => ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id'],

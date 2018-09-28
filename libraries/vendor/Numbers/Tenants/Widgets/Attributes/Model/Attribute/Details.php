@@ -17,9 +17,9 @@ class Details extends \Object\Table {
 	public $columns = [
 		'tm_attrdetail_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_attrdetail_timestamp' => ['name' => 'Timestamp', 'domain' => 'timestamp_now'],
-		'tm_attrdetail_attribute_id' => ['name' => 'User #', 'domain' => 'user_id'],
+		'tm_attrdetail_attribute_id' => ['name' => 'Attribute #', 'domain' => 'attribute_id'],
 		'tm_attrdetail_module_id' => ['name' => 'Module #', 'domain' => 'module_id'],
-		'tm_attrdetail_model_id' => ['name' => 'Model #', 'domain' => 'group_id'],
+		'tm_attrdetail_model_id' => ['name' => 'Model #', 'domain' => 'model_id'],
 		'tm_attrdetail_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [

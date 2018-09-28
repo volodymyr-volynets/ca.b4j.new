@@ -78,12 +78,7 @@ class Attributes extends \Object\Table {
 		}
 		// preload models
 		if (!isset($this->attribute_all_models)) {
-			$model = new \Numbers\Backend\Db\Common\Model\Models();
-			$this->attribute_all_models = $model->get([
-				'where' => [
-					'sm_model_relation_enabled' => 1
-				]
-			]);
+			$this->attribute_all_models = \Numbers\Backend\ABAC\DataSource\AttributesWithModels::getStatic();
 		}
 	}
 
@@ -194,6 +189,9 @@ class Attributes extends \Object\Table {
 				}
 				if (!is_null($value)) {
 					if (in_array($field['tm_attribute_method'], ['multiselect', 'multiautocomplete'])) {
+						if (is_json($value)) {
+							$value = json_decode($value, true);
+						}
 						if (!is_array($value)) {
 							$value = [$value];
 						}
@@ -289,9 +287,9 @@ class Attributes extends \Object\Table {
 				if (empty($value)) $value = 0;
 			} else if (in_array($field['tm_attribute_method'], ['select', 'multiselect', 'autocomplete', 'multiautocomplete'])) {
 				$options['options']['method'] = $field['tm_attribute_method'];
-				$options['options']['options_model'] = $this->attribute_all_models[$field['tm_attribute_model_id']]['sm_model_code'];
-				$options['options']['options_options']['pk'] = [$this->attribute_all_models[$field['tm_attribute_model_id']]['sm_model_relation_column']];
-				$options['options']['placeholder'] = $this->attribute_all_models[$field['tm_attribute_model_id']]['sm_model_name'];
+				$options['options']['options_model'] = $this->attribute_all_models[$field['tm_attribute_abacattr_id']]['sm_model_code'];
+				$options['options']['options_options']['pk'] = [$this->attribute_all_models[$field['tm_attribute_abacattr_id']]['sm_abacattr_code']];
+				$options['options']['placeholder'] = $this->attribute_all_models[$field['tm_attribute_abacattr_id']]['sm_model_name'];
 				$options['options']['searchable'] = true;
 			} else { // custom field
 				// date types
