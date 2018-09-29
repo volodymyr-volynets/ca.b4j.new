@@ -13,6 +13,11 @@ class Resources {
 			'primary' => [
 				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Module\AllModules',
 			]
+		],
+		'registries' => [
+			'primary' => [
+				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Registries'
+			]
 		]
 	];
 }
