@@ -28,7 +28,7 @@ class Periods extends \Object\Form\Wrapper\Base {
 			],
 			'b4_period_name' => [
 				'b4_period_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 95, 'required' => true],
-				'b4_period_current' => ['order' => 2, 'name' => 'Current', 'type' => 'char', 'null' => true, 'default' => null, 'method' => 'checkbox', 'percent' => 5],
+				'b4_period_current' => ['order' => 2, 'name' => 'Current', 'type' => 'smallint', 'null' => true, 'default' => null, 'method' => 'checkbox', 'percent' => 5],
 			],
 			'b4_period_start_date' => [
 				'b4_period_start_date' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Registration Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
