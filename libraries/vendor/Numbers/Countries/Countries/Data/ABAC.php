@@ -88,22 +88,12 @@ class ABAC extends \Object\Import {
 			],
 			'data' => [
 				[
-					'sm_abacservice_id' => '::id::ON::ORGANIZATIONS',
-					'sm_abacservice_code' => 'ON::ORGANIZATIONS',
-					'sm_abacservice_name' => 'O/N Organizations',
-					'sm_abacservice_module_code' => 'ON',
+					'sm_abacservice_id' => '::id::CM::COUNTRIES',
+					'sm_abacservice_code' => 'CM::COUNTRIES',
+					'sm_abacservice_name' => 'C/M Countries',
+					'sm_abacservice_module_code' => 'CM',
 					'sm_abacservice_parent_abacservice_id' => null,
 					'sm_abacservice_feature' => 1,
-					'sm_abacservice_inactive' => 0,
-					'\Numbers\Backend\ABAC\Model\Service\Actions' => []
-				],
-				[
-					'sm_abacservice_id' => '::id::ON::ORGANIZATION_ASSIGNMENTS',
-					'sm_abacservice_code' => 'ON::ORGANIZATION_ASSIGNMENTS',
-					'sm_abacservice_name' => 'O/N Organization Assignments',
-					'sm_abacservice_module_code' => 'ON',
-					'sm_abacservice_parent_abacservice_id' => '::id::ON::ORGANIZATIONS',
-					'sm_abacservice_feature' => 0,
 					'sm_abacservice_inactive' => 0,
 					'\Numbers\Backend\ABAC\Model\Service\Actions' => []
 				],

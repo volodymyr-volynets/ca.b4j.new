@@ -437,6 +437,9 @@ class Base extends \Numbers\Frontend\HTML\Renderers\Common\Base implements \Numb
 						$result.= '<ul class="navbar-nav ml-auto">';
 							foreach ($items_right as $k => $v) {
 								$class = !empty($v['options']) ? 'nav-item dropdown' : 'nav-item';
+								if (!empty($v['class'])) {
+									$class.= ' ' . $v['class'];
+								}
 								$result.= '<li class="' . $class . '">';
 									// if we have options
 									if (!empty($v['options'])) {
