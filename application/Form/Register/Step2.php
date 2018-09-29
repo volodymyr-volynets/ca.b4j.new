@@ -71,9 +71,9 @@ class Step2 extends \Object\Form\Wrapper\Base {
 				'b4_registration_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Child Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
 			],
 			'row2' => [
-				'b4_registration_date_of_birth' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right', 'onchange' => 'this.form.submit();'],
+				'b4_registration_date_of_birth' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'input', 'placeholder' => NUMBERS_FLAG_TIMESTAMP_FORMATED_DATE],
 				'b4_registration_first_time' => ['order' => 2, 'label_name' => 'First Time', 'type' => 'boolean', 'percent' => 15],
-				'b4_registration_gender_id' => ['order' => 3, 'label_name' => 'Gender', 'domain' => 'status_id', 'null' => true, 'required' => true, 'percent' => 35, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\Registration\Genders', 'options_options' => ['i18n' => 'skip_sorting']],
+				'b4_registration_gender_id' => ['order' => 3, 'label_name' => 'Gender', 'domain' => 'status_id', 'null' => true, 'required' => true, 'percent' => 35, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\Registration\Genders', 'options_options' => ['i18n' => 'skip_sorting'], 'onchange' => 'this.form.submit();'],
 			]
 		],
 		'signature' => [

@@ -22,7 +22,7 @@ class Step1 extends \Object\Form\Wrapper\Base {
 				'b4_registration_period_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Code', 'domain' => 'code', 'null' => true, 'percent' => 100, 'required' => true, 'validator_method' => '\Object\Validator\UpperCase::validate'],
 			],
 			'b4_registration_in_group_id' => [
-				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'default' => NUMBERS_FLAG_GLOBAL___IN_GROUP_ID ?? NUMBERS_FLAG_GLOBAL_I18N_GROUP_ID, 'required' => true, 'percent' => 100, 'method' => 'hidden', 'no_choose' => true, 'options_model' => '\Numbers\Internalization\Internalization\Model\Groups::optionsActive', 'onchange' => 'this.form.submit();'],
+				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'default' => NUMBERS_FLAG_GLOBAL___IN_GROUP_ID ?? NUMBERS_FLAG_GLOBAL_I18N_GROUP_ID, 'required' => true, 'percent' => 100, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Numbers\Internalization\Internalization\Model\Groups::optionsActive', 'onchange' => 'this.form.submit();'],
 			],
 			self::HIDDEN => [
 				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
@@ -84,7 +84,7 @@ class Step1 extends \Object\Form\Wrapper\Base {
 					$form->error(DANGER,  \Helper\Messages::NO_LONGER_ACCEPT_REGISTRATIONS, 'b4_registration_period_code');
 					return;
 				}
-				if ($period[0]['b4_period_confirmed_registrations'] > $period[0]['b4_period_max_registrations']) {
+				if (!empty($period[0]['b4_period_max_registrations']) && $period[0]['b4_period_confirmed_registrations'] > $period[0]['b4_period_max_registrations']) {
 					$form->error(DANGER, \Helper\Messages::NO_LONGER_ACCEPT_REGISTRATIONS, 'b4_registration_period_code');
 					return;
 				}

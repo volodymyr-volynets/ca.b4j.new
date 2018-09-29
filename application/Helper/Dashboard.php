@@ -31,7 +31,14 @@ class Dashboard extends \Numbers\Users\Users\Helper\Dashboard\Builder {
 				'url' => '/B4J/Registrations'
 			],
 			3 => [
-				'name' => '&nbsp;'
+				'name' => 'New Camp Registration',
+				'icon' => 'far fa-registered',
+				'acl' => [
+					'resource_id' => '\Controller\B4J\Register',
+					'method_code' => 'Index',
+					'action_id' => 'List_View'
+				],
+				'url' => '/B4J/Register'
 			],
 			4 => [
 				'name' => '&nbsp;'

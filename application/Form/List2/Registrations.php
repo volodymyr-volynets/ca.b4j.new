@@ -43,9 +43,12 @@ class Registrations extends \Object\Form\Wrapper\List2 {
 				'b4_registration_period_id1' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Period', 'domain' => 'group_id', 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => '\Model\Periods', 'query_builder' => 'a.b4_registration_period_id;='],
 				'b4_registration_status_id1' => ['order' => 2, 'label_name' => 'Status', 'domain' => 'status_id', 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => '\Model\Registration\Statuses', 'options_options' => ['i18n' => 'skip_sorting'], 'query_builder' => 'a.b4_registration_status_id;='],
 			],
-			'b4_registration_timestamp1' => [
+			'b4_registration_timestamp' => [
 				'b4_registration_timestamp1' => ['order' => 1, 'row_order' => 250, 'label_name' => 'Timestamp', 'type' => 'datetime', 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50, 'null' => true, 'query_builder' => 'a.b4_registration_timestamp;>='],
 				'b4_registration_timestamp2' => ['order' => 2, 'label_name' => 'Timestamp', 'type' => 'datetime', 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50, 'null' => true, 'query_builder' => 'a.b4_registration_timestamp;<='],				
+			],
+			'b4_registration_payment_received' => [
+				'b4_registration_payment_received1' => ['order' => 1, 'row_order' => 270, 'label_name' => 'Payment Received', 'type' => 'boolean', 'percent' => 50, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => '\Object\Data\Model\Inactive', 'query_builder' => 'a.b4_registration_payment_received;=']
 			],
 			'full_text_search' => [
 				'full_text_search' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Text Search', 'full_text_search_columns' => ['a.b4_registration_child_name', 'a.b4_registration_parents_name', 'a.b4_registration_parish', 'a.b4_registration_email', 'a.b4_registration_phone'], 'placeholder' => true, 'domain' => 'name', 'percent' => 100, 'null' => true],

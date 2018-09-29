@@ -6,10 +6,16 @@
 	padding: 0 !important;
 }
 a {
-	color: darkcyan !important;
+	color: darkcyan;
 }
 @media only screen and (max-width: 991px) {
 	.nav-link {
 		border-bottom: 1px dashed #50d8af !important;
 	}
+}
+
+
+.b4j_important_menu a {
+	color: red !important;
+	font-weight: bold !important;
 }

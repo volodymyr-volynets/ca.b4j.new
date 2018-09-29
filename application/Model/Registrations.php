@@ -76,6 +76,7 @@ class Registrations extends \Object\Table {
 		// t-shirt
 		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true],
 		// other
+		'b4_registration_payment_received' => ['name' => 'Payment Received', 'type' => 'boolean'],
 		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [

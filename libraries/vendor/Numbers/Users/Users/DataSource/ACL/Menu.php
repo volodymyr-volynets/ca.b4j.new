@@ -47,7 +47,8 @@ class Menu extends \Object\DataSource {
 			'child_ordered' => 'a.sm_resource_menu_child_ordered',
 			'order' => 'a.sm_resource_menu_order',
 			'separator' => 'a.sm_resource_menu_separator',
-			'name_generator' => 'a.sm_resource_menu_name_generator'
+			'name_generator' => 'a.sm_resource_menu_name_generator',
+			'class' => 'a.sm_resource_menu_class'
 		]);
 		// where
 		$this->query->where('AND', ['a.sm_resource_type', '>=', 200]);

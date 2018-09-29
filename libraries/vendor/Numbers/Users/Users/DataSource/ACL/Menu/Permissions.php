@@ -71,6 +71,7 @@ class Permissions {
 							'name_generator' => $v['name_generator'],
 							'options' => [],
 							'menu_id' => $menu_id,
+							'class' => $v['class'] ?? null,
 						];
 						$menu_id++;
 					}
@@ -89,7 +90,8 @@ class Permissions {
 				'separator' => $v['separator'],
 				'name_generator' => $v['name_generator'],
 				'menu_id' => $menu_id,
-				'__menu_id' => $v['id']
+				'__menu_id' => $v['id'],
+				'class' => $v['class'] ?? null,
 			];
 			$menu_id++;
 			$existing = array_key_get($result, $key);

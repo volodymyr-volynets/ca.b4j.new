@@ -407,6 +407,9 @@ class Base extends \Numbers\Frontend\HTML\Renderers\Common\Base implements \Numb
 						array_key_sort($items, ['order' => SORT_ASC], ['name' => SORT_NUMERIC]);
 						foreach ($items as $k => $v) {
 							$class = !empty($v['options']) ? 'nav-item dropdown' : 'nav-item';
+							if (!empty($v['class'])) {
+								$class.= ' ' . $v['class'];
+							}
 							$result.= '<li class="navbar-nav-li-level1 ' . $class . '" search-id="' . $index . '">';
 								// if we have options
 								if (!empty($v['options'])) {

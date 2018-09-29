@@ -265,6 +265,7 @@ class System extends \Object\Import {
 					'sm_resource_menu_url' => '/Registration',
 					'sm_resource_menu_options_generator' => null,
 					'sm_resource_menu_order' => -32050,
+					'sm_resource_menu_class' => 'b4j_important_menu',
 					'sm_resource_inactive' => 0
 				],
 				/*
