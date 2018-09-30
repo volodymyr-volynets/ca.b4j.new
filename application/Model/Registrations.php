@@ -104,7 +104,12 @@ class Registrations extends \Object\Table {
 		'b4_registrations_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['b4_registration_child_name', 'b4_registration_parents_name', 'b4_registration_parish', 'b4_registration_email', 'b4_registration_phone']],
 	];
 	public $history = false;
-	public $audit = false;
+	public $audit = [
+		'map' => [
+			'b4_registration_tenant_id' => 'wg_audit_tenant_id',
+			'b4_registration_id' => 'wg_audit_registration_id'
+		]
+	];
 	public $optimistic_lock = false;
 	public $options_map;
 	public $options_active;

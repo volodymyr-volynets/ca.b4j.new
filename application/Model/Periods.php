@@ -49,7 +49,11 @@ class Periods extends \Object\Table {
 		]
 	];
 	public $optimistic_lock = true;
-	public $options_map = [];
+	public $options_map = [
+		'b4_period_name' => 'name',
+		'b4_period_camp_start_date' => ['field' => 'name', 'format' => 'date'],
+		'b4_period_camp_end_date' => ['field' => 'name', 'format' => 'date'],
+	];
 	public $options_active = [];
 	public $engine = [
 		'MySQLi' => 'InnoDB'

@@ -98,7 +98,7 @@ class Notifications {
 					'[Name]' => $temp[0]['b4_registration_parents_name'],
 					'[Child]' => $temp[0]['b4_registration_child_name'],
 					'[URL]' => \Request::host() . 'B4J/Register/_Medical' . '?__wizard_step=1&token=' . $crypt->tokenCreate($registration_id, 'medical.b4j'),
-					'[Token_Valid_Hours]' => \Application::get('application.b4j.need_medical_token_valid') ?? 48,
+					'[Token_Valid_Hours]' => registry('b4j.need_medical_token_valid') ?? 48,
 				]
 			]
 		]);

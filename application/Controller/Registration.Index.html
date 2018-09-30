@@ -5,7 +5,7 @@
 				<h2><?php echo i18n(null, 'THIS IS THE CAMP\'S FIRST ONLINE REGISTRATION'); ?></h2>
 			</div>
 			<p>
-				<?php echo i18n(null, 'We ask for your patience. If you have any technical issues, please call [name] at [phone].', ['replace' => ['[name]' => \Application::get('application.b4j.contact.name'), '[phone]' => \Application::get('application.b4j.contact.phone')]]); ?>
+				<?php echo i18n(null, 'We ask for your patience. If you have any technical issues, please call [name] at [phone].', ['replace' => ['[name]' => registry('b4j.tech_support.name'), '[phone]' => registry('b4j.tech_support.phone')]]); ?>
 			</p>
 			<p>
 				<b style="color: red;"><?php echo i18n(null, 'PLEASE NOTE - completing this online registration DOES NOT guarantee a spot at camp.'); ?></b>
@@ -33,7 +33,7 @@
 					echo ' ';
 					echo i18n(null, 'Cheques must be dated no later than [date].', ['replace' => ['[date]' => \Format::date(date('Y-12-31'))]]);
 					echo ' ';
-					echo i18n(null, 'Please write and mail a cheque (made out to <code>Break For Jesus</code>) to <b>[address]</b>.', ['replace' => ['[address]' => \Application::get('application.b4j.address_full')]]);
+					echo i18n(null, 'Please write and mail a cheque (made out to <code>Break For Jesus</code>) to <b>[address]</b>.', ['replace' => ['[address]' => registry('b4j.address_full')]]);
 				?>
 			</p>
 			<br/>
@@ -49,7 +49,7 @@
 				<b><?php echo i18n(null, 'We cannot accommodate room allocation requests'); ?></b>
 			</p>
 			<p>
-				<?php echo i18n(null, 'Need more info? Email us at <a href="mailto:[email]">[email]</a> or call [name] at <code>[phone]</code>.', ['replace' => ['[name]' => \Application::get('application.b4j.contact.name'), '[phone]' => \Application::get('application.b4j.contact.phone'), '[email]' => \Application::get('application.b4j.contact.email')]]); ?>
+				<?php echo i18n(null, 'Need more info? Email us at <a href="mailto:[email]">[email]</a> or call [name] at <code>[phone]</code>.', ['replace' => ['[name]' => registry('b4j.contact.name'), '[phone]' => registry('b4j.contact.phone'), '[email]' => registry('b4j.contact.email')]]); ?>
 			</p>
 		</div>
 	</div>

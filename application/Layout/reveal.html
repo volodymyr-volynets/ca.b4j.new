@@ -40,8 +40,8 @@
 		<section id="topbar" class="d-none d-lg-block">
 			<div class="container clearfix">
 				<div class="contact-info float-left">
-					<i class="fa fa-envelope-o"></i> <a href="mailto:<?php echo \Application::get('application.b4j.contact.email'); ?>"><?php echo \Application::get('application.b4j.contact.email'); ?></a>
-					<i class="fa fa-phone"></i> <?php echo \Application::get('application.b4j.contact.phone'); ?>
+					<i class="fa fa-envelope-o"></i> <a href="mailto:<?php echo registry('b4j.contact.email'); ?>"><?php echo registry('b4j.contact.email'); ?></a>
+					<i class="fa fa-phone"></i> <?php echo registry('b4j.contact.phone'); ?>
 				</div>
 				<div class="social-links float-right">
 					Відпічнім з Христом - Break for Jesus
@@ -53,9 +53,9 @@
 		<header id="header">
 			<?php
 			echo \Object\Controller::renderMenu([
-			'class' => 'nav-bg',
-			'brand_logo' => '/assets/img/b4j_logo.png',
-			'brand_url' => '/'
+				'class' => 'nav-bg',
+				'brand_logo' => '/assets/img/b4j_logo.png',
+				/*'brand_url' => '/',*/
 			]);
 			?>
 		</header>

@@ -11,7 +11,7 @@ class Register extends \Object\Controller {
 	public function actionMedical() {
 		$input = \Request::input();
 		$crypt = new \Crypt();
-		$crypt->object->valid_hours = \Application::get('application.b4j.need_medical_token_valid') ?? 48;
+		$crypt->object->valid_hours = registry('b4j.need_medical_token_valid') ?? 48;
 		$token_data = $crypt->tokenVerify($input['token'] ?? '', ['medical.b4j']);
 		$input['b4_registration_id'] = $token_data['id'];
 		// render collection

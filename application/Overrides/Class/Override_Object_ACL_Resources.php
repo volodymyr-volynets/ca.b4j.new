@@ -42,6 +42,13 @@ $object_override_blank_object = Object\Override\Blank::__set_state(array(
         'datasource' => '\\Numbers\\Tenants\\Tenants\\DataSource\\Module\\AllModules',
       ),
     ),
+    'registries' => 
+    array (
+      'primary' => 
+      array (
+        'datasource' => '\\Numbers\\Tenants\\Tenants\\DataSource\\Registries',
+      ),
+    ),
     'widgets' => 
     array (
       'audit' => 
