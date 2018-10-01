@@ -23,6 +23,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 		'additional_container' => ['default_row_type' => 'grid', 'order' => 33000],
 		'references_container' => ['default_row_type' => 'grid', 'order' => 34000],
 		'responsibilities_container' => ['default_row_type' => 'grid', 'order' => 35000],
+		'declaration_container' => ['default_row_type' => 'grid', 'order' => 36000],
 	];
 	public $rows = [
 		'tabs' => [
@@ -32,6 +33,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 			'additional' => ['order' => 350, 'label_name' => 'Additional'],
 			'references' => ['order' => 360, 'label_name' => 'References'],
 			'responsibilities' => ['order' => 370, 'label_name' => 'Responsibilities'],
+			'declaration' => ['order' => 380, 'label_name' => 'Declaration'],
 			'tshirt' => ['order' => 400, 'label_name' => 'T-Shirt'],
 		],
 	];
@@ -52,6 +54,9 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_phone' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Phone', 'domain' => 'phone', 'required' => true],
 				'b4_counselor_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email', 'required' => true],
 			],
+			'b4_counselor_declartion_police_check_submitted' => [
+				'b4_counselor_declartion_police_check_submitted' => ['order' => 1, 'row_order' => 400, 'label_name' => 'Did you submit Police check to Break for Jesus before?', 'type' => 'boolean', 'onchange' => 'this.form.submit();'],
+			]
 		],
 		'tabs' => [
 			'address' => [
@@ -71,6 +76,9 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 			],
 			'responsibilities' => [
 				'responsibilities' => ['container' => 'responsibilities_container', 'order' => 100]
+			],
+			'declaration' => [
+				'declaration' => ['container' => 'declaration_container', 'order' => 100]
 			],
 			'tshirt' => [
 				'tshirt' => ['container' => 'tshirt_container', 'order' => 100]
@@ -177,6 +185,16 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_responsibility_games' => ['order' => 1, 'row_order' => 700, 'label_name' => 'Games', 'domain' => 'status_id', 'null' => true, 'required' => true, 'method' => 'select', 'options_model' => '\Model\Counselor\Responsibilities'],
 			]
 		],
+		'declaration_container' => [
+			'b4_counselor_declartion_signed_at' => [
+				'b4_counselor_declartion_signed_at' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Signed At', 'domain' => 'name', 'null' => true, 'required' => 'c', 'percent' => 50],
+				'b4_counselor_declartion_last_police_check' => ['order' => 2, 'label_name' => 'Last police Check', 'type' => 'date', 'null' => true, 'required' => 'c', 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right'],
+			],
+			'b4_counselor_declartion_signature' => [
+				'b4_counselor_declartion_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Child Signature', 'domain' => 'signature', 'null' => true, 'required' => 'c', 'percent' => 50, 'method' => 'signature'],
+				'b4_counselor_declartion_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => 'c', 'method' => 'calendar', 'calendar_icon' => 'right'],
+			]
+		],
 		'tshirt_container' => [
 			'b4_counselor_tshirt_size' => [
 				'b4_counselor_tshirt_size' => ['order' => 1, 'row_order' => 300, 'label_name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true, 'default' => null, 'required' => true, 'method' => 'select', 'options_model' => '\Model\TShirtSize', 'placeholder' => 'Size', 'options_options' => ['i18n' => 'skip_sorting']],
@@ -203,19 +221,36 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 	];
 
 	public function refresh(& $form) {
-		$period = \Model\Periods::getStatic([
-			'where' => [
-				'b4_period_current' => 1
-			],
-			'pk' => null
-		]);
-		if (!\Helper\Date::between(\Format::now('datetime'), $period[0]['b4_period_start_date'], $period[0]['b4_period_end_date'])) {
-			$form->error(DANGER,  \Helper\Messages::NO_LONGER_ACCEPT_REGISTRATIONS, 'b4_counselor_period_id');
-			return;
+		if (!\Registry::get('b4j.ignore_dates')) {
+			$period = \Model\Periods::getStatic([
+				'where' => [
+					'b4_period_current' => 1
+				],
+				'pk' => null
+			]);
+			if (!\Helper\Date::between(\Format::now('datetime'), $period[0]['b4_period_start_date'], $period[0]['b4_period_end_date'])) {
+				$form->error(DANGER,  \Helper\Messages::NO_LONGER_ACCEPT_REGISTRATIONS, 'b4_counselor_period_id');
+				return;
+			}
 		}
 	}
 
 	public function validate(& $form) {
+		if (!empty($form->values['b4_counselor_declartion_police_check_submitted'])) {
+			$form->validateAsRequiredFields([
+				'b4_counselor_declartion_signed_at',
+				'b4_counselor_declartion_last_police_check',
+				'b4_counselor_declartion_signature',
+				'b4_counselor_declartion_signing_date'
+			]);
+		}
+	}
 
+	public function overrideTabs(& $form, & $tab_options, & $tab_name, & $neighbouring_values = []) {
+		if (empty($form->values['b4_counselor_declartion_police_check_submitted'])) {
+			if (in_array($tab_name, ['declaration'])) {
+				return ['hidden' => true];
+			}
+		}
 	}
 }

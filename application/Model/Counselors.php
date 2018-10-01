@@ -73,6 +73,12 @@ class Counselors extends \Object\Table {
 		'b4_counselor_parents_name' => ['name' => 'Parents Name', 'domain' => 'name'],
 		'b4_counselor_signature' => ['name' => 'Signature of Parent/Guardian', 'domain' => 'signature'],
 		'b4_counselor_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
+		// declaration
+		'b4_counselor_declartion_police_check_submitted' => ['name' => 'Police Check Submitted', 'type' => 'boolean'],
+		'b4_counselor_declartion_signed_at' => ['name' => 'Declaration Singed At', 'domain' => 'name', 'null' => true],
+		'b4_counselor_declartion_last_police_check' => ['name' => 'Declaration Last police Check', 'type' => 'date', 'null' => true],
+		'b4_counselor_declartion_signature' => ['name' => 'Child Declaration Signature', 'domain' => 'signature', 'null' => true],
+		'b4_counselor_declartion_signing_date' => ['name' => 'Child Declaration Signing Date', 'type' => 'date', 'null' => true],
 		// other
 		'b4_counselor_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
