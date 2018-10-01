@@ -22,7 +22,8 @@ class Features extends \Object\DataSource {
 
 	public $primary_model = '\Numbers\Backend\System\Modules\Model\Module\Features';
 	public $parameters = [
-		'tm_feature_module_id' => ['name' => 'Module #', 'domain' => 'module_id', 'required' => true]
+		'tm_feature_module_id' => ['name' => 'Module #', 'domain' => 'module_id', 'required' => true],
+		'flag_have_reset_model' => ['name' => 'Flag have reset model', 'type' => 'boolean'],
 	];
 
 	public function query($parameters, $options = []) {
@@ -43,9 +44,13 @@ class Features extends \Object\DataSource {
 		]);
 		// where
 		$this->query->where('AND', ['a.sm_feature_inactive', '=', 0]);
-		$this->query->where('AND', function(& $query) {
-			$query->where('OR', ['c.tm_feature_feature_code', 'IS', null]);
-			$query->where('OR', ['a.sm_feature_type', '=', 30]);
-		});
+		if (!empty($parameters['flag_have_reset_model'])) {
+			$this->query->where('AND', ['a.sm_feature_reset_model', 'IS NOT', null]);
+		} else {
+			$this->query->where('AND', function(& $query) {
+				$query->where('OR', ['c.tm_feature_feature_code', 'IS', null]);
+				$query->where('OR', ['a.sm_feature_type', '=', 30]);
+			});
+		}
 	}
 }

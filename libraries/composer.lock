@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4579973751759c1f0fd6fc422cf09a96",
+    "content-hash": "646631c89ff41a9d4bf9690f9c6baaaa",
     "packages": [
         {
             "name": "composer/installers",
@@ -128,16 +128,16 @@
         },
         {
             "name": "numbers/backend",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/backend.git",
-                "reference": "d8ad661b1bb0233b458966a71ddc3a9b81b12ec1"
+                "reference": "4d69db6e1ec2c9922584ae2be0f272b8f63d0902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/d8ad661b1bb0233b458966a71ddc3a9b81b12ec1",
-                "reference": "d8ad661b1bb0233b458966a71ddc3a9b81b12ec1",
+                "url": "https://api.github.com/repos/volodymyr-volynets/backend/zipball/4d69db6e1ec2c9922584ae2be0f272b8f63d0902",
+                "reference": "4d69db6e1ec2c9922584ae2be0f272b8f63d0902",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 }
             ],
             "description": "Backend modules for Numbers Framework",
-            "time": "2018-10-01T00:43:02+00:00"
+            "time": "2018-10-01T22:34:26+00:00"
         },
         {
             "name": "numbers/countries",
@@ -222,16 +222,16 @@
         },
         {
             "name": "numbers/framework",
-            "version": "2.0.14",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/framework.git",
-                "reference": "bd97c9ae36e22ddef926c529de5b388ecb30c79b"
+                "reference": "303f0a47bfd28aead234f164bc1f6eb18394eb6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/bd97c9ae36e22ddef926c529de5b388ecb30c79b",
-                "reference": "bd97c9ae36e22ddef926c529de5b388ecb30c79b",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/303f0a47bfd28aead234f164bc1f6eb18394eb6d",
+                "reference": "303f0a47bfd28aead234f164bc1f6eb18394eb6d",
                 "shasum": ""
             },
             "require": {
@@ -260,7 +260,7 @@
                 }
             ],
             "description": "Lightweight MVC PHP Framework",
-            "time": "2018-10-01T00:40:21+00:00"
+            "time": "2018-10-01T22:47:02+00:00"
         },
         {
             "name": "numbers/frontend",
@@ -358,16 +358,16 @@
         },
         {
             "name": "numbers/tenants",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/tenants.git",
-                "reference": "cc8c2c6376657e94b6969a1bd7313d91ecf403ea"
+                "reference": "7304916251be1daf3555ca161f141bda51011734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/tenants/zipball/cc8c2c6376657e94b6969a1bd7313d91ecf403ea",
-                "reference": "cc8c2c6376657e94b6969a1bd7313d91ecf403ea",
+                "url": "https://api.github.com/repos/volodymyr-volynets/tenants/zipball/7304916251be1daf3555ca161f141bda51011734",
+                "reference": "7304916251be1daf3555ca161f141bda51011734",
                 "shasum": ""
             },
             "require": {
@@ -401,7 +401,7 @@
                 }
             ],
             "description": "Tenant module for Numbers Framework",
-            "time": "2018-10-01T00:35:53+00:00"
+            "time": "2018-10-01T22:44:26+00:00"
         },
         {
             "name": "numbers/users",

@@ -1,7 +1,7 @@
 <?php
 
 namespace Numbers\Tenants\Tenants\Form\Activation;
-class Reset extends \Object\Form\Wrapper\Base {
+class ResetModule extends \Object\Form\Wrapper\Base {
 	public $form_link = 'tm_module_reset';
 	public $module_code = 'TM';
 	public $title = 'T/M Reset Modules Form';
@@ -10,12 +10,11 @@ class Reset extends \Object\Form\Wrapper\Base {
 			'type' => 'primary',
 			'header' => [
 				'icon' => ['type' => 'cog'],
-				'title' => 'Reset Modules:'
+				'title' => 'Reset Module:'
 			]
 		],
 		'actions' => [
 			'refresh' => true,
-			'back' => true
 		],
 		'no_ajax_form_reload' => true
 	];

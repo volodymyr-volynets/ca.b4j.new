@@ -42,6 +42,23 @@ class Import extends \Object\Import {
 					'sm_feature_activated_by_default' => 1,
 					'sm_feature_inactive' => 0,
 					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => []
+				],
+				[
+					'sm_feature_module_code' => 'TM',
+					'sm_feature_code' => 'TM::POLICIES',
+					'sm_feature_type' => 10,
+					'sm_feature_name' => 'T/M Policies',
+					'sm_feature_icon' => 'far fa-sun',
+					'sm_feature_activation_model' => '\Numbers\Tenants\Tenants\Data\Activation\PoliciesActivate',
+					'sm_feature_reset_model' => '\Numbers\Tenants\Tenants\Data\Activation\PoliciesReset',
+					'sm_feature_activated_by_default' => 0,
+					'sm_feature_inactive' => 0,
+					'\Numbers\Backend\System\Modules\Model\Module\Dependencies' => [
+						[
+							'sm_mdldep_child_module_code' => 'TM',
+							'sm_mdldep_child_feature_code' => 'TM::TENANTS'
+						]
+					]
 				]
 			]
 		],
