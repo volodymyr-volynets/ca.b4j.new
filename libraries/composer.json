@@ -2,10 +2,10 @@
     "require": {
         "phpmailer\/phpmailer": "v6.0.5",
         "tecnickcom\/tcpdf": "6.2.13",
-        "numbers\/framework": "2.0.13",
-        "numbers\/backend": "2.0.11",
+        "numbers\/framework": "2.0.14",
+        "numbers\/backend": "2.0.12",
         "numbers\/frontend": "2.0.5",
-        "numbers\/tenants": "2.0.6",
+        "numbers\/tenants": "2.0.7",
         "numbers\/countries": "2.0.5",
         "numbers\/internalization": "2.0.3",
         "numbers\/users": "2.0.11",
