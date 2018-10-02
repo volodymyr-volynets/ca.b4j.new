@@ -31,21 +31,24 @@ class Periods extends \Object\Form\Wrapper\Base {
 				'b4_period_current' => ['order' => 2, 'label_name' => 'Current', 'type' => 'smallint', 'null' => true, 'default' => null, 'method' => 'checkbox', 'percent' => 5],
 			],
 			'b4_period_start_date' => [
-				'b4_period_start_date' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Registration Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'b4_period_end_date' => ['order' => 2, 'label_name' => 'Registration End Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'b4_period_start_date' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Registration Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
+				'b4_period_end_date' => ['order' => 2, 'label_name' => 'Registration End Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
+			],
+			'b4_period_additional_info_date' => [
+				'b4_period_additional_info_date' => ['order' => 1, 'row_order' => 350, 'label_name' => 'Additional Information Date', 'description' => 'Used in Email #1, we would let registrant know by this date.', 'type' => 'date', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
 			],
 			'b4_period_camp_start_date' => [
-				'b4_period_camp_start_date' => ['order' => 1, 'row_order' => 400, 'label_name' => 'Camp Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'b4_period_camp_end_date' => ['order' => 2, 'label_name' => 'Camp End Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'b4_period_camp_start_date' => ['order' => 1, 'row_order' => 400, 'label_name' => 'Camp Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
+				'b4_period_camp_end_date' => ['order' => 2, 'label_name' => 'Camp End Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
 			],
 			// counselors
-			'b4_period_training_submit_date' => [
-				'b4_period_training_submit_date' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Counselors Training Submit Date', 'type' => 'date', 'null' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'b4_period_training_notification_date' => ['order' => 2, 'label_name' => 'Counselors Training Notification Date', 'type' => 'date', 'null' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
+			'b4_period_counselor_start_date' => [
+				'b4_period_counselor_start_date' => ['order' => 1, 'row_order' => 450, 'label_name' => 'Counselor Registration Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
+				'b4_period_counselor_end_date' => ['order' => 2, 'label_name' => 'Counselor Registration End Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
 			],
-			'b4_period_training_start_date' => [
-				'b4_period_training_start_date' => ['order' => 1, 'row_order' => 600, 'label_name' => 'Counselors Training Start Date', 'type' => 'date', 'null' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
-				'b4_period_training_end_date' => ['order' => 2, 'label_name' => 'Counselors Training End Date', 'type' => 'date', 'null' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
+			'b4_period_counselor_accepted_date' => [
+				'b4_period_counselor_accepted_date' => ['order' => 1, 'row_order' => 500, 'label_name' => 'Counselor Accepted Date', 'type' => 'date', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
+				'b4_period_training_start_date' => ['order' => 2, 'label_name' => 'Counselor Training Start Date', 'type' => 'datetime', 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'percent' => 50],
 			],
 			// counter
 			'b4_period_max_registrations' => [

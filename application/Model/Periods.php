@@ -21,11 +21,12 @@ class Periods extends \Object\Table {
 		'b4_period_end_date' => ['name' => 'Registration End Date', 'type' => 'datetime'],
 		'b4_period_camp_start_date' => ['name' => 'Camp Start Date', 'type' => 'datetime'],
 		'b4_period_camp_end_date' => ['name' => 'Camp End Date', 'type' => 'datetime'],
-		// training
-		'b4_period_training_start_date' => ['name' => 'Training Start Date', 'type' => 'date', 'null' => true],
-		'b4_period_training_end_date' => ['name' => 'Training End Date', 'type' => 'date', 'null' => true],
-		'b4_period_training_submit_date' => ['name' => 'Training Submit Date', 'type' => 'date', 'null' => true],
-		'b4_period_training_notification_date' => ['name' => 'Training Notification Date', 'type' => 'date', 'null' => true],
+		'b4_period_additional_info_date' => ['name' => 'Additional Information Date (Used in Email #1)', 'type' => 'date'],
+		// counselor
+		'b4_period_counselor_start_date' => ['name' => 'Counselor Registration Start Date', 'type' => 'datetime'],
+		'b4_period_counselor_end_date' => ['name' => 'Counselor Registration End Date', 'type' => 'datetime'],
+		'b4_period_counselor_accepted_date' => ['name' => 'Counselor Accepted Date', 'type' => 'date'],
+		'b4_period_training_start_date' => ['name' => 'Counselor Training Start Date', 'type' => 'datetime'],
 		// counters
 		'b4_period_max_registrations' => ['name' => 'Max Registrations', 'domain' => 'counter'],
 		'b4_period_new_registrations' => ['name' => 'New Registrations', 'domain' => 'counter'], // readonly field
@@ -51,8 +52,6 @@ class Periods extends \Object\Table {
 	public $optimistic_lock = true;
 	public $options_map = [
 		'b4_period_name' => 'name',
-		'b4_period_camp_start_date' => ['field' => 'name', 'format' => 'date'],
-		'b4_period_camp_end_date' => ['field' => 'name', 'format' => 'date'],
 	];
 	public $options_active = [];
 	public $engine = [

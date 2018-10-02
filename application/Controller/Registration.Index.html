@@ -30,10 +30,6 @@
 			<p>
 				<?php
 					echo i18n(null, 'Cost is <code>$375</code> per first child, <code>$370</code> per subsequent child from the same family (brother or sister).');
-					echo ' ';
-					echo i18n(null, 'Cheques must be dated no later than [date].', ['replace' => ['[date]' => \Format::date(date('Y-12-31'))]]);
-					echo ' ';
-					echo i18n(null, 'Please write and mail a cheque (made out to <code>Break For Jesus</code>) to <b>[address]</b>.', ['replace' => ['[address]' => registry('b4j.address_full')]]);
 				?>
 			</p>
 			<br/>
@@ -41,12 +37,12 @@
 				<h2><?php echo i18n(null, 'Note'); ?></h2>
 			</div>
 			<p>
-				<?php echo i18n(null, 'Registration is on a first come first serve basis. We must have your registration form and cheque before your spot can be reserved (no faxes please). You will be notified when we receive your application.'); ?>
+				<?php echo i18n(null, 'Registration is on a first come first serve basis. We must have your registration form and cheque before your spot can be reserved. Only Online Registrations will be accepted.'); ?>
 				<br/>
 				<?php echo i18n(null, 'Space is very limited (60 participants), do not delay!'); ?>
 			</p>
 			<p>
-				<b><?php echo i18n(null, 'We cannot accommodate room allocation requests'); ?></b>
+				<b><?php echo i18n(null, 'We cannot accommodate room allocation requests.'); ?></b>
 			</p>
 			<p>
 				<?php echo i18n(null, 'Need more info? Email us at <a href="mailto:[email]">[email]</a> or call [name] at <code>[phone]</code>.', ['replace' => ['[name]' => registry('b4j.contact.name'), '[phone]' => registry('b4j.contact.phone'), '[email]' => registry('b4j.contact.email')]]); ?>

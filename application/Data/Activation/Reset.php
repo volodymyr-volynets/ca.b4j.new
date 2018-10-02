@@ -7,6 +7,5 @@ class Reset extends \Numbers\Backend\System\Modules\Abstract2\Reset {
 		$this->clearTable(new \Model\Registrations);
 		$this->clearTable(new \Model\Register);
 		$this->clearTable(new \Model\Periods);
-		$this->clearSequences();
 	}
 }

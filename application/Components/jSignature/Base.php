@@ -26,7 +26,7 @@ class Base {
 				'value' => $options['value'] ?? ''
 			]);
 			$js = <<<TTT
-				var {$options['id']}_pad = $('#{$options['id']}_pad').jSignature({'UndoButton':false});
+				var {$options['id']}_pad = $('#{$options['id']}_pad').jSignature({'UndoButton':false, 'height': 127});
 				$("#{$options['id']}_pad").bind('change', function(e) {
 					var data = {$options['id']}_pad.jSignature('getData', 'image');
 					if (typeof data === 'string') {
