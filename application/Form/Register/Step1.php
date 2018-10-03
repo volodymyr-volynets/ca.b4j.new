@@ -25,7 +25,7 @@ class Step1 extends \Object\Form\Wrapper\Base {
 				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'default' => NUMBERS_FLAG_GLOBAL___IN_GROUP_ID ?? NUMBERS_FLAG_GLOBAL_I18N_GROUP_ID, 'required' => true, 'percent' => 100, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Numbers\Internalization\Internalization\Model\Groups::optionsActive', 'onchange' => 'this.form.submit();'],
 			],
 			self::HIDDEN => [
-				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
+				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
 				'b4_registration_period_id' => ['label_name' => 'Period #', 'domain' => 'group_id', 'null' => true, 'method' => 'hidden'],
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden']
 			]

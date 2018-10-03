@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\Register\Counselor;
+namespace Model\Counselor;
 class Statuses extends \Object\Data {
 	public $column_key = 'no_data_conreg_statuses_id';
 	public $column_prefix = 'no_data_conreg_statuses_';

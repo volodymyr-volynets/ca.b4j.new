@@ -1,10 +1,10 @@
 <?php
 
 namespace Form;
-class CounselorsRegister extends \Object\Form\Wrapper\Base {
-	public $form_link = 'b4_counselors_register';
+class Counselors extends \Object\Form\Wrapper\Base {
+	public $form_link = 'b4_counselor';
 	public $module_code = 'B4';
-	public $title = 'B/J Counselors Register Form';
+	public $title = 'B/J Counselors Form';
 	public $options = [
 		'segment' => self::SEGMENT_FORM,
 		'actions' => [
@@ -39,8 +39,14 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 	];
 	public $elements = [
 		'top' => [
-			'b4_counselor_period_id' => [
-				'b4_counselor_period_id' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'required' => true, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Model\Periods', 'options_params' => ['b4_period_current' => 1], 'placeholder' => 'Period'],
+			'b4_counselor_id' => [
+				'b4_counselor_id' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Registration #', 'domain' => 'big_id_sequence', 'percent' => 95, 'navigation' => true],
+				'b4_counselor_inactive' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
+			],
+			'b4_counselor_timestamp' => [
+				'b4_counselor_timestamp' => ['order' => 1, 'row_order' => 60, 'label_name' => 'Datetime', 'domain' => 'timestamp_now', 'required' => true, 'format' => 'datetime', 'percent' => 30, 'readonly' => true],
+				'b4_counselor_status_id' => ['order' => 2, 'label_name' => 'Status', 'domain' => 'status_id', 'null' => true, 'required' => true, 'method' => 'select', 'percent' => 30, 'no_choose' => true, 'options_model' => '\Model\Counselor\Statuses', 'options_options' => ['i18n' => 'skip_sorting'], 'track_previous_values' => true],
+				'b4_counselor_period_id' => ['order' => 3, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'required' => true, 'method' => 'select', 'percent' => 40, 'no_choose' => true, 'options_model' => '\Model\Periods', 'readonly' => true],
 			],
 			'b4_counselor_child_name' => [
 				'b4_counselor_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 50, 'required' => true],
@@ -57,9 +63,6 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 			'b4_counselor_declartion_police_check_submitted' => [
 				'b4_counselor_declartion_police_check_submitted' => ['order' => 1, 'row_order' => 400, 'label_name' => 'Did you submit Police check to Break for Jesus before?', 'type' => 'boolean', 'onchange' => 'this.form.submit();'],
 			],
-			self::HIDDEN => [
-				'b4_counselor_id' => ['label_name' => 'Registration #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
-			]
 		],
 		'tabs' => [
 			'address' => [
@@ -197,8 +200,8 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_declartion_last_police_check' => ['order' => 2, 'label_name' => 'Last police Check', 'type' => 'date', 'null' => true, 'required' => 'c', 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right'],
 			],
 			'b4_counselor_declartion_signature' => [
-				'b4_counselor_declartion_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Signature of Child', 'domain' => 'signature', 'null' => true, 'required' => 'c', 'percent' => 50, 'method' => 'signature'],
-				'b4_counselor_declartion_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => 'c', 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'b4_counselor_declartion_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Signature of Child', 'domain' => 'signature', 'null' => true, 'required' => 'c', 'percent' => 50, 'method' => 'signature', 'readonly' => true],
+				'b4_counselor_declartion_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => 'c', 'method' => 'calendar', 'calendar_icon' => 'right', 'readonly' => true],
 			]
 		],
 		'tshirt_container' => [
@@ -211,14 +214,12 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_parents_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Parents Name', 'domain' => 'name', 'required' => true, 'percent' => 100],
 			],
 			'b4_counselor_signature' => [
-				'b4_counselor_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Signature of Parent / Guardian', 'domain' => 'signature', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'signature'],
-				'b4_counselor_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right'],
+				'b4_counselor_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Signature of Parent / Guardian', 'domain' => 'signature', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'signature', 'readonly' => true],
+				'b4_counselor_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => true, 'method' => 'calendar', 'calendar_icon' => 'right', 'readonly' => true],
 			]
 		],
 		'buttons' => [
-			self::BUTTONS => [
-				self::BUTTON_SUBMIT => self::BUTTON_SUBMIT_DATA
-			]
+			self::BUTTONS => self::BUTTONS_DATA_GROUP
 		],
 	];
 	public $collection = [
@@ -226,42 +227,11 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 		'model' => '\Model\Counselors'
 	];
 
-	public function refresh(& $form) {
-		$period = \Model\Periods::getStatic([
-			'where' => [
-				'b4_period_current' => 1
-			],
-			'pk' => null
-		]);
-		if (!\Helper\Date::between(\Format::now('datetime'), $period[0]['b4_period_counselor_start_date'], $period[0]['b4_period_counselor_end_date'])) {
-			$form->error(DANGER,  \Helper\Messages::NO_LONGER_ACCEPT_REGISTRATIONS, 'b4_counselor_period_id');
-			return;
-		}
-	}
-
-	public function validate(& $form) {
-		if (!empty($form->values['b4_counselor_declartion_police_check_submitted'])) {
-			$form->validateAsRequiredFields([
-				'b4_counselor_declartion_signed_at',
-				'b4_counselor_declartion_last_police_check',
-				'b4_counselor_declartion_signature',
-				'b4_counselor_declartion_signing_date'
-			]);
-		}
-	}
-
 	public function overrideTabs(& $form, & $tab_options, & $tab_name, & $neighbouring_values = []) {
 		if (empty($form->values['b4_counselor_declartion_police_check_submitted'])) {
 			if (in_array($tab_name, ['declaration'])) {
 				return ['hidden' => true];
 			}
-		}
-	}
-
-	public function success(& $form) {
-		if (!empty($form->values['b4_counselor_id'])) {
-			\Session::set('b4j.last_b4_counselor_id', $form->values['b4_counselor_id']);
-			$form->redirect(\Application::get('mvc.controller') . '/_Success');
 		}
 	}
 }

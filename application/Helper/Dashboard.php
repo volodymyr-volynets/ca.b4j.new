@@ -36,7 +36,7 @@ class Dashboard extends \Numbers\Users\Users\Helper\Dashboard\Builder {
 				'acl' => [
 					'resource_id' => '\Controller\B4J\Register',
 					'method_code' => 'Index',
-					'action_id' => 'List_View'
+					'action_id' => null
 				],
 				'url' => '/B4J/Register'
 			],
@@ -55,10 +55,24 @@ class Dashboard extends \Numbers\Users\Users\Helper\Dashboard\Builder {
 				'name' => '&nbsp;'
 			],
 			2 => [
-				'name' => '&nbsp;'
+				'name' => 'Counselor Registrations',
+				'icon' => 'fab fa-delicious',
+				'acl' => [
+					'resource_id' => '\Controller\B4J\Counselors',
+					'method_code' => 'Index',
+					'action_id' => 'List_View'
+				],
+				'url' => '/B4J/Counselors'
 			],
 			3 => [
-				'name' => '&nbsp;'
+				'name' => 'New Counselor Registration',
+				'icon' => 'fab fa-delicious',
+				'acl' => [
+					'resource_id' => '\Controller\B4J\CounselorsRegister',
+					'method_code' => 'Index',
+					'action_id' => null
+				],
+				'url' => '/B4J/CounselorsRegister'
 			],
 			4 => [
 				'name' => '&nbsp;'

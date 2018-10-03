@@ -22,7 +22,7 @@ class Step3 extends \Object\Form\Wrapper\Base {
 		'top' => [
 			self::HIDDEN => [
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden'],
-				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
+				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
 				'b4_register_children' => ['label_name' => 'Children', 'type' => 'text', 'null' => true, 'method' => 'hidden'],
 				'b4_register_period' => ['label_name' => 'Period', 'type' => 'text', 'null' => true, 'method' => 'hidden'],
 			],

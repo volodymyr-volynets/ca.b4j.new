@@ -31,7 +31,7 @@ class Step2 extends \Object\Form\Wrapper\Base {
 		'top' => [
 			self::HIDDEN => [
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden'],
-				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden'],
+				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
 			],
 			'b4_registration_parents_name' => [
 				'b4_registration_parents_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Parent\'s Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],

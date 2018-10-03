@@ -1317,10 +1317,29 @@ processAllValues:
 				$this->master_object = \Factory::model($this->master_options['model'], true, [$module_id ?? 0, $this->master_options['ledger'], & $this]);
 			}
 		}
-		// preserve blank
+		// preserve blank and validate through session
+		$this->misc_settings['validate_through_session'] = [];
 		foreach ($this->fields as $k => $v) {
 			if (!empty($v['options']['preserve_blank'])) {
 				$blank_reset_var[$k] = $this->options['input'][$k] ?? null;
+			}
+			if (!empty($v['options']['validate_through_session'])) {
+				if (!empty($this->options['input'][$k])) {
+					$existing = \Session::get(['numbers', 'locks', 'form', $this->options['collection_link'] ?? $this->form_link, $k]);
+					$value = concat_ws('::', $this->options['input'][$this->collection_object->primary_model->module_column] ?? null, $this->options['input'][$k]);
+					if (!in_array($value, $existing)) {
+						$this->error(DANGER, \Object\Content\Messages::NO_MODIFICATION_ALLOWED);
+						$this->values = [];
+						$this->options['input'] = [];
+						return;
+					}
+				}
+				$this->misc_settings['validate_through_session'][$k] = [
+					'form' => $this->options['collection_link'] ?? $this->form_link,
+					'key' => $k,
+					'module_id' => $this->options['input'][$this->collection_object->primary_model->module_column] ?? null,
+					'value' => $this->options['input'][$k] ?? null,
+				];
 			}
 		}
 		// hidden buttons to handle form though javascript
@@ -1535,6 +1554,13 @@ otherFormSubmitted:
 				}
 				// if save was successfull we post
 				if (!$this->hasErrors()) {
+					// save data in sessions
+					if (!empty($this->misc_settings['validate_through_session'])) {
+						foreach ($this->misc_settings['validate_through_session'] as $k => $v) {
+							\Session::set(['numbers', 'locks', 'form', $v['form'], $v['key']], concat_ws('::', $v['module_id'], $this->values[$k]), ['append' => true, 'append_unique' => true]);
+						}
+					}
+					// trigger post method
 					$temp = $this->triggerMethod('post');
 				}
 				// rollback changes maid in validate method
