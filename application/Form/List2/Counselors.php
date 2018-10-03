@@ -74,7 +74,7 @@ class Counselors extends \Object\Form\Wrapper\List2 {
 			'row3' => [
 				'blank' => ['order' => 1, 'row_order' => 300, 'label_name' => '', 'percent' => 10],
 				'b4_counselor_status_id' => ['order' => 1, 'label_name' => 'Status', 'domain' => 'status_id', 'options_model' => '\Model\Counselor\Statuses', 'percent' => 15],
-				'b4_counselor_badge_name' => ['order' => 2, 'label_name' => 'Badge Name', 'domain' => 'name'],
+				'b4_counselor_badge_name' => ['order' => 2, 'label_name' => 'Badge Name', 'domain' => 'name', 'percent' => 15],
 				'b4_counselor_email' => ['order' => 3, 'label_name' => 'Email', 'domain' => 'email', 'percent' => 30],
 				'b4_counselor_phone' => ['order' => 4, 'label_name' => 'Phone', 'domain' => 'phone', 'percent' => 30],
 			]

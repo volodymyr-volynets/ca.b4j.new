@@ -17,6 +17,7 @@ class Register extends \Object\Table {
 	public $columns = [
 		'b4_register_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'b4_register_id' => ['name' => 'Register #', 'domain' => 'big_id_sequence'],
+		'b4_register_period_id' => ['name' => 'Period #', 'domain' => 'group_id'],
 		'b4_register_datetime' => ['name' => 'Datetime', 'type' => 'timestamp', 'default' => 'now()'],
 		'b4_register_parents_name' => ['name' => 'Parent\'s Name', 'domain' => 'name', 'null' => true],
 		'b4_register_parents_phone' => ['name' => 'Parent\'s Phone', 'domain' => 'phone', 'null' => true],

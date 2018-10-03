@@ -13,7 +13,8 @@ class Notifications {
 		$temp = \Model\Register::getStatic([
 			'columns' => [
 				'b4_register_parents_email',
-				'b4_register_parents_name'
+				'b4_register_parents_name',
+				'b4_register_period_id'
 			],
 			'where' => [
 				'b4_register_id' => $register_id,
@@ -30,6 +31,7 @@ class Notifications {
 			'replace' => [
 				'body' => [
 					'[Name]' => $temp[0]['b4_register_parents_name'],
+					'[Additional_Information_Date]' => \Format::date(\Model\Periods::loadById($temp[0]['b4_register_period_id'], 'b4_period_additional_info_date')),
 					'[URL]' => \Application::get('mvc.full_with_host') . '?__wizard_step=5&token=' . $crypt->tokenCreate($register_id, 'registration.b4j'),
 					'[Token_Valid_Hours]' => $crypt->object->valid_hours
 				]

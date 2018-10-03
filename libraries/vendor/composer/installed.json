@@ -299,24 +299,24 @@
     },
     {
         "name": "numbers/framework",
-        "version": "2.0.16",
-        "version_normalized": "2.0.16.0",
+        "version": "2.0.19",
+        "version_normalized": "2.0.19.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/framework.git",
-            "reference": "303f0a47bfd28aead234f164bc1f6eb18394eb6d"
+            "reference": "050cac42fdd592f5d7c82e7f319211014f4e8d00"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/303f0a47bfd28aead234f164bc1f6eb18394eb6d",
-            "reference": "303f0a47bfd28aead234f164bc1f6eb18394eb6d",
+            "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/050cac42fdd592f5d7c82e7f319211014f4e8d00",
+            "reference": "050cac42fdd592f5d7c82e7f319211014f4e8d00",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-10-01T22:47:02+00:00",
+        "time": "2018-10-03T22:34:12+00:00",
         "type": "library",
         "extra": {
             "installer-types": [
@@ -392,24 +392,24 @@
     },
     {
         "name": "numbers/frontend",
-        "version": "2.0.5",
-        "version_normalized": "2.0.5.0",
+        "version": "2.0.7",
+        "version_normalized": "2.0.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/frontend.git",
-            "reference": "b6658a8eac00b3000821525a124abd5d69dbf6ca"
+            "reference": "c91f7eb6c530e0a7c05f9bd92df81ccebfa4bb8c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/b6658a8eac00b3000821525a124abd5d69dbf6ca",
-            "reference": "b6658a8eac00b3000821525a124abd5d69dbf6ca",
+            "url": "https://api.github.com/repos/volodymyr-volynets/frontend/zipball/c91f7eb6c530e0a7c05f9bd92df81ccebfa4bb8c",
+            "reference": "c91f7eb6c530e0a7c05f9bd92df81ccebfa4bb8c",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-09-29T02:27:28+00:00",
+        "time": "2018-10-03T22:06:34+00:00",
         "type": "library",
         "extra": {
             "installer-types": [
@@ -441,24 +441,24 @@
     },
     {
         "name": "numbers/tenants",
-        "version": "2.0.8",
-        "version_normalized": "2.0.8.0",
+        "version": "2.0.9",
+        "version_normalized": "2.0.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/volodymyr-volynets/tenants.git",
-            "reference": "7304916251be1daf3555ca161f141bda51011734"
+            "reference": "92935a73b2cb5f459b7f30cc3d89a1699dab9df8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/volodymyr-volynets/tenants/zipball/7304916251be1daf3555ca161f141bda51011734",
-            "reference": "7304916251be1daf3555ca161f141bda51011734",
+            "url": "https://api.github.com/repos/volodymyr-volynets/tenants/zipball/92935a73b2cb5f459b7f30cc3d89a1699dab9df8",
+            "reference": "92935a73b2cb5f459b7f30cc3d89a1699dab9df8",
             "shasum": ""
         },
         "require": {
             "oomphinc/composer-installers-extender": "~1.0",
             "php": ">=7.0.0"
         },
-        "time": "2018-10-01T22:44:26+00:00",
+        "time": "2018-10-03T22:09:47+00:00",
         "type": "library",
         "extra": {
             "installer-types": [

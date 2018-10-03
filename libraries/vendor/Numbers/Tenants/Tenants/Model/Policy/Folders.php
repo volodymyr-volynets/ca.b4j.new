@@ -19,6 +19,7 @@ class Folders extends \Object\Table {
 		'tm_polfolder_parent_polfolder_id' => ['name' => 'Parent Folder #', 'domain' => 'folder_id', 'null' => true],
 		'tm_polfolder_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_polfolder_icon' => ['name' => 'Icon', 'domain' => 'icon', 'null' => true],
+		'tm_polfolder_counter' => ['name' => 'Counter', 'domain' => 'counter', 'default' => 0],
 		'tm_polfolder_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [

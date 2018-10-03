@@ -80,7 +80,7 @@ class Internalization extends \Object\Import {
 			'options' => [
 				'pk' => ['b4_period_tenant_id', 'b4_period_code'],
 				'model' => '\Model\Periods',
-				'method' => 'save_insert_new'
+				'method' => 'save'
 			],
 			'data' => [
 				[

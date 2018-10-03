@@ -52,10 +52,12 @@ class Notifications extends \Object\Import {
 				[
 					'sm_notification_code' => 'B4::EMAIL_REG_CONFIRMATION',
 					'sm_notification_name' => 'B/J Email Registration Confirmation',
-					'sm_notification_subject' => 'Break For Jesus: Registration Email Confirmation',
+					'sm_notification_subject' => 'Break For Jesus: Camp Registration Email Confirmation',
 					'sm_notification_body' => 'Dear [Name],
 
-Thank you for registering at Break For Jesus,
+Thank you for completing the registration.  Please confirm your email asap, if you DO NOT confirm your email address, the registration will NOT be submitted.
+ 
+Once your child/ren have been selected, you will receive an email with additional information by [Additional_Information_Date].
 
 <a href="[URL]" target="_parent">Click here</a> to continue the registration process.
 

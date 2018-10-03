@@ -104,6 +104,7 @@ class Step1 extends \Object\Form\Wrapper\Base {
 				'b4_register_step_id' => 1,
 				'b4_register_step1' => json_encode($form->values),
 				'b4_register_period' => $this->tmp_period_dates,
+				'b4_register_period_id' => $form->values['b4_registration_period_id'],
 			],
 			$form,
 			'b4_register_id'
