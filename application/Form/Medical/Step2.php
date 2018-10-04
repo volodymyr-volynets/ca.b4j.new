@@ -48,7 +48,7 @@ class Step2 extends \Object\Form\Wrapper\Base {
 			'href' => \Application::get('mvc.full') . '?__wizard_step=2&b4_registration_id=' . $form->values['b4_registration_id'] . '&token=' . \Request::input('token')
 		];
 		$form->values['__wizard_step'] = 2;
-		if ($form->values['b4_registration_status_id'] != 30) {
+		if (!in_array($form->values['b4_registration_status_id'], [30, 300])) {
 			$form->error(DANGER, \Helper\Messages::REGISTRATION_NOT_FOUND_OR_ALREADY_CONFIRMED);
 			$form->readonly();
 		}

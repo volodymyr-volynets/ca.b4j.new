@@ -40,6 +40,16 @@ class Notifications extends \Object\Import {
 					'sm_feature_activation_model' => null,
 					'sm_feature_inactive' => 0
 				],
+				[
+					'sm_feature_module_code' => 'B4',
+					'sm_feature_code' => 'B4::EMAIL_ON_WAITING_LIST',
+					'sm_feature_type' => 21,
+					'sm_feature_name' => 'B/J Email On Waiting List',
+					'sm_feature_icon' => 'far fa-envelope',
+					'sm_feature_activated_by_default' => 1,
+					'sm_feature_activation_model' => null,
+					'sm_feature_inactive' => 0
+				],
 			]
 		],
 		'notifications' => [
@@ -88,6 +98,27 @@ Thank you!',
 					'sm_notification_body' => 'Dear [Name],
 
 We are in the final step of registration process - we would like to collect medical and additional information about your child [Child].
+
+<a href="[URL]" target="_parent">Click here</a> to continue the registration process.
+
+Or paste this into a browser:
+
+[URL]
+
+Please note that this link is only active for [Token_Valid_Hours] hours after receipt. After this time limit has expired the token will not work and you will need to resubmit the registration request.
+
+Thank you!',
+					'sm_notification_inactive' => 0
+				],
+				[
+					'sm_notification_code' => 'B4::EMAIL_ON_WAITING_LIST',
+					'sm_notification_name' => 'B/J Email On Waiting List',
+					'sm_notification_subject' => 'Break For Jesus: Your Child Is On Waiting List',
+					'sm_notification_body' => 'Dear [Name],
+
+At this time the camp is FULL, unfortunately [Child] NOT been selected for camp.
+
+We have placed your child’s name on a WAITLIST. If you would like your child to remain on the wait list, please fill out the following online MEDICAL FORM and T-shirt order. If a spot becomes available, you will be contacted.
 
 <a href="[URL]" target="_parent">Click here</a> to continue the registration process.
 

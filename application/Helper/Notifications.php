@@ -105,4 +105,39 @@ class Notifications {
 			]
 		]);
 	}
+
+	/**
+	 * On Waiting list
+	 *
+	 * @param int $registration_id
+	 */
+	public static function sendWaitingListMessage(int $registration_id) {
+		// load registration
+		$temp = \Model\Registrations::getStatic([
+			'columns' => [
+				'b4_registration_email',
+				'b4_registration_parents_name',
+				'b4_registration_child_name'
+			],
+			'where' => [
+				'b4_registration_id' => $registration_id,
+			],
+			'pk' => null
+		]);
+		if (empty($temp)) {
+			return ['success' => false, 'error' => \Helper\Messages::REGISTRATION_NOT_FOUND_OR_ALREADY_CONFIRMED];
+		}
+		// send email message
+		$crypt = new \Crypt();
+		return \Numbers\Users\Users\Helper\Notification\Sender::notifySingleUser('B4::EMAIL_ON_WAITING_LIST', 0, $temp[0]['b4_registration_email'], [
+			'replace' => [
+				'body' => [
+					'[Name]' => $temp[0]['b4_registration_parents_name'],
+					'[Child]' => $temp[0]['b4_registration_child_name'],
+					'[URL]' => \Request::host() . 'B4J/Register/_Medical' . '?__wizard_step=1&token=' . $crypt->tokenCreate($registration_id, 'medical.b4j'),
+					'[Token_Valid_Hours]' => registry('b4j.need_medical_token_valid') ?? 48,
+				]
+			]
+		]);
+	}
 }
