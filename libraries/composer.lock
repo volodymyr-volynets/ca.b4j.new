@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "baac290c55c69051c2883d75ace7455e",
+    "content-hash": "c27f863dcd4340abe09c492396e7377f",
     "packages": [
         {
             "name": "composer/installers",
@@ -222,16 +222,16 @@
         },
         {
             "name": "numbers/framework",
-            "version": "2.0.19",
+            "version": "2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/volodymyr-volynets/framework.git",
-                "reference": "050cac42fdd592f5d7c82e7f319211014f4e8d00"
+                "reference": "ce105ab4b07d76f4e2be3f0ba05a681ae5d9ce34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/050cac42fdd592f5d7c82e7f319211014f4e8d00",
-                "reference": "050cac42fdd592f5d7c82e7f319211014f4e8d00",
+                "url": "https://api.github.com/repos/volodymyr-volynets/framework/zipball/ce105ab4b07d76f4e2be3f0ba05a681ae5d9ce34",
+                "reference": "ce105ab4b07d76f4e2be3f0ba05a681ae5d9ce34",
                 "shasum": ""
             },
             "require": {
@@ -260,7 +260,7 @@
                 }
             ],
             "description": "Lightweight MVC PHP Framework",
-            "time": "2018-10-03T22:34:12+00:00"
+            "time": "2018-10-04T00:19:12+00:00"
         },
         {
             "name": "numbers/frontend",
