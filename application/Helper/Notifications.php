@@ -31,7 +31,7 @@ class Notifications {
 			'replace' => [
 				'body' => [
 					'[Name]' => $temp[0]['b4_register_parents_name'],
-					'[Additional_Information_Date]' => \Format::date(\Model\Periods::loadById($temp[0]['b4_register_period_id'], 'b4_period_additional_info_date')),
+					'[Additional_Information_Date]' => \Format::niceDatetime(\Model\Periods::loadById($temp[0]['b4_register_period_id'], 'b4_period_additional_info_date')),
 					'[URL]' => \Application::get('mvc.full_with_host') . '?__wizard_step=5&token=' . $crypt->tokenCreate($register_id, 'registration.b4j'),
 					'[Token_Valid_Hours]' => $crypt->object->valid_hours
 				]
@@ -66,6 +66,8 @@ class Notifications {
 				'body' => [
 					'[Name]' => $temp[0]['b4_registration_parents_name'],
 					'[Child]' => $temp[0]['b4_registration_child_name'],
+					'[Support Name]' => registry('b4j.contact.name'),
+					'[Support Phone]' => registry('b4j.contact.phone'),
 				]
 			]
 		]);

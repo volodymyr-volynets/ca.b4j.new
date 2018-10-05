@@ -213,10 +213,9 @@ class Registrations extends \Object\Form\Wrapper\Base {
 		$prev_status_id = (int) $form->tracked_values['b4_registration_status_id'] ?? 0;
 		if ($prev_status_id != $form->values['b4_registration_status_id']) {
 			// child is confirmed email
-			// we do no send it now
-			//if ($form->values['b4_registration_status_id'] == 20) {
-				//\Helper\Notifications::sendChildAccpetedMessage($form->values['b4_registration_id']);
-			//}
+			if ($form->values['b4_registration_status_id'] == 250) {
+				\Helper\Notifications::sendChildAccpetedMessage($form->values['b4_registration_id']);
+			}
 			// medical email
 			if ($form->values['b4_registration_status_id'] == 30) {
 				\Helper\Notifications::sendNeedMedicalMessage($form->values['b4_registration_id']);

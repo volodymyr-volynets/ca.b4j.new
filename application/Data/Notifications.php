@@ -86,7 +86,20 @@ Thank you!',
 					'sm_notification_subject' => 'Break For Jesus: Child Is Accepted',
 					'sm_notification_body' => 'Dear [Name],
 
-Please note that [Child] is accepted to the camp, you would receive an email to provide medical and additional information shortly.
+Thank you for registering your child/ren for Break 4 Jesus March Break Camp.
+
+Your child [Child] has been ACCEPTED to camp!
+
+Cheques need to be made out to be Break for Jesus. PLEASE NO POST-DATED CHEQUES.
+
+Please mail your cheques to
+	Break for Jesus
+	c/o 6 Upminister Cres
+	Toronto, On M9B 5W2
+
+If you have any concerns or challenges please contact [Support Name] at [Support Phone] by November 25.
+
+If ALL the necessary forms and payment is NOT completed - the spot will be given to another camper.
 
 Thank you!',
 					'sm_notification_inactive' => 0

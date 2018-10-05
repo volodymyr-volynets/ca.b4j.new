@@ -16,11 +16,9 @@
 			</div>
 			<p>
 				<?php
-					echo i18n(null, 'Registration starts [start_date].', ['replace' => ['[start_date]' => \Format::datetime(\Helper\Periods::get('b4_period_start_date'))]]);
+					echo i18n(null, 'Registration starts [start_date].', ['replace' => ['[start_date]' => \Format::niceDatetime(\Helper\Periods::get('b4_period_start_date'))]]);
 					echo ' ';
-					echo i18n(null, 'Pick up a flyer with registration code <b>in your parish</b>, go to <a href="[link]">[link]</a> and fill out the form.', ['replace' => ['[link]' => \Request::host() . 'register']]);
-					echo ' ';
-					echo i18n(null, 'If not announced, ask your parish priest for the registration code.');
+					echo i18n(null, 'Please see the code in your church bulletin or in our poster, posted in parishes after October 28th, go to <a href="[link]">[link]</a> and fill out the form.', ['replace' => ['[link]' => \Request::host() . 'register']]);
 				?>
 			</p>
 			<p>
