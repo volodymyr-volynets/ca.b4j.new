@@ -9,6 +9,7 @@ class Counselors extends \Object\Form\Wrapper\Base {
 		'segment' => self::SEGMENT_FORM,
 		'actions' => [
 			'refresh' => true,
+			'back' => true,
 		]
 	];
 	public $containers = [
