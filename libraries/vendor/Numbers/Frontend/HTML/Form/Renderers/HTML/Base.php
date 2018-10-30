@@ -1705,6 +1705,10 @@ render_custom_renderer:
 						$flag_translated = true;
 					}
 				} else { // editable fields
+					// inputs should not be date type, use input_type to override
+					if ($element_method == '\HTML::input') {
+						$result_options['type'] = 'text';
+					}
 					// special handling for
 					if ($element_method == '\HTML::radio') {
 						$result_options['value'] = '';
