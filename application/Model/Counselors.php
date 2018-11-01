@@ -25,6 +25,7 @@ class Counselors extends \Object\Table {
 		'b4_counselor_badge_name' => ['name' => 'Badge Name', 'domain' => 'name'],
 		'b4_counselor_parish' => ['name' => 'Parish', 'domain' => 'name', 'null' => true],
 		'b4_counselor_date_of_birth' => ['name' => 'Date of Birth', 'type' => 'date'],
+		'b4_counselor_grade' => ['name' => 'Grade', 'type' => 'smallint', 'null' => true],
 		// address
 		'b4_counselor_address1' => ['name' => 'Address Line 1', 'domain' => 'name'],
 		'b4_counselor_address2' => ['name' => 'Address Line 2', 'domain' => 'name', 'null' => true],

@@ -47,8 +47,9 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_badge_name' => ['order' => 2, 'label_name' => 'First name, as you want it to appear on name tag', 'domain' => 'name', 'percent' => 50, 'required' => true],
 			],
 			'b4_counselor_parish' => [
-				'b4_counselor_date_of_birth' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Date of Birth', 'type' => 'date', 'required' => true, 'percent' => 50, 'placeholder' => NUMBERS_FLAG_TIMESTAMP_FORMATED_DATE],
-				'b4_counselor_parish' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Parish', 'domain' => 'name', 'required' => true, 'percent' => 50],
+				'b4_counselor_date_of_birth' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Date of Birth', 'type' => 'date', 'required' => true, 'percent' => 25, 'placeholder' => NUMBERS_FLAG_TIMESTAMP_FORMATED_DATE],
+				'b4_counselor_grade' => ['order' => 2, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'required' => true, 'percent' => 25],
+				'b4_counselor_parish' => ['order' => 3, 'label_name' => 'Parish', 'domain' => 'name', 'required' => true, 'percent' => 50],
 			],
 			'b4_counselor_email' => [
 				'b4_counselor_phone' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Phone', 'domain' => 'phone', 'required' => true],
