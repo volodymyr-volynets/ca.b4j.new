@@ -22,7 +22,7 @@ class Periods extends \Object\Form\Wrapper\Base {
 	public $elements = [
 		'top' => [
 			'b4_period_id' => [
-				'b4_period_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Group #', 'domain' => 'group_id_sequence', 'percent' => 50, 'navigation' => true],
+				'b4_period_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Period #', 'domain' => 'group_id_sequence', 'percent' => 50, 'navigation' => true],
 				'b4_period_code' => ['order' => 2, 'label_name' => 'Code', 'domain' => 'code', 'required' => true, 'percent' => 45, 'validator_method' => '\Object\Validator\UpperCase::validate'],
 				'b4_period_inactive' => ['order' => 3, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			],
