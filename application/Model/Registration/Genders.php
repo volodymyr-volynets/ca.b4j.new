@@ -17,6 +17,6 @@ class Genders extends \Object\Data {
 	public $data = [
 		10 => ['no_data_reg_genders_name' => 'Male'],
 		20 => ['no_data_reg_genders_name' => 'Female'],
-		30 => ['no_data_reg_genders_name' => 'Other'],
+		//30 => ['no_data_reg_genders_name' => 'Other'],
 	];
 }
