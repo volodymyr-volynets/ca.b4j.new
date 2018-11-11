@@ -25,7 +25,7 @@ class Finish {
 				[
 					'b4_register_id' => $register_id
 				],
-				['b4_register_step1', 'b4_register_step2', 'b4_register_step3', 'b4_register_status_id'],
+				['b4_register_step1', 'b4_register_step2', 'b4_register_step3', 'b4_register_status_id', 'b4_register_period_id'],
 				$data
 			);
 			if ($data['b4_register_status_id'] != 10) {
@@ -63,7 +63,7 @@ class Finish {
 				return $result;
 			}
 			// update counter
-			$temp = \Model\Periods::queryBuilderStatic()->update()->set(['b4_period_confirmed_registrations;=;~~' => 'b4_period_confirmed_registrations + 1'])->query();
+			$temp = \Model\Periods::queryBuilderStatic()->update()->set(['b4_period_confirmed_registrations;=;~~' => 'b4_period_confirmed_registrations + 1'])->where('AND', ['b4_period_id', '=', $data['b4_register_period_id']])->query();
 			if (!$temp['success']) {
 				$result['error'] = $temp['error'];
 				$model->db_object->rollback();

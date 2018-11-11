@@ -45,8 +45,8 @@ class Registrations extends \Object\Form\Wrapper\Base {
 			],
 			'b4_registration_timestamp' => [
 				'b4_registration_timestamp' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Datetime', 'domain' => 'timestamp_now', 'required' => true, 'format' => 'datetime', 'percent' => 30, 'readonly' => true],
-				'b4_registration_status_id' => ['order' => 2, 'label_name' => 'Status', 'domain' => 'status_id', 'required' => true, 'method' => 'select', 'percent' => 30, 'no_choose' => true, 'options_model' => '\Model\Registration\Statuses', 'options_options' => ['i18n' => 'skip_sorting'], 'track_previous_values' => true],
-				'b4_registration_period_id' => ['order' => 3, 'label_name' => 'Period', 'domain' => 'group_id', 'required' => true, 'method' => 'select', 'percent' => 40, 'no_choose' => true, 'options_model' => '\Model\Periods', 'readonly' => true],
+				'b4_registration_status_id' => ['order' => 2, 'label_name' => 'Status', 'domain' => 'status_id', 'null' => true, 'required' => true, 'method' => 'select', 'percent' => 30, 'no_choose' => true, 'options_model' => '\Model\Registration\Statuses', 'options_options' => ['i18n' => 'skip_sorting'], 'track_previous_values' => true],
+				'b4_registration_period_id' => ['order' => 3, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'required' => true, 'method' => 'select', 'percent' => 40, 'no_choose' => true, 'options_model' => '\Model\Periods', 'readonly' => true],
 			]
 		],
 		'tabs' => [

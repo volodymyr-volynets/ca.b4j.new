@@ -111,7 +111,7 @@ class Step1 extends \Object\Form\Wrapper\Base {
 		);
 		// update counter
 		if ($result) {
-			\Model\Periods::queryBuilderStatic()->update()->set(['b4_period_new_registrations;=;~~' => 'b4_period_new_registrations + 1'])->query();
+			\Model\Periods::queryBuilderStatic()->update()->set(['b4_period_new_registrations;=;~~' => 'b4_period_new_registrations + 1'])->where('AND', ['b4_period_id', '=', $form->values['b4_registration_period_id']])->query();
 			$model->db_object->commit();
 		} else {
 			$model->db_object->rollback();
