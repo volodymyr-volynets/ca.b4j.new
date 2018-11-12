@@ -74,9 +74,10 @@ class Registrations extends \Object\Form\Wrapper\Base {
 				'b4_registration_payment_received' => ['label_name' => 'Payment Received', 'type' => 'boolean', 'percent' => 50],
 			],
 			'b4_registration_date_of_birth' => [
-				'b4_registration_date_of_birth' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'calendar', 'calendar_icon' => 'right', 'onchange' => 'this.form.submit();'],
-				'b4_registration_first_time' => ['order' => 2, 'label_name' => 'First Time', 'type' => 'boolean', 'percent' => 15],
-				'b4_registration_gender_id' => ['order' => 3, 'label_name' => 'Gender', 'domain' => 'status_id', 'null' => true, 'required' => true, 'percent' => 35, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\Registration\Genders', 'options_options' => ['i18n' => 'skip_sorting']],
+				'b4_registration_date_of_birth' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 25, 'method' => 'calendar', 'calendar_icon' => 'right', 'onchange' => 'this.form.submit();'],
+				'b4_registration_grade' => ['order' => 2, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'percent' => 25],
+				'b4_registration_first_time' => ['order' => 3, 'label_name' => 'First Time', 'type' => 'boolean', 'percent' => 15],
+				'b4_registration_gender_id' => ['order' => 4, 'label_name' => 'Gender', 'domain' => 'status_id', 'null' => true, 'required' => true, 'percent' => 35, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\Registration\Genders', 'options_options' => ['i18n' => 'skip_sorting']],
 			],
 			'contact' => [
 				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 600, 'label_name' => 'Contact', 'icon' => 'fas fa-phone', 'percent' => 100],
@@ -211,7 +212,7 @@ class Registrations extends \Object\Form\Wrapper\Base {
 
 	public function post(& $form) {
 		$prev_status_id = (int) $form->tracked_values['b4_registration_status_id'] ?? 0;
-		if ($prev_status_id != $form->values['b4_registration_status_id']) {
+		if ($prev_status_id != ($form->values['b4_registration_status_id'] ?? 0)) {
 			// child is confirmed email
 			if ($form->values['b4_registration_status_id'] == 250) {
 				\Helper\Notifications::sendChildAccpetedMessage($form->values['b4_registration_id']);

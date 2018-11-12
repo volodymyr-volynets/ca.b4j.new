@@ -68,7 +68,8 @@ class Step2 extends \Object\Form\Wrapper\Base {
 		],
 		'children_container' => [
 			'row1' => [
-				'b4_registration_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Child Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
+				'b4_registration_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Child Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 65],
+				'b4_registration_grade' => ['order' => 2, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'required' => true, 'percent' => 35],
 			],
 			'row2' => [
 				'b4_registration_date_of_birth' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Date of Birth', 'type' => 'date', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'input', 'placeholder' => NUMBERS_FLAG_TIMESTAMP_FORMATED_DATE],
