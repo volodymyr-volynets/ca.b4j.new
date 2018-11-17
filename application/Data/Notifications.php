@@ -120,19 +120,13 @@ B4J Administration',
 					'sm_notification_subject' => 'Break For Jesus: Your Child Is On Waiting List',
 					'sm_notification_body' => 'Dear [Name],
 
-At this time the camp is FULL, unfortunately [Child] NOT been selected for camp.
+We have placed [Child] on a WAITLIST because we have reached maximum capacity for the camp.
 
-We have placed your child’s name on a WAITLIST. If you would like your child to remain on the wait list, please fill out the following online MEDICAL FORM and T-shirt order. If a spot becomes available, you will be contacted.
+If you would like your child to remain on the wait list, please fill out the following online <a href="[URL]" target="_parent">MEDICAL FORM and T-shirt order</a>.
 
-<a href="[URL]" target="_parent">Click here</a> to continue the registration process.
+If a spot becomes available, you will be contacted immediately.
 
-Or paste this into a browser:
-
-[URL]
-
-Please note that this link is only active for [Token_Valid_Hours] hours after receipt. After this time limit has expired the token will not work and you will need to resubmit the registration request.
-
-Thank you!',
+B4J Administration',
 					'sm_notification_inactive' => 0
 				],
 			]
