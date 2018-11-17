@@ -27,7 +27,8 @@ class Step1 extends \Object\Form\Wrapper\Base {
 				'b4_registration_status_id' => ['label_name' => 'Status', 'domain' => 'status_id', 'null' => true, 'persistent' => true, 'method' => 'hidden'],
 			],
 			'b4_registration_child_name' => [
-				'b4_registration_child_name' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Name of Child', 'domain' => 'name', 'persistent' => true, 'percent' => 100, 'required' => true, 'readonly' => true],
+				'b4_registration_child_name' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Name of Child', 'domain' => 'name', 'persistent' => true, 'percent' => 75, 'required' => true, 'readonly' => true],
+				'b4_registration_grade' => ['order' => 2, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'required' => true, 'percent' => 25],
 			],
 			'b4_registration_medical_health_card_number' => [
 				'b4_registration_medical_health_card_number' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Health Card Number', 'domain' => 'code', 'required' => true, 'placeholder' => 'NNNN-NNN-NNN-AA'],

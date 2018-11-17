@@ -69,17 +69,25 @@ class Registrations extends \Object\Form\Wrapper\List2 {
 				'b4_registration_inactive' => ['order' => 4, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			],
 			'row2' => [
-				'blank' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 10],
+				'blank1' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 10],
 				'b4_registration_timestamp' => ['order' => 2, 'label_name' => 'Reg. Date', 'type' => 'datetime', 'percent' => 25],
 				'b4_registration_period_id' => ['order' => 3, 'label_name' => 'Period', 'domain' => 'group_id', 'percent' => 40, 'options_model' => '\Model\Periods'],
 				'b4_registration_parish' => ['order' => 4, 'label_name' => 'Parish', 'domain' => 'name', 'null' => true, 'percent' => 25],
 			],
 			'row3' => [
-				'blank' => ['order' => 1, 'row_order' => 300, 'label_name' => '', 'percent' => 10],
+				'blank2' => ['order' => 1, 'row_order' => 300, 'label_name' => '', 'percent' => 10],
 				'b4_registration_status_id' => ['order' => 1, 'label_name' => 'Status', 'domain' => 'status_id', 'options_model' => '\Model\Registration\Statuses', 'percent' => 15],
 				'b4_registration_register_id' => ['order' => 2, 'label_name' => 'Register #', 'domain' => 'big_id', 'percent' => 15],
 				'b4_registration_email' => ['order' => 3, 'label_name' => 'Email', 'domain' => 'email', 'percent' => 30],
 				'b4_registration_phone' => ['order' => 4, 'label_name' => 'Phone', 'domain' => 'phone', 'percent' => 30],
+			],
+			'row4' => [
+				'blank3' => ['order' => 1, 'row_order' => 400, 'label_name' => '', 'percent' => 10],
+				'b4_registration_date_of_birth' => ['order' => 2, 'label_name' => 'Date Of Birth', 'type' => 'date', 'percent' => 15, 'format' => 'date'],
+				'b4_registration_gender_id' => ['order' => 3, 'label_name' => 'Gender', 'domain' => 'status_id', 'default' => 10, 'options_model' => '\Model\Registration\Genders', 'percent' => 15],
+				'b4_registration_grade' => ['order' => 4, 'label_name' => 'Grade', 'type' => 'smallint', 'null' => true, 'percent' => 15],
+				'b4_registration_first_time' => ['order' => 4, 'label_name' => 'First Time', 'type' => 'boolean', 'percent' => 15],
+				'blank4' => ['order' => 5, 'label_name' => '', 'percent' => 35],
 			]
 		]
 	];
