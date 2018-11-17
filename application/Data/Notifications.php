@@ -109,7 +109,7 @@ Please mail your cheques to
 
 If ALL the necessary forms and payment are NOT received by December 2nd, 2018 your registration will be withdrawn and the spot will be given to another camper on the waiting list.
 
-If you have any concerns or challenges with the payment please contact [Support Name] at [Support Phone] by November 25, 2018
+If you have any concerns or challenges with the payment please contact [Support Name] at [Support Phone].
 
 B4J Administration',
 					'sm_notification_inactive' => 0
