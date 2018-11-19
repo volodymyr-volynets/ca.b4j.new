@@ -19,16 +19,16 @@ class Registrations extends \Object\Table {
 		'b4_registration_id' => ['name' => 'Registration #', 'domain' => 'big_id_sequence'],
 		'b4_registration_register_id' => ['name' => 'Register #', 'domain' => 'big_id'],
 		'b4_registration_timestamp' => ['name' => 'Timestamp', 'domain' => 'timestamp_now'],
-		'b4_registration_period_id' => ['name' => 'Period #', 'domain' => 'group_id'],
+		'b4_registration_period_id' => ['name' => 'Period #', 'domain' => 'group_id', 'options_model' => '\Model\Periods'],
 		'b4_registration_period_code' => ['name' => 'Code', 'domain' => 'code'],
-		'b4_registration_in_group_id' => ['name' => 'I/N Group #', 'domain' => 'group_id'],
-		'b4_registration_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10],
+		'b4_registration_in_group_id' => ['name' => 'I/N Group #', 'domain' => 'group_id', 'options_model' => '\Numbers\Internalization\Internalization\Model\Groups'],
+		'b4_registration_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10, 'options_model' => '\Model\Registration\Statuses'],
 		// name
 		'b4_registration_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
 		'b4_registration_parents_name' => ['name' => 'Parents Name', 'domain' => 'name'],
 		'b4_registration_parish' => ['name' => 'Parish', 'domain' => 'name', 'null' => true],
 		'b4_registration_date_of_birth' => ['name' => 'Date of Birth', 'type' => 'date'],
-		'b4_registration_gender_id' => ['name' => 'Gender', 'domain' => 'status_id', 'default' => 10],
+		'b4_registration_gender_id' => ['name' => 'Gender', 'domain' => 'status_id', 'default' => 10, 'options_model' => '\Model\Registration\Genders'],
 		'b4_registration_grade' => ['name' => 'Grade', 'type' => 'smallint', 'null' => true],
 		// address
 		'b4_registration_address1' => ['name' => 'Address Line 1', 'domain' => 'name'],
@@ -40,7 +40,7 @@ class Registrations extends \Object\Table {
 		// contact
 		'b4_registration_email' => ['name' => 'Email', 'domain' => 'email'],
 		'b4_registration_phone' => ['name' => 'Phone', 'domain' => 'phone'],
-		'b4_registration_prefered_language_preference' => ['name' => 'Language Preference', 'type' => 'smallint'],
+		'b4_registration_prefered_language_preference' => ['name' => 'Language Preference', 'type' => 'smallint', 'options_model' => '\Model\LanguagePreference'],
 		'b4_registration_first_time' => ['name' => 'First Time', 'type' => 'boolean'],
 		// emergency
 		'b4_registration_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text', 'null' => true],
@@ -75,7 +75,7 @@ class Registrations extends \Object\Table {
 		'b4_registration_medical_non_prescription_medication' => ['name' => 'Non prescription medication', 'type' => 'boolean'],
 		'b4_registration_medical_no_non_prescription_medication' => ['name' => 'No non prescription medication', 'type' => 'boolean'],
 		// t-shirt
-		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true],
+		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true, 'options_model' => '\Model\TShirtSize'],
 		// other
 		'b4_registration_payment_received' => ['name' => 'Payment Received', 'type' => 'boolean'],
 		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean']

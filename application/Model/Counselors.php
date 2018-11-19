@@ -18,8 +18,8 @@ class Counselors extends \Object\Table {
 		'b4_counselor_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'b4_counselor_id' => ['name' => 'Registration #', 'domain' => 'big_id_sequence'],
 		'b4_counselor_timestamp' => ['name' => 'Timestamp', 'domain' => 'timestamp_now'],
-		'b4_counselor_period_id' => ['name' => 'Period #', 'domain' => 'group_id'],
-		'b4_counselor_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10, 'options_model' => '\Model\Register\Counselor\Statuses'],
+		'b4_counselor_period_id' => ['name' => 'Period #', 'domain' => 'group_id', 'options_model' => '\Model\Periods'],
+		'b4_counselor_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10, 'options_model' => '\Model\Counselor\Statuses'],
 		// name
 		'b4_counselor_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
 		'b4_counselor_badge_name' => ['name' => 'Badge Name', 'domain' => 'name'],
