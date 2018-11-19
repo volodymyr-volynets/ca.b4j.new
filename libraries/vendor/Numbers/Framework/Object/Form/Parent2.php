@@ -23,7 +23,7 @@ class Parent2 extends \Object\Override\Data {
 			'__format' => ['order' => 1, 'container_order' => PHP_INT_MAX - 1000, 'container_class' => 'numbers_form_filter_sort_container', 'label_name' => 'Format', 'percent' => 25, 'required' => true, 'method' => 'select', 'default' => 'text/html', 'no_choose' => true, 'options_model' => '\Object\Form\Model\Content\Types', 'options_options' => ['i18n' => 'skip_sorting']]
 		],
 		self::BUTTONS => [
-			self::BUTTON_SUBMIT => self::BUTTON_SUBMIT_DATA,
+			self::BUTTON_SUBMIT => self::BUTTON_SUBMIT_DATA + ['onclick' => '$(this.form).attr(\'no_ajax\', 1); return true;'],
 			self::BUTTON_SUBMIT_BLANK => self::BUTTON_SUBMIT_BLANK_DATA,
 			self::BUTTON_SUBMIT_RESET => self::BUTTON_SUBMIT_RESET_DATA
 		]
