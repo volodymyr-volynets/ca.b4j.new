@@ -52,7 +52,7 @@ class ResendEmails extends \Object\Form\Wrapper\Base {
 		}
 		foreach ($registrations as $k => $v) {
 			$temp = \Helper\Notifications::sendConfirmEmailMessage((int) $k);
-			$form->error(SUCCESS, 'Resent to [Email]!', null, ['replace' => ['[Email]' => $v['b4_register_parents_email']]]);
+			$form->error(SUCCESS, 'Resent to [Email]!', null, ['replace' => ['[Email]' => $v['b4_register_parents_email']], 'unique_options_hash' => true]);
 		}
 	}
 }
