@@ -8,4 +8,8 @@ class Photos extends \Object\Controller {
 	public function actionIndex() {
 
 	}
+
+	public function actionOld2018() {
+
+	}
 }
