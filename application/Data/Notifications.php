@@ -50,6 +50,16 @@ class Notifications extends \Object\Import {
 					'sm_feature_activation_model' => null,
 					'sm_feature_inactive' => 0
 				],
+				[
+					'sm_feature_module_code' => 'B4',
+					'sm_feature_code' => 'B4::EMAIL_COUNCELLOR_REGISTERED',
+					'sm_feature_type' => 21,
+					'sm_feature_name' => 'B/J Email Counsellor Registered',
+					'sm_feature_icon' => 'far fa-envelope',
+					'sm_feature_activated_by_default' => 1,
+					'sm_feature_activation_model' => null,
+					'sm_feature_inactive' => 0
+				],
 			]
 		],
 		'notifications' => [
@@ -125,6 +135,17 @@ We have placed [Child] on a WAITLIST because we have reached maximum capacity fo
 If you would like your child to remain on the wait list, please fill out the following online <a href="[URL]" target="_parent">MEDICAL FORM and T-shirt order</a>.
 
 If a spot becomes available, you will be contacted immediately.
+
+B4J Administration',
+					'sm_notification_inactive' => 0
+				],
+				[
+					'sm_notification_code' => 'B4::EMAIL_COUNCELLOR_REGISTERED',
+					'sm_notification_name' => 'B/J Email Counsellor Registered',
+					'sm_notification_subject' => 'Break For Jesus: Your Counsellor Registration Has Been Received',
+					'sm_notification_body' => 'Dear [Name],
+
+We have received your counsellor registration, your registration number is [Registration_ID].
 
 B4J Administration',
 					'sm_notification_inactive' => 0

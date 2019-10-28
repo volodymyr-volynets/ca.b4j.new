@@ -110,4 +110,32 @@ class Notifications {
 			]
 		]);
 	}
+
+	/**
+	 * Send confirm email to counsellor
+	 *
+	 * @param int $register_id
+	 */
+	public static function sendCounsellorConfirmEmailMessage(int $register_id) {
+		// load unconfirmed registration
+		$temp = \Model\Counselors::getStatic([
+			'columns' => [
+				'b4_counselor_email',
+				'b4_counselor_parents_name',
+			],
+			'where' => [
+				'b4_counselor_id' => $register_id,
+			],
+			'pk' => null
+		]);
+		// send email message
+		return \Numbers\Users\Users\Helper\Notification\Sender::notifySingleUser('B4::EMAIL_COUNCELLOR_REGISTERED', 0, $temp[0]['b4_counselor_email'], [
+			'replace' => [
+				'body' => [
+					'[Name]' => $temp[0]['b4_counselor_parents_name'],
+					'[Registration_ID]' => $register_id,
+				]
+			]
+		]);
+	}
 }

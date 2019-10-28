@@ -262,6 +262,9 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 	public function success(& $form) {
 		if (!empty($form->values['b4_counselor_id'])) {
 			\Session::set('b4j.last_b4_counselor_id', $form->values['b4_counselor_id']);
+			// send an email
+			\Helper\Notifications::sendCounsellorConfirmEmailMessage($form->values['b4_counselor_id']);
+			// redirect
 			$form->redirect(\Application::get('mvc.controller') . '/_Success');
 		}
 	}
