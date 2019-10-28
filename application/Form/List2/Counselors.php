@@ -40,7 +40,7 @@ class Counselors extends \Object\Form\Wrapper\List2 {
 				'b4_counselor_inactive1' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 50, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => '\Object\Data\Model\Inactive', 'query_builder' => 'a.b4_counselor_inactive;=']
 			],
 			'b4_counselor_period_id' => [
-				'b4_counselor_period_id1' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Period', 'domain' => 'group_id', 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => '\Model\Periods', 'query_builder' => 'a.b4_counselor_period_id;='],
+				'b4_counselor_period_id1' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'default' => 'dependent::100', 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\Periods', 'query_builder' => 'a.b4_counselor_period_id;='],
 				'b4_counselor_status_id1' => ['order' => 2, 'label_name' => 'Status', 'domain' => 'status_id', 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => '\Model\Counselor\Statuses', 'options_options' => ['i18n' => 'skip_sorting'], 'query_builder' => 'a.b4_counselor_status_id;='],
 			],
 			'b4_counselor_timestamp' => [
@@ -93,4 +93,21 @@ class Counselors extends \Object\Form\Wrapper\List2 {
 		'b4_counselor_id' => ['name' => 'Registration #'],
 		'b4_counselor_timestamp' => ['name' => 'Timestamp']
 	];
+
+	public function processDefaultValue(& $form, $key, $default, & $value, & $neighbouring_values, $changed_field = [], $options = []) {
+		if ($key == 'b4_counselor_period_id1') {
+			if (empty($value) && empty($neighbouring_values['b4_counselor_period_id1'])) {
+				$temp = \Model\Periods::getStatic([
+					'where' => [
+						'b4_period_current' => 1
+					],
+					'pk' => null,
+					'single_row' => true,
+				]);
+				if (!empty($temp['b4_period_id'])) {
+					$neighbouring_values['b4_counselor_period_id1'] = $value = $temp['b4_period_id'];
+				}
+			}
+		}
+	}
 }
