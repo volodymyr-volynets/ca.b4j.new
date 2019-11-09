@@ -78,7 +78,8 @@ class Registrations extends \Object\Table {
 		'b4_registration_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true, 'options_model' => '\Model\TShirtSize'],
 		// other
 		'b4_registration_payment_received' => ['name' => 'Payment Received', 'type' => 'boolean'],
-		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
+		'b4_registration_inactive' => ['name' => 'Inactive', 'type' => 'boolean'],
+		'b4_registration_can_volunteer' => ['name' => 'Volunteer', 'type' => 'boolean']
 	];
 	public $constraints = [
 		'b4_registrations_pk' => ['type' => 'pk', 'columns' => ['b4_registration_tenant_id', 'b4_registration_id']],
