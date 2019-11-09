@@ -40,9 +40,9 @@ class Step5 {
 				'type' => 'success',
 				'options' => [
 					i18n(null, 'Congratulations! You have successfully completed registration.'),
-					i18n(null, 'Registration(s) #: [id]', ['replace' => ['[id]' => \Format::id($complete['registration_id'])]]),
+					//i18n(null, 'Registration(s) #: [id]', ['replace' => ['[id]' => \Format::id($complete['registration_id'])]]),
 					//i18n(null, 'MAKE CHEQUE PAYABLE TO: [address]', ['replace' => ['[address]' => registry('b4j.address_full')]]),
-					i18n(null, "Any questions?  [phone] or <a href=\"mailto:[email]\">[email]</a>", ['replace' => ['[phone]' => registry('b4j.contact.phone'), '[email]' => registry('b4j.contact.email')]])
+					i18n(null, "Any questions? [phone] or <a href=\"mailto:[email]\">[email]</a>", ['replace' => ['[phone]' => registry('b4j.contact.phone'), '[email]' => registry('b4j.contact.email')]])
 				]
 			];
 			$result.= \HTML::message($options);
