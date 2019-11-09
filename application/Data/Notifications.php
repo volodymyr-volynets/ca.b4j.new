@@ -100,13 +100,13 @@ Thank you for registering your child/ren for Break for Jesus March Break Camp.
 
 [Child] has/ve been ACCEPTED to camp!
 
-<a href="[URL]" target="_parent">Click here</a> to continue the registration process and provide Medical, Emergency Contact and T-shirt order and send in your payment by December 2nd, 2019. Cheques need to be made out to Break for Jesus. PLEASE NO POST-DATED CHEQUES.
+<a href="[URL]" target="_parent">Click here</a> to continue the registration process and provide Medical, Emergency Contact and T-shirt order and send in your payment by December 2nd 2019. Cheques need to be made out to Break for Jesus. PLEASE NO POST-DATED CHEQUES.
 
 Or paste this into a browser:
 
 [URL]
 
-Please note that this link is only active until November 25th.
+Please note that this link is only active until December 2nd 2019.
 
 Cost for 1 camper: $385
 Cost for 2 campers: $765
@@ -119,7 +119,7 @@ Please mail your cheques to
 
 If ALL the necessary forms and payment are NOT received by December 2nd, 2019 your registration will be withdrawn and the spot will be given to another camper on the waiting list.
 
-If you have any concerns or challenges with the payment please contact [Support Name] at [Support Phone].
+<b>If you have any concerns or challenges with the payment please contact [Support Name] at [Support Phone].</b>
 
 B4J Administration',
 					'sm_notification_inactive' => 0
