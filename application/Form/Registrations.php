@@ -119,8 +119,8 @@ class Registrations extends \Object\Form\Wrapper\Base {
 				'b4_registration_medical_doctors_contact' => ['order' => 1, 'row_order' => 110, 'label_name' => 'Doctors Name & Phone', 'type' => 'text', 'null' => true, 'required' => 'c', 'method' => 'textarea', 'placeholder' => 'Name / Phone'],
 			],
 			'b4_registration_medical_alergies_flag' => [
-				'b4_registration_medical_alergies_flag' => ['order' => 1, 'row_order' => 120, 'label_name' => 'Alergies', 'type' => 'boolean', 'required' => 'c', 'percent' => 25],
-				'b4_registration_medical_alergies_details' => ['order' => 2, 'label_name' => 'Alergies (Please Specify)', 'type' => 'text', 'null' => true, 'required' => 'c', 'percent' => 75, 'method' => 'textarea', 'placeholder' => 'Name, Name, ...'],
+				'b4_registration_medical_alergies_flag' => ['order' => 1, 'row_order' => 120, 'label_name' => 'Allergies', 'type' => 'boolean', 'required' => 'c', 'percent' => 25],
+				'b4_registration_medical_alergies_details' => ['order' => 2, 'label_name' => 'Allergies (Please Specify)', 'type' => 'text', 'null' => true, 'required' => 'c', 'percent' => 75, 'method' => 'textarea', 'placeholder' => 'Name, Name, ...'],
 			],
 			'b4_registration_medical_immunization_flag' => [
 				'b4_registration_medical_immunization_flag' => ['order' => 1, 'row_order' => 130, 'label_name' => 'Has your child received the required immunization for their age?', 'type' => 'boolean', 'required' => 'c', 'percent' => 100],
