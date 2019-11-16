@@ -88,7 +88,7 @@ class Registrations extends \Object\Form\Wrapper\Base {
 			],
 			'b4_registration_prefered_language_preference' => [
 				'b4_registration_prefered_language_preference' => ['order' => 1, 'row_order' => 750, 'label_name' => 'Language Preference', 'type' => 'smallint', 'default' => null, 'null' => true, 'required' => true, 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\LanguagePreference', 'options_options' => ['i18n' => 'skip_sorting']],
-				'b4_registration_can_volunteer' => ['order' => 2, 'label_name' => 'Valunteer', 'type' => 'boolean', 'description' => 'I am able to volunteer for some time during camp. Please contact me!'],
+				'b4_registration_can_volunteer' => ['order' => 2, 'label_name' => 'Volunteer', 'type' => 'boolean', 'description' => 'I am able to volunteer for some time during camp. Please contact me!'],
 			],
 		],
 		'address_container' => [

@@ -80,7 +80,7 @@ class Step2 extends \Object\Form\Wrapper\Base {
 		],
 		'volunteer' => [
 			'b4_registration_can_volunteer' => [
-				'b4_registration_can_volunteer' => ['order' => 1, 'row_order' => 10000, 'label_name' => 'Valunteer', 'type' => 'boolean', 'description' => 'I am able to volunteer for some time during camp. Please contact me!'],
+				'b4_registration_can_volunteer' => ['order' => 1, 'row_order' => 10000, 'label_name' => 'Volunteer', 'type' => 'boolean', 'description' => 'I am able to volunteer for some time during camp. Please contact me!'],
 			]
 		],
 		'signature' => [
