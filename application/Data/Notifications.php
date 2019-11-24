@@ -127,7 +127,7 @@ B4J Administration',
 				[
 					'sm_notification_code' => 'B4::EMAIL_ON_WAITING_LIST',
 					'sm_notification_name' => 'B/J Email On Waiting List',
-					'sm_notification_subject' => 'Break For Jesus: Your Child Is On Waiting List',
+					'sm_notification_subject' => 'Break For Jesus: Your Child Is On A Wait List',
 					'sm_notification_body' => 'Dear [Name],
 
 We have placed [Child] on a WAITLIST because we have reached maximum capacity for the camp.
