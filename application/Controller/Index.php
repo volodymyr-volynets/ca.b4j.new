@@ -11,6 +11,6 @@ class Index extends \Object\Controller {
 Break, every day from 11am-12:15pm. The online camp for Ukrainian Catholic children in gr. 3-8 from
 our eparchy will run on ZOOM, and will include prayers, teachings, music, arts and crafts, games and
 various fun activities – all together and in smaller groups. There is a limit of 80 screens, and you must
-register in advance on this site, starting February 1.", SUCCESS);
+register in advance on this site, between January 24 - February 21.", SUCCESS);
 	}
 }
