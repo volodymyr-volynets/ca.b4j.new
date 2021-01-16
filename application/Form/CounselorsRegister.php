@@ -18,23 +18,23 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 		'buttons' => ['default_row_type' => 'grid', 'order' => 900],
 		'address_container' => ['default_row_type' => 'grid', 'order' => 32000],
 		'emergency_container' => ['default_row_type' => 'grid', 'order' => 32000],
-		'medical_container' => ['default_row_type' => 'grid', 'order' => 32000],
-		'tshirt_container' => ['default_row_type' => 'grid', 'order' => 32000],
+		//'medical_container' => ['default_row_type' => 'grid', 'order' => 32000],
+		//'tshirt_container' => ['default_row_type' => 'grid', 'order' => 32000],
 		'additional_container' => ['default_row_type' => 'grid', 'order' => 33000],
 		'references_container' => ['default_row_type' => 'grid', 'order' => 34000],
-		'responsibilities_container' => ['default_row_type' => 'grid', 'order' => 35000],
+		//'responsibilities_container' => ['default_row_type' => 'grid', 'order' => 35000],
 		'declaration_container' => ['default_row_type' => 'grid', 'order' => 36000],
 	];
 	public $rows = [
 		'tabs' => [
 			'address' => ['order' => 200, 'label_name' => 'Address'],
 			'emergency' => ['order' => 250, 'label_name' => 'Emergency'],
-			'medical' => ['order' => 300, 'label_name' => 'Medical'],
+			//'medical' => ['order' => 300, 'label_name' => 'Medical'],
 			'additional' => ['order' => 350, 'label_name' => 'Additional'],
 			'references' => ['order' => 360, 'label_name' => 'References'],
-			'responsibilities' => ['order' => 370, 'label_name' => 'Responsibilities'],
+			//'responsibilities' => ['order' => 370, 'label_name' => 'Responsibilities'],
 			'declaration' => ['order' => 380, 'label_name' => 'Declaration'],
-			'tshirt' => ['order' => 400, 'label_name' => 'T-Shirt'],
+			//'tshirt' => ['order' => 400, 'label_name' => 'T-Shirt'],
 		],
 	];
 	public $elements = [
@@ -71,24 +71,24 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 			'emergency' => [
 				'emergency' => ['container' => 'emergency_container', 'order' => 100]
 			],
-			'medical' => [
-				'medical' => ['container' => 'medical_container', 'order' => 100],
-			],
+//			'medical' => [
+//				'medical' => ['container' => 'medical_container', 'order' => 100],
+//			],
 			'additional' => [
 				'additional' => ['container' => 'additional_container', 'order' => 100]
 			],
 			'references' => [
 				'references' => ['container' => 'references_container', 'order' => 100]
 			],
-			'responsibilities' => [
-				'responsibilities' => ['container' => 'responsibilities_container', 'order' => 100]
-			],
+//			'responsibilities' => [
+//				'responsibilities' => ['container' => 'responsibilities_container', 'order' => 100]
+//			],
 			'declaration' => [
 				'declaration' => ['container' => 'declaration_container', 'order' => 100]
 			],
-			'tshirt' => [
-				'tshirt' => ['container' => 'tshirt_container', 'order' => 100]
-			]
+//			'tshirt' => [
+//				'tshirt' => ['container' => 'tshirt_container', 'order' => 100]
+//			]
 		],
 		'address_container' => [
 			'b4_counselor_address1' => [
@@ -110,6 +110,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_emergency_line2' => ['order' => 2, 'label_name' => 'Emergency Contact 2', 'type' => 'text', 'null' => true, 'method' => 'textarea', 'percent' => 50, 'placeholder' => 'Name / Phone'],
 			],
 		],
+		/*
 		'medical_container' => [
 			'b4_counselor_medical_health_card_number' => [
 				'b4_counselor_medical_health_card_number' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Health Card Number', 'domain' => 'code', 'required' => true, 'placeholder' => 'NNNN-NNN-NNN-AA'],
@@ -127,6 +128,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_medical_anything_we_should_know' => ['order' => 1, 'row_order' => 140, 'label_name' => 'Is there anything we should know?', 'type' => 'text', 'null' => true, 'percent' => 100, 'method' => 'textarea', 'placeholder' => ''],
 			],
 		],
+		*/
 		'additional_container' => [
 			'b4_counselor_additional_why_councelor' => [
 				'b4_counselor_additional_why_councelor' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Why do I want to be a counselor?', 'type' => 'text', 'required' => true, 'method' => 'textarea'],
@@ -165,6 +167,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_reference_2_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email', 'required' => true, 'percent' => 50],
 			],
 		],
+		/*
 		'responsibilities_container' => [
 			'text' => [
 				'text' => ['row_order' => 50, 'value' => 'Please identified your preferences for helping with various tasks during the camp (1 being highest).', 'method' => 'b']
@@ -191,6 +194,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_responsibility_games' => ['order' => 1, 'row_order' => 700, 'label_name' => 'Games', 'domain' => 'status_id', 'null' => true, 'required' => true, 'method' => 'select', 'options_model' => '\Model\Counselor\Responsibilities'],
 			]
 		],
+		*/
 		'declaration_container' => [
 			'text1' => [
 				'text1' => ['order' => 1, 'row_order' => 50, 'label_name' => '', 'method' => 'b', 'value' => 'I have no convictions, charges or pending charges for offences under the Criminal Code of Canada up to and including the date of this declaration for which a pardon has not been granted under the Criminal Records Act of Canada.']
@@ -204,14 +208,15 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_declartion_signing_date' => ['order' => 2, 'label_name' => 'Signing Date', 'type' => 'date', 'null' => true, 'default' => NUMBERS_FLAG_TIMESTAMP_DATE, 'required' => 'c', 'method' => 'calendar', 'calendar_icon' => 'right'],
 			]
 		],
-		'tshirt_container' => [
-			'b4_counselor_tshirt_size' => [
-				'b4_counselor_tshirt_size' => ['order' => 1, 'row_order' => 300, 'label_name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true, 'default' => null, 'required' => true, 'method' => 'select', 'options_model' => '\Model\TShirtSize', 'placeholder' => 'Size', 'options_options' => ['i18n' => 'skip_sorting']],
-			],
-		],
+//		'tshirt_container' => [
+//			'b4_counselor_tshirt_size' => [
+//				'b4_counselor_tshirt_size' => ['order' => 1, 'row_order' => 300, 'label_name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true, 'default' => null, 'required' => true, 'method' => 'select', 'options_model' => '\Model\TShirtSize', 'placeholder' => 'Size', 'options_options' => ['i18n' => 'skip_sorting']],
+//			],
+//		],
 		'signature' => [
 			'b4_counselor_parents_name' => [
-				'b4_counselor_parents_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Parents Name', 'domain' => 'name', 'required' => true, 'percent' => 100],
+				'b4_counselor_parents_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Parents Name', 'domain' => 'name', 'required' => true, 'percent' => 50],
+				'b4_counselor_parents_email' => ['order' => 2, 'label_name' => 'Parents Email', 'domain' => 'email', 'null' => true, 'required' => true, 'percent' => 50],
 			],
 			'b4_counselor_signature' => [
 				'b4_counselor_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Signature of Parent / Guardian', 'domain' => 'signature', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'signature'],

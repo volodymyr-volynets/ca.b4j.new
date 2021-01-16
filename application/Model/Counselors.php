@@ -40,8 +40,8 @@ class Counselors extends \Object\Table {
 		'b4_counselor_emergency_line1' => ['name' => 'Emergency Line 1', 'type' => 'text'],
 		'b4_counselor_emergency_line2' => ['name' => 'Emergency Line 2', 'type' => 'text', 'null' => true],
 		// medical
-		'b4_counselor_medical_health_card_number' => ['name' => 'Health Card Number', 'domain' => 'code'],
-		'b4_counselor_medical_doctors_info' => ['name' => 'Doctors Name and Phone', 'type' => 'text'],
+		'b4_counselor_medical_health_card_number' => ['name' => 'Health Card Number', 'domain' => 'code', 'null' => true],
+		'b4_counselor_medical_doctors_info' => ['name' => 'Doctors Name and Phone', 'type' => 'text', 'null' => true],
 		'b4_counselor_medical_alergies' => ['name' => 'Alergies', 'type' => 'text', 'null' => true],
 		'b4_counselor_medical_dietary_restrictions' => ['name' => 'Dietary Restrictions', 'type' => 'text', 'null' => true],
 		'b4_counselor_medical_anything_we_should_know' => ['name' => 'Anything we should know', 'type' => 'text', 'null' => true],
@@ -71,6 +71,7 @@ class Counselors extends \Object\Table {
 		'b4_counselor_tshirt_size' => ['name' => 'T-Shirt size', 'type' => 'smallint', 'null' => true, 'options_model' => '\Model\TShirtSize'],
 		// signature
 		'b4_counselor_parents_name' => ['name' => 'Parents Name', 'domain' => 'name'],
+		'b4_counselor_parents_email' => ['name' => 'Parents Email', 'domain' => 'email', 'null' => true],
 		'b4_counselor_signature' => ['name' => 'Signature of Parent/Guardian', 'domain' => 'signature'],
 		'b4_counselor_signing_date' => ['name' => 'Signing Date', 'type' => 'date'],
 		// declaration

@@ -213,7 +213,8 @@ class Counselors extends \Object\Form\Wrapper\Base {
 		],
 		'signature' => [
 			'b4_counselor_parents_name' => [
-				'b4_counselor_parents_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Parents Name', 'domain' => 'name', 'required' => true, 'percent' => 100],
+				'b4_counselor_parents_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Parents Name', 'domain' => 'name', 'required' => true, 'percent' => 50],
+				'b4_counselor_parents_email' => ['order' => 2, 'label_name' => 'Parents Email', 'domain' => 'email', 'null' => true, 'required' => true, 'percent' => 50],
 			],
 			'b4_counselor_signature' => [
 				'b4_counselor_signature' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Signature of Parent / Guardian', 'domain' => 'signature', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'signature', 'readonly' => true],
