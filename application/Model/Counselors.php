@@ -22,7 +22,7 @@ class Counselors extends \Object\Table {
 		'b4_counselor_status_id' => ['name' => 'Status', 'domain' => 'status_id', 'default' => 10, 'options_model' => '\Model\Counselor\Statuses'],
 		// name
 		'b4_counselor_child_name' => ['name' => 'Name of Child', 'domain' => 'name'],
-		'b4_counselor_badge_name' => ['name' => 'Badge Name', 'domain' => 'name'],
+		'b4_counselor_badge_name' => ['name' => 'Badge Name', 'domain' => 'name', 'null' => true],
 		'b4_counselor_parish' => ['name' => 'Parish', 'domain' => 'name', 'null' => true],
 		'b4_counselor_date_of_birth' => ['name' => 'Date of Birth', 'type' => 'date'],
 		'b4_counselor_grade' => ['name' => 'Grade', 'type' => 'smallint', 'null' => true],

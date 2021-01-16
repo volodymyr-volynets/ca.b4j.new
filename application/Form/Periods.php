@@ -12,7 +12,8 @@ class Periods extends \Object\Form\Wrapper\Base {
 			'back' => true,
 			'new' => true,
 			'import' => true
-		]
+		],
+		//'no_ajax_form_reload' => true
 	];
 	public $containers = [
 		'top' => ['default_row_type' => 'grid', 'order' => 100],

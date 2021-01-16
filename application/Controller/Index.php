@@ -6,6 +6,11 @@ class Index extends \Object\Controller {
 	public $title = 'Home';
 
 	public function actionIndex() {
-		\Layout::addMessage('It is with heavy hearts that we announce the cancelling of Break for Jesus 2020. On the advice of medical personnel, in consultation with our committee, educational and eparchial advisers, we believe this to be the most prudent course to stay safe and prevent the spread of the virus. We are very sorry that this is happening. This decision is not being taken lightly. We realize that this will cause inconvenience to many parents, but the risks outweigh the benefits. All parents will receive full refunds.<br/><br/>B4J Organizing Committee', 'danger');
+		\Layout::addMessage('Break for Jesus is back!', SUCCESS);
+		\Layout::addMessage("The organizing committee is pleased to announce that B4J 2021 will take place virtually, during March
+Break, every day from 11am-12:15pm. The online camp for Ukrainian Catholic children in gr. 3-8 from
+our eparchy will run on ZOOM, and will include prayers, teachings, music, arts and crafts, games and
+various fun activities – all together and in smaller groups. There is a limit of 80 screens, and you must
+register in advance on this site, starting February 1.", SUCCESS);
 	}
 }

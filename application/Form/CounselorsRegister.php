@@ -43,8 +43,8 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_period_id' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'required' => true, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Model\Periods', 'options_params' => ['b4_period_current' => 1], 'placeholder' => 'Period'],
 			],
 			'b4_counselor_child_name' => [
-				'b4_counselor_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 50, 'required' => true],
-				'b4_counselor_badge_name' => ['order' => 2, 'label_name' => 'First name, as you want it to appear on name tag', 'domain' => 'name', 'percent' => 50, 'required' => true],
+				'b4_counselor_child_name' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 100, 'required' => true],
+				//'b4_counselor_badge_name' => ['order' => 2, 'label_name' => 'First name, as you want it to appear on name tag', 'domain' => 'name', 'percent' => 50, 'required' => true],
 			],
 			'b4_counselor_parish' => [
 				'b4_counselor_date_of_birth' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Date of Birth', 'type' => 'date', 'required' => true, 'percent' => 25, 'placeholder' => NUMBERS_FLAG_TIMESTAMP_FORMATED_DATE],
@@ -55,9 +55,11 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_phone' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Phone', 'domain' => 'phone', 'required' => true],
 				'b4_counselor_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email', 'required' => true],
 			],
+			/*
 			'b4_counselor_declartion_police_check_submitted' => [
 				'b4_counselor_declartion_police_check_submitted' => ['order' => 1, 'row_order' => 400, 'label_name' => 'Did you submit Police check to Break for Jesus before?', 'type' => 'boolean', 'onchange' => 'this.form.submit();'],
 			],
+			*/
 			self::HIDDEN => [
 				'b4_counselor_id' => ['label_name' => 'Registration #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
 			]
@@ -249,6 +251,7 @@ class CounselorsRegister extends \Object\Form\Wrapper\Base {
 				'b4_counselor_declartion_signing_date'
 			]);
 		}
+		$form->values['b4_counselor_badge_name'] = '';
 	}
 
 	public function overrideTabs(& $form, & $tab_options, & $tab_name, & $neighbouring_values = []) {
