@@ -2,24 +2,17 @@
 	<div class="container">
 		<div id="content">
 			<div class="section-header">
-				<h2><?php echo i18n(null, 'THIS IS THE CAMP\'S 2ND YEAR OF ONLINE REGISTRATION'); ?></h2>
+				<h2><?php echo i18n(null, 'THIS IS THE 1ST YEAR OF VIRTUAL CAMP AND HOPEFULLY THE LAST.'); ?></h2>
 			</div>
 			<p>
-				<?php echo i18n(null, 'We ask for your patience. If you have any technical issues, please call [name] at [phone].', ['replace' => ['[name]' => registry('b4j.tech_support.name'), '[phone]' => registry('b4j.tech_support.phone')]]); ?>
-			</p>
-			<p>
-				<b style="color: red;"><?php echo i18n(null, 'PLEASE NOTE - completing this online registration DOES NOT guarantee a spot at camp.'); ?></b>
+				We ask for your patience. If you have any technical issues, please call Ivanka at (647) 290-7851.
 			</p>
 			<br/>
 			<div class="section-header">
 				<h2><?php echo i18n(null, 'How do I sign up?'); ?></h2>
 			</div>
 			<p>
-				<?php
-					echo i18n(null, 'Registration starts [start_date].', ['replace' => ['[start_date]' => \Format::niceDatetime(\Helper\Periods::get('b4_period_start_date'))]]);
-					echo ' ';
-					echo i18n(null, 'Please see the code in your church bulletin or in our poster, posted in parishes after October 28th.');
-				?>
+				Registration starts January 24, 2021 to February 21, 2021. Activities will take place every day through ZOOM.
 			</p>
 			<p>
 				<?php
@@ -32,27 +25,31 @@
 			</p>
 			<br/>
 			<div class="section-header">
-				<h2><?php echo i18n(null, 'How much?'); ?></h2>
+				<h2><?php echo i18n(null, 'HOW MUCH?'); ?></h2>
 			</div>
 			<p>
-				<?php
-					echo i18n(null, 'Cost is <code>$385</code> per first child, <code>$380</code> per subsequent child from the same family (brother or sister).');
-				?>
+				Cost is <code>$25</code> per screen.
 			</p>
-			<br/>
+			<p>
+Children will be divided into two different groups by grade level: 3-5 or 6-8.  Each screen can only be applied to one group. If you have children in two different grade levels and wish to only register one screen, you must decide which group your children will attend. 
+			</p>
+			<p>
+Parents will be asked to prepare/purchase some supplies for camp activities (art and crafts).  This cost will be minimal and most supplies you may have at home. A list will be emailed 1-2 weeks prior to camp. 
+			</p>
+			<p>
+For example: The Choly family has 2 children, grades 3 and 8.  If the family registers for one screen, they will need to decide which age group both the children will attend via Zoom. If they choose 6-8, both children will attend the 6-8 activities. If the Cholys wish to have their children attend activities separately, i.e., with their respective age group, they will need to register for 2 screens (one per child).
+			</p>
+			<p>
+Please note that, unlike in previous years, no code is needed to register! 
+			</p>
+			
 			<div class="section-header">
-				<h2><?php echo i18n(null, 'Note'); ?></h2>
+				<h2><?php echo i18n(null, 'REGISTER NOW!'); ?></h2>
 			</div>
 			<p>
-				<?php echo i18n(null, 'Registration is on a first come first serve basis. We must have your registration form and cheque before your spot can be reserved. Only Online Registrations will be accepted.'); ?>
-				<br/>
-				<?php echo i18n(null, 'Space is very limited (60 participants), do not delay!'); ?>
-			</p>
-			<p>
-				<b><?php echo i18n(null, 'We cannot accommodate room allocation requests.'); ?></b>
-			</p>
-			<p>
-				<?php echo i18n(null, 'Need more info? Email us at <a href="mailto:[email]">[email]</a> or call [name] at <code>[phone]</code>.', ['replace' => ['[name]' => registry('b4j.contact.name'), '[phone]' => registry('b4j.contact.phone'), '[email]' => registry('b4j.contact.email')]]); ?>
+				Space is limited to <code>80 screens</code>.
+				Need more info? Email us at CampB4J@gmail.com or call Ivanka at <code>(647) 290-7851</code>
+
 			</p>
 		</div>
 	</div>

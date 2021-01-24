@@ -11,7 +11,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 			'wizard' => [
 				'type' => 'primary',
 				'options' => [
-					1 => ['name' => 'Registration Code'],
+					//1 => ['name' => 'Registration Code'],
 					2 => ['name' => 'Information'],
 					3 => ['name' => 'Waiver'],
 					4 => ['name' => 'Confirm Your Email'],
@@ -31,6 +31,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 		]
 	];
 	public $data = [
+	    /*
 		'step1' => [
 			'options' => self::GLOBAL_OPTIONS,
 			'order' => 1000,
@@ -57,6 +58,7 @@ class Collection extends \Object\Form\Wrapper\Collection {
 				]
 			]
 		],
+	    */
 		'step2' => [
 			'options' => self::GLOBAL_OPTIONS,
 			'order' => 2000,
@@ -163,8 +165,8 @@ class Collection extends \Object\Form\Wrapper\Collection {
 	];
 
 	public function distribute() {
-		$this->values['__wizard_step'] = (int) ($this->values['__wizard_step'] ?? 1);
-		if (empty($this->values['__wizard_step'])) $this->values['__wizard_step'] = 1;
+		$this->values['__wizard_step'] = (int) ($this->values['__wizard_step'] ?? 2);
+		if (empty($this->values['__wizard_step'])) $this->values['__wizard_step'] = 2;
 		$this->collection_screen_link = 'step' . $this->values['__wizard_step'];
 		// make everything look success
 		if ($this->values['__wizard_step'] == 5) {

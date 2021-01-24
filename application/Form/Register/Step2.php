@@ -33,6 +33,11 @@ class Step2 extends \Object\Form\Wrapper\Base {
 			self::HIDDEN => [
 				'__wizard_step' => ['label_name' => 'Wizzard Step', 'domain' => 'type_id', 'null' => true, 'method' => 'hidden'],
 				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
+				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'default' => NUMBERS_FLAG_GLOBAL___IN_GROUP_ID ?? NUMBERS_FLAG_GLOBAL_I18N_GROUP_ID, 'required' => true, 'percent' => 100, 'method' => 'hidden'],
+				'b4_registration_period_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Code', 'domain' => 'code', 'null' => true, 'method' => 'hidden'],
+			],
+			'b4_registration_period_id' => [
+				'b4_registration_period_id' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'required' => true, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Model\Periods', 'options_params' => ['b4_period_current' => 1], 'placeholder' => 'Period'],
 			],
 			'b4_registration_parents_name' => [
 				'b4_registration_parents_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Parent\'s Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 100],
@@ -137,12 +142,34 @@ class Step2 extends \Object\Form\Wrapper\Base {
 		foreach ($form->values['\Model\Register\Details'] as $v) {
 			$children[] = $v['b4_registration_child_name'];
 		}
+		$period = \Model\Periods::getStatic([
+			'where' => [
+				'b4_period_id' => $form->values['b4_registration_period_id']
+			],
+			'pk' => null
+		]);
+		$form->values['b4_registration_period_code'] = $period[0]['b4_period_code'];
 		// write data
-		return \Object\Table\Complementary::jsonSaveData(
+		$model = new \Model\Periods();
+		$model->db_object->begin();
+		$result = \Object\Table\Complementary::jsonSaveData(
+			new \Model\Register(),
+			[
+				'b4_register_step_id' => 1,
+				'b4_register_step1' => json_encode($form->values),
+				'b4_register_period_id' => $form->values['b4_registration_period_id'],
+				//'b4_register_period' => $this->tmp_period_dates,
+				//'b4_register_period_id' => $form->values['b4_registration_period_id'],
+			],
+			$form,
+			'b4_register_id'
+		);
+		\Object\Table\Complementary::jsonSaveData(
 			new \Model\Register(),
 			[
 				'b4_register_step_id' => 2,
 				'b4_register_step2' => json_encode($form->values),
+				'b4_register_period_id' => $form->values['b4_registration_period_id'],
 				'b4_register_parents_name' => $form->values['b4_registration_parents_name'],
 				'b4_register_parents_phone' => $form->values['b4_registration_phone'],
 				'b4_register_parents_email' => $form->values['b4_registration_email'],
@@ -151,6 +178,14 @@ class Step2 extends \Object\Form\Wrapper\Base {
 			$form,
 			'b4_register_id'
 		);
+		// update counter
+		if ($result) {
+			\Model\Periods::queryBuilderStatic()->update()->set(['b4_period_new_registrations;=;~~' => 'b4_period_new_registrations + 1'])->where('AND', ['b4_period_id', '=', $form->values['b4_registration_period_id']])->query();
+			$model->db_object->commit();
+		} else {
+			$model->db_object->rollback();
+		}
+		return true;
 	}
 
 	public function success(& $form) {

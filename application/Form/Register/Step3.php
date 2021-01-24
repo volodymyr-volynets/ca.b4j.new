@@ -32,12 +32,12 @@ class Step3 extends \Object\Form\Wrapper\Base {
 			'text2' => [
 				'text2' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
 			],
-			'text3' => [
-				'text3' => ['order' => 1, 'row_order' => 250, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
-			],
-			'text4' => [
-				'text4' => ['order' => 1, 'row_order' => 251, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
-			],
+//			'text3' => [
+//				'text3' => ['order' => 1, 'row_order' => 250, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
+//			],
+//			'text4' => [
+//				'text4' => ['order' => 1, 'row_order' => 251, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
+//			],
 		],
 		'signature' => [
 			'medication' => [
@@ -81,19 +81,24 @@ class Step3 extends \Object\Form\Wrapper\Base {
 				);
 			}
 		}
+		
 		// waiver text se store
 		$form->values['text1'] = i18n(null, "PARENTAL / GUARDIAN AUTHORIZATION WAIVER");
-		$form->values['text2'] = i18n(null, "I am satisfied that all foreseeable and reasonable measures will be taken for the care of my son/daughter. I do hereby release the Ukrainian Catholic Episcopal Corporation of Eastern Canada and the Sisters Servants of Mary Immaculate from all claims in respect to actions, accident, or negligence on the part of these religious organizations, their employees, volunteers and others acting in the course of this 'Break for Jesus Catechetical Camp' which my child is attending [period] at Mount Mary Retreat Centre in Ancaster, Ontario.", [
-			'replace' => [
-				'[period]' => $form->values['b4_register_period']
-			]
-		]);
-		$form->values['text3'] = i18n(null, "I hereby consent to the administration of any medical treatment deemed by any qualified medical practitioner to be necessary for the health and welfare of my child including the administration of an anesthetic and the performance of any necessary operation during the period of this camp.");
-		$form->values['text4'] = i18n(null, "This authorizes the Break For Jesus Committee to use the picture of my son/daughter [children] in a website pertaining to the operation of the Break For Jesus Catechetical Camp and release them from any liability arising there from that use.", [
-			'replace' => [
-				'[children]' => $form->values['b4_register_children']
-			]
-		]);
+		$form->values['text2'] = i18n(null, <<<TTT
+By signing this waiver I am granting permission for my son/daughter to participate in the online
+camp “Break for Jesus Catechetical Camp 2021,” which will be offered through the ZOOM
+platform. I am satisfied that all foreseeable and reasonable measures will be taken for the care
+of my son/daughter, including the privacy and safety of my child. I do hereby release the
+Ukrainian Catholic Episcopal Corporation of Eastern Canada from all claims in respect to
+actions, accident, or negligence on the part of these religious organizations, their employees,
+volunteers and others acting in the course of this virtual &#39;Break for Jesus Catechetical Camp&#39;
+which my child is attending 03/15/2021 - 03/19/2021 online.
+<br/><br/>
+This authorizes the Break for Jesus Committee to use the picture and/or video of my
+son/daughter in a website pertaining to the operation of the Break for Jesus Catechetical Camp
+and releases them from any liability arising there from that use.
+TTT
+		);
 	}
 
 	public function validate(& $form) {
