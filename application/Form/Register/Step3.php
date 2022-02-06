@@ -32,9 +32,9 @@ class Step3 extends \Object\Form\Wrapper\Base {
 			'text2' => [
 				'text2' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
 			],
-//			'text3' => [
-//				'text3' => ['order' => 1, 'row_order' => 250, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
-//			],
+			'text3' => [
+				'text3' => ['order' => 1, 'row_order' => 250, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
+			],
 //			'text4' => [
 //				'text4' => ['order' => 1, 'row_order' => 251, 'label_name' => '', 'method' => 'b', 'value' => '', 'percent' => 100, 'skip_i18n' => true]
 //			],
@@ -83,20 +83,14 @@ class Step3 extends \Object\Form\Wrapper\Base {
 		}
 		
 		// waiver text se store
-		$form->values['text1'] = i18n(null, "PARENTAL / GUARDIAN AUTHORIZATION WAIVER");
-		$form->values['text2'] = i18n(null, <<<TTT
-By signing this waiver I am granting permission for my son/daughter to participate in the online
-camp “Break for Jesus Catechetical Camp 2021,” which will be offered through the ZOOM
-platform. I am satisfied that all foreseeable and reasonable measures will be taken for the care
-of my son/daughter, including the privacy and safety of my child. I do hereby release the
-Ukrainian Catholic Episcopal Corporation of Eastern Canada from all claims in respect to
-actions, accident, or negligence on the part of these religious organizations, their employees,
-volunteers and others acting in the course of this virtual &#39;Break for Jesus Catechetical Camp&#39;
-which my child is attending 03/15/2021 - 03/19/2021 online.
-<br/><br/>
-This authorizes the Break for Jesus Committee to use the picture and/or video of my
-son/daughter in a website pertaining to the operation of the Break for Jesus Catechetical Camp
-and releases them from any liability arising there from that use.
+		$form->values['text1'] = i18n(null, "Break for Jesus Catechetical Day Camp 2022Break for Jesus Catechetical Day Camp 2022");
+		$form->values['text1'] = i18n(null, "PARENTAL/GUARDIAN AUTHORIZAITON WAIVER");
+		$form->values['text3'] = i18n(null, <<<TTT
+By signing this waiver, I am granting permission for my son/daughter to participate in the Break for Jesus Catechetical Day Camp 2022 (“B4J”) which will be held at the T. Shevchenko Ukrainian Cultural Centre (482 Horner Ave., Etobicoke, On), March 14-18, daily between 9am and 4 pm.<br/><br/>
+I agree that I am satisfied that all foreseeable and reasonable measures will be taken for the care of my son/daughter, including the privacy and safety of my child. I do hereby release The Ukrainian Catholic Episcopal Corporation of Eastern Canada, its parishes, agents, employees, and volunteers (collectively “The Camp Operators”) from any and all claims arising in respect to injury, damage or loss, whether by accident, or negligence in the course of the conduct and activities of B4J, which my child is attending.<br/><br/>
+This authorizes The Camp Operators to use the picture and/or video of my son/daughter in a website pertaining to the operation of the B4J and releases The Camp Operators from any liability arising from such use.<br/><br/>
+COVID-19 Virus (“the Virus”) Protocol:  In the event that my child exhibits symptoms of the Virus, tests positive for the Virus, is exposed to anyone who has tested positive for the Virus, or has been recommended to self-isolate due to the Virus, I will immediately notify The Camp Operators of such fact.
+
 TTT
 		);
 	}

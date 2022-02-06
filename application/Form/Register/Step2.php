@@ -35,6 +35,7 @@ class Step2 extends \Object\Form\Wrapper\Base {
 				'b4_register_id' => ['label_name' => 'Register #', 'domain' => 'big_id', 'null' => true, 'method' => 'hidden', 'validate_through_session' => true],
 				'b4_registration_in_group_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Language', 'domain' => 'group_id', 'placeholder' => 'Language', 'null' => true, 'default' => NUMBERS_FLAG_GLOBAL___IN_GROUP_ID ?? NUMBERS_FLAG_GLOBAL_I18N_GROUP_ID, 'required' => true, 'percent' => 100, 'method' => 'hidden'],
 				'b4_registration_period_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Code', 'domain' => 'code', 'null' => true, 'method' => 'hidden'],
+				'b4_registration_prefered_language_preference' => ['order' => 1, 'row_order' => 750, 'label_name' => 'Language Preference', 'type' => 'smallint', 'default' => 5, 'null' => true, 'required' => true, 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\LanguagePreference', 'options_options' => ['i18n' => 'skip_sorting']],
 			],
 			'b4_registration_period_id' => [
 				'b4_registration_period_id' => ['order' => 1, 'row_order' => 50, 'label_name' => 'Period', 'domain' => 'group_id', 'null' => true, 'required' => true, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Model\Periods', 'options_params' => ['b4_period_current' => 1], 'placeholder' => 'Period'],
@@ -64,9 +65,6 @@ class Step2 extends \Object\Form\Wrapper\Base {
 			'b4_registration_email' => [
 				'b4_registration_phone' => ['order' => 1, 'row_order' => 700, 'label_name' => 'Phone', 'domain' => 'phone', 'required' => true],
 				'b4_registration_email' => ['order' => 2, 'label_name' => 'Email', 'domain' => 'email', 'required' => true],
-			],
-			'b4_registration_prefered_language_preference' => [
-				'b4_registration_prefered_language_preference' => ['order' => 1, 'row_order' => 750, 'label_name' => 'Language Preference', 'type' => 'smallint', 'default' => null, 'null' => true, 'required' => true, 'percent' => 50, 'placeholder' => \Object\Content\Messages::PLEASE_CHOOSE, 'method' => 'select', 'options_model' => '\Model\LanguagePreference', 'options_options' => ['i18n' => 'skip_sorting']],
 			],
 			'children' => [
 				self::SEPARATOR_HORIZONTAL => ['order' => 100, 'row_order' => 800, 'label_name' => 'Children', 'icon' => 'fas fa-users', 'percent' => 100],
@@ -110,6 +108,16 @@ class Step2 extends \Object\Form\Wrapper\Base {
 	];
 
 	public function refresh(& $form) {
+		$period = \Model\Periods::getStatic([
+			'where' => [
+				'b4_period_current' => 1
+			],
+			'pk' => null
+		]);
+		if (!\Helper\Date::between(\Format::now('datetime'), $period[0]['b4_period_start_date'], $period[0]['b4_period_end_date'])) {
+			$form->error(DANGER,  \Helper\Messages::NO_LONGER_ACCEPT_REGISTRATIONS, 'b4_registration_period_id');
+			return;
+		}
 		$form->options['actions']['back'] = [
 			'href' => \Application::get('mvc.full') . '?__wizard_step=1&b4_register_id=' . $form->values['b4_register_id']
 		];
